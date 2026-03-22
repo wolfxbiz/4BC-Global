@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #2D2D2D;
+    background-color: #FFFFFF;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Sans', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-cta text-dark font-heading font-semibold text-[15px] py-[14px] px-7 rounded-lg transition-all duration-200 hover:scale-[1.02] hover:brightness-105 inline-block;
+  }
+  .btn-secondary {
+    @apply border-[1.5px] border-primary text-primary font-heading font-semibold text-[15px] py-[14px] px-7 rounded-lg transition-all duration-200 hover:bg-primary hover:text-white inline-block;
+  }
+  .btn-secondary-dark {
+    @apply border-[1.5px] border-white text-white font-heading font-semibold text-[15px] py-[14px] px-7 rounded-lg transition-all duration-200 hover:bg-white hover:text-dark inline-block;
+  }
+  .section-padding {
+    @apply py-20 md:py-16 px-4;
+  }
+  .container-content {
+    @apply max-w-content mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .card {
+    @apply bg-white border border-border rounded-card shadow-card hover:shadow-card-hover transition-shadow duration-200 p-8;
+  }
+  .accent-divider {
+    @apply h-[3px] w-20 mx-auto bg-gradient-accent rounded-full;
+  }
+  .section-tag {
+    @apply text-xs font-heading font-semibold tracking-widest uppercase text-accent mb-3 inline-block;
+  }
+}
