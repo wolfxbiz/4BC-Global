@@ -224,7 +224,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-heading font-medium text-sm text-text">Email</p>
-                        <a href="mailto:info@4bcglobal.com" className="font-body text-xs text-blue-brand hover:text-primary transition-colors">
+                        <a href="mailto:info@4bcglobal.com" className="font-body text-xs text-plum hover:text-primary transition-colors">
                           info@4bcglobal.com
                         </a>
                       </div>
@@ -244,7 +244,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-heading font-medium text-sm text-text">LinkedIn</p>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="font-body text-xs text-blue-brand hover:text-primary transition-colors">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="font-body text-xs text-plum hover:text-primary transition-colors">
                           Follow us on LinkedIn
                         </a>
                       </div>
@@ -255,7 +255,7 @@ export default function ContactPage() {
 
               <AnimatedSection delay={0.3}>
                 <div className="bg-white rounded-card border border-border shadow-card overflow-hidden">
-                  <div className="h-48 bg-gradient-to-br from-primary/20 to-blue-brand/20 flex items-center justify-center">
+                  <div className="h-48 bg-gradient-to-br from-primary/20 to-plum/20 flex items-center justify-center">
                     <div className="text-center">
                       <MapPin size={32} className="text-primary mx-auto mb-2" />
                       <p className="font-heading font-semibold text-sm text-primary">Dubai, UAE</p>

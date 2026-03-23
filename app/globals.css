@@ -4,14 +4,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary:      #E8A020; /* golden amber — buttons, highlights, brand accents */
+  --color-secondary:    #2B4A8C; /* navy blue — headers, cards, navigation */
+  --color-accent:       #7D2B5E; /* deep plum — section backgrounds, tags */
+  --color-accent-light: #F2A8C8; /* soft rose — pills, light backgrounds */
+  --color-amber-light:  #F5B840; /* amber tint — card header tints */
+  --color-bg:           #F5F4F0; /* off-white — page background */
+  --color-text:         #1A1A2E; /* deep charcoal — body text */
+  --color-surface:      #FFFFFF; /* white — card surfaces */
+  --color-mauve:        #C890B0; /* dusty mauve — secondary accents */
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   body {
     font-family: 'Inter', sans-serif;
-    color: #2D2D2D;
-    background-color: #FFFFFF;
+    color: var(--color-text);
+    background-color: var(--color-bg);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'DM Sans', sans-serif;

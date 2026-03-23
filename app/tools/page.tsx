@@ -45,9 +45,9 @@ const tools = [
     bestFor: 'Location & network planning',
     output: 'Maps, cluster analysis',
     usedIn: 'Retail, Real Estate, Banking',
-    color: 'text-blue-brand',
-    bgColor: 'bg-blue-brand/10',
-    borderColor: 'border-blue-brand/30',
+    color: 'text-plum',
+    bgColor: 'bg-plum/10',
+    borderColor: 'border-plum/30',
   },
   {
     id: 'impactiq',

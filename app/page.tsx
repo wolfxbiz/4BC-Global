@@ -184,7 +184,7 @@ export default function HomePage() {
                   </div>
                   <h3 className="font-heading font-semibold text-lg text-text">{svc.title}</h3>
                   <p className="font-body text-sm text-text-muted leading-relaxed">{svc.description}</p>
-                  <span className="text-blue-brand text-sm font-medium mt-auto flex items-center gap-1 group-hover:gap-2 transition-all">
+                  <span className="text-plum text-sm font-medium mt-auto flex items-center gap-1 group-hover:gap-2 transition-all">
                     Learn more <ArrowRight size={14} />
                   </span>
                 </a>
@@ -277,7 +277,7 @@ export default function HomePage() {
                     {cs.title}
                   </h3>
                   <p className="font-body text-sm text-text-muted">📍 {cs.location}</p>
-                  <span className="text-blue-brand text-sm font-medium mt-auto flex items-center gap-1 group-hover:gap-2 transition-all">
+                  <span className="text-plum text-sm font-medium mt-auto flex items-center gap-1 group-hover:gap-2 transition-all">
                     Read more <ArrowRight size={14} />
                   </span>
                 </a>

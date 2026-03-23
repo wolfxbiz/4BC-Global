@@ -10,30 +10,32 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#4B2C7A',
-          light: '#6B3FA0',
+          DEFAULT: '#2B4A8C',  // --color-secondary: navy blue
+          light: '#3A5CA8',    // navy hover
         },
         accent: {
-          DEFAULT: '#E8A520',
-          warm: '#F5B731',
+          DEFAULT: '#E8A020',  // --color-primary: golden amber
+          warm: '#F5B840',     // --color-amber-light
+          light: '#F2A8C8',    // --color-accent-light: soft rose
         },
-        blue: {
-          brand: '#2A5CAA',
-          light: '#3D7DD9',
+        plum: {
+          DEFAULT: '#7D2B5E',  // --color-accent: deep plum
+          light: '#9D3B7E',    // plum hover
         },
+        mauve: '#C890B0',      // --color-mauve: dusty mauve
         dark: {
-          DEFAULT: '#1A1A2E',
-          surface: '#232340',
+          DEFAULT: '#1A1A2E',  // --color-text: deep charcoal
+          surface: '#24243E',  // dark card surface
         },
         text: {
-          DEFAULT: '#2D2D2D',
+          DEFAULT: '#1A1A2E',  // --color-text
           muted: '#6B7280',
         },
         bg: {
-          DEFAULT: '#FFFFFF',
-          soft: '#F8F8FA',
+          DEFAULT: '#FFFFFF',  // --color-surface
+          soft: '#F5F4F0',     // --color-bg: off-white
         },
-        border: '#E5E7EB',
+        border: '#E2DEDE',     // warm-tinted border
       },
       fontFamily: {
         heading: ['DM Sans', 'sans-serif'],
@@ -43,9 +45,9 @@ const config: Config = {
         'stat': ['2.625rem', { lineHeight: '1.1', fontWeight: '700' }],
       },
       backgroundImage: {
-        'gradient-hero': 'linear-gradient(135deg, #1A1A2E 0%, #4B2C7A 60%, #2A5CAA 100%)',
-        'gradient-cta': 'linear-gradient(90deg, #E8A520 0%, #F5B731 100%)',
-        'gradient-accent': 'linear-gradient(90deg, #E8A520, #4B2C7A, #2A5CAA)',
+        'gradient-hero': 'linear-gradient(135deg, #1A1A2E 0%, #2B4A8C 55%, #7D2B5E 100%)',
+        'gradient-cta': 'linear-gradient(90deg, #E8A020 0%, #F5B840 100%)',
+        'gradient-accent': 'linear-gradient(90deg, #E8A020, #2B4A8C, #7D2B5E)',
       },
       boxShadow: {
         card: '0 1px 3px rgba(0,0,0,0.06)',

@@ -63,7 +63,7 @@ function TeamCard({ member }: { member: typeof team[0] }) {
     <div className="bg-white border border-border rounded-card shadow-card hover:shadow-card-hover transition-all duration-300">
       <div className="p-6">
         {/* Avatar placeholder */}
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-blue-brand/20 flex items-center justify-center mb-4 mx-auto">
+        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-plum/20 flex items-center justify-center mb-4 mx-auto">
           <User size={36} className="text-primary/60" />
         </div>
         <div className="text-center mb-4">
@@ -84,7 +84,7 @@ function TeamCard({ member }: { member: typeof team[0] }) {
         <div className="text-center">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="text-sm font-heading font-medium text-blue-brand hover:text-primary transition-colors flex items-center gap-1 mx-auto"
+            className="text-sm font-heading font-medium text-plum hover:text-primary transition-colors flex items-center gap-1 mx-auto"
           >
             {expanded ? (
               <><ChevronUp size={14} /> Show Less</>

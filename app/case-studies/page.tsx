@@ -143,7 +143,7 @@ function CaseStudyCard({ cs }: { cs: typeof caseStudies[0] }) {
       <div className="p-6 pt-0">
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-sm font-heading font-medium text-blue-brand hover:text-primary transition-colors"
+          className="text-sm font-heading font-medium text-plum hover:text-primary transition-colors"
         >
           {expanded ? '← Show Less' : 'Read More →'}
         </button>

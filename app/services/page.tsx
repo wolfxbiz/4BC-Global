@@ -51,8 +51,8 @@ const serviceAreas = [
     id: 'customer-experience',
     icon: Users,
     title: 'Customer Satisfaction & Experience',
-    color: 'text-blue-brand',
-    bgColor: 'bg-blue-brand/10',
+    color: 'text-plum',
+    bgColor: 'bg-plum/10',
     services: [
       'Customer Loyalty / Satisfaction',
       'Mystery Shopping',
@@ -93,8 +93,8 @@ const serviceAreas = [
     id: 'specialist-areas',
     icon: Lightbulb,
     title: 'Other Specialist Areas',
-    color: 'text-blue-brand',
-    bgColor: 'bg-blue-brand/10',
+    color: 'text-plum',
+    bgColor: 'bg-plum/10',
     services: [
       'InFuse — Secondary research-based intelligence solution',
       'Segmentation Studies',
