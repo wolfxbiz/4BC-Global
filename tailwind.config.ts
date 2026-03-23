@@ -38,8 +38,8 @@ const config: Config = {
         border: '#E2DEDE',     // warm-tinted border
       },
       fontFamily: {
-        heading: ['DM Sans', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        heading: ['SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        body: ['SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       fontSize: {
         'stat': ['2.625rem', { lineHeight: '1.1', fontWeight: '700' }],

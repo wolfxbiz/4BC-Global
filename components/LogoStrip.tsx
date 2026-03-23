@@ -3,9 +3,9 @@ import { useEffect, useRef } from 'react'
 
 const clients = [
   'VISA', 'ENOC', 'Unilever', 'Nestlé', 'Toyota', 'Shell', 'Aramco',
-  'DP World', 'DMCC', 'Emaar', 'du', 'Samsung', 'Ford', 'Mercedes',
+  'DP World', 'DMCC', 'Emaar', 'Samsung', 'Ford', 'Mercedes',
   'HSBC', 'ADCB', 'Bridgestone', 'Savola', 'LG', 'Vodafone',
-  'e& (Etisalat)', 'Castrol', 'Emarat', 'BARCO', 'Epson',
+  'Castrol', 'Emarat', 'ThyssenKrupp', 'Epson', 'Jotun',
 ]
 
 export default function LogoStrip() {
@@ -17,7 +17,7 @@ export default function LogoStrip() {
   useEffect(() => {
     const strip = stripRef.current
     if (!strip) return
-    const speed = 0.5
+    const speed = 0.7
 
     const animate = () => {
       if (!pausedRef.current && strip) {
@@ -43,14 +43,14 @@ export default function LogoStrip() {
       onMouseEnter={() => (pausedRef.current = true)}
       onMouseLeave={() => (pausedRef.current = false)}
     >
-      <div ref={stripRef} className="flex gap-12 whitespace-nowrap will-change-transform">
+      <div ref={stripRef} className="flex items-center gap-16 whitespace-nowrap will-change-transform py-2">
         {allClients.map((client, i) => (
-          <div
+          <span
             key={i}
-            className="flex-shrink-0 font-heading font-semibold text-sm text-text-muted hover:text-primary transition-colors duration-200 px-4 py-2 border border-border rounded-lg bg-white"
+            className="flex-shrink-0 font-heading font-bold text-2xl tracking-tight text-text-muted/40 hover:text-text-muted/70 transition-colors duration-300 select-none"
           >
             {client}
-          </div>
+          </span>
         ))}
       </div>
     </div>
