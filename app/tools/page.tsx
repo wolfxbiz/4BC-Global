@@ -99,7 +99,7 @@ export default function ToolsPage() {
                   <tool.icon size={32} className={tool.color} />
                 </div>
                 <span className="section-tag">{tool.type}</span>
-                <h2 className="font-heading font-bold text-3xl md:text-4xl text-text mb-2">
+                <h2 className="font-heading font-medium text-3xl md:text-4xl text-text mb-2">
                   {tool.name}
                 </h2>
                 <p className="font-heading text-lg text-text-muted italic mb-6">{tool.tagline}</p>
@@ -118,7 +118,7 @@ export default function ToolsPage() {
               </AnimatedSection>
               <AnimatedSection delay={0.2} className={i % 2 === 1 ? 'order-first lg:order-last' : ''}>
                 <div className={`border-2 ${tool.borderColor} rounded-2xl p-8 bg-white`}>
-                  <h4 className="font-heading font-semibold text-sm text-text-muted uppercase tracking-wider mb-6">At a Glance</h4>
+                  <h4 className="font-heading font-medium text-sm text-text-muted uppercase tracking-wider mb-6">At a Glance</h4>
                   <div className="space-y-4">
                     {[
                       { label: 'Type', value: tool.type },
@@ -127,18 +127,18 @@ export default function ToolsPage() {
                       { label: 'Used In', value: tool.usedIn },
                     ].map((item) => (
                       <div key={item.label} className="flex gap-4">
-                        <span className="font-heading font-semibold text-sm text-text-muted w-24 flex-shrink-0">{item.label}</span>
+                        <span className="font-heading font-medium text-sm text-text-muted w-24 flex-shrink-0">{item.label}</span>
                         <span className="font-body text-sm text-text">{item.value}</span>
                       </div>
                     ))}
                   </div>
                   {tool.framework && (
                     <div className="mt-6 pt-6 border-t border-border">
-                      <h4 className="font-heading font-semibold text-sm text-text-muted uppercase tracking-wider mb-4">Framework Assesses</h4>
+                      <h4 className="font-heading font-medium text-sm text-text-muted uppercase tracking-wider mb-4">Framework Assesses</h4>
                       <div className="grid grid-cols-2 gap-3">
                         {tool.framework.map((f) => (
                           <div key={f.label} className="bg-accent/10 rounded-lg p-3">
-                            <div className="font-heading font-semibold text-xs text-accent mb-1">{f.label}</div>
+                            <div className="font-heading font-medium text-xs text-accent mb-1">{f.label}</div>
                             <div className="font-body text-xs text-text-muted">{f.desc}</div>
                           </div>
                         ))}
@@ -156,8 +156,8 @@ export default function ToolsPage() {
       <section className="bg-dark section-padding">
         <div className="container-content">
           <AnimatedSection className="text-center mb-10">
-            <span className="text-xs font-heading font-semibold tracking-widest uppercase text-accent mb-3 inline-block">Compare</span>
-            <h2 className="font-heading font-bold text-3xl text-white">Tools at a Glance</h2>
+            <span className="text-xs font-heading font-medium tracking-widest uppercase text-accent mb-3 inline-block">Compare</span>
+            <h2 className="font-heading font-medium text-3xl text-white">Tools at a Glance</h2>
             <div className="accent-divider mt-4" />
           </AnimatedSection>
           <AnimatedSection>
@@ -165,9 +165,9 @@ export default function ToolsPage() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-white/10">
-                    <th className="text-left font-heading font-semibold text-text-muted py-3 pr-6">Feature</th>
+                    <th className="text-left font-heading font-medium text-text-muted py-3 pr-6">Feature</th>
                     {tools.map((t) => (
-                      <th key={t.id} className="text-left font-heading font-semibold text-accent py-3 pr-6">{t.name}</th>
+                      <th key={t.id} className="text-left font-heading font-medium text-accent py-3 pr-6">{t.name}</th>
                     ))}
                   </tr>
                 </thead>

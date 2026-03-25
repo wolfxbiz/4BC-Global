@@ -98,7 +98,7 @@ export default function ClientsPage() {
         <div className="container-content">
           <AnimatedSection className="text-center mb-12">
             <span className="section-tag">Our Clients</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
               100+ Clients Across 10 Sectors
             </h2>
             <div className="accent-divider mt-4" />
@@ -107,14 +107,14 @@ export default function ClientsPage() {
             {clientGroups.map((group, gi) => (
               <AnimatedSection key={group.sector} delay={gi * 0.05}>
                 <div>
-                  <h3 className="font-heading font-semibold text-sm text-text-muted uppercase tracking-wider mb-4 border-b border-border pb-2">
+                  <h3 className="font-heading font-medium text-sm text-text-muted uppercase tracking-wider mb-4 border-b border-border pb-2">
                     {group.sector}
                   </h3>
                   <div className="flex flex-wrap gap-3">
                     {group.clients.map((client) => (
                       <div
                         key={client}
-                        className="font-heading font-semibold text-sm text-text-muted bg-white border border-border rounded-lg px-4 py-2.5 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-default"
+                        className="font-heading font-medium text-sm text-text-muted bg-white border border-border rounded-lg px-4 py-2.5 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-default"
                       >
                         {client}
                       </div>
@@ -131,8 +131,8 @@ export default function ClientsPage() {
       <section className="bg-dark section-padding">
         <div className="container-content">
           <AnimatedSection className="text-center mb-12">
-            <span className="text-xs font-heading font-semibold tracking-widest uppercase text-accent mb-3 inline-block">Testimonials</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-white">
+            <span className="text-xs font-heading font-medium tracking-widest uppercase text-accent mb-3 inline-block">Testimonials</span>
+            <h2 className="font-heading font-medium text-3xl md:text-4xl text-white">
               What Our Clients Say
             </h2>
             <div className="accent-divider mt-4" />
@@ -159,7 +159,7 @@ export default function ClientsPage() {
       <section className="bg-primary py-16 px-4">
         <div className="container-content text-center">
           <AnimatedSection>
-            <h2 className="font-heading font-bold text-3xl text-white mb-4">
+            <h2 className="font-heading font-medium text-3xl text-white mb-4">
               Join Our Growing Client List
             </h2>
             <p className="font-body text-gray-300 mb-8">

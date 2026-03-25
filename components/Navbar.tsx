@@ -18,6 +18,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
+  const isGradientPage = ['/', '/v2', '/v3', '/v4'].includes(pathname)
+  const useDarkColors = scrolled || !isGradientPage
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -39,12 +41,12 @@ export default function Navbar() {
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-              <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${scrolled ? 'bg-dark' : 'bg-accent'}`}>
-                <span className={`font-heading font-bold text-sm leading-none transition-colors duration-300 ${scrolled ? 'text-accent' : 'text-dark'}`}>4B</span>
+              <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${useDarkColors ? 'bg-dark' : 'bg-accent'}`}>
+                <span className={`font-heading font-medium text-sm leading-none transition-colors duration-300 ${useDarkColors ? 'text-accent' : 'text-dark'}`}>4B</span>
               </div>
               <div className="flex flex-col leading-none">
-                <span className={`font-heading font-bold text-[15px] tracking-tight transition-colors duration-300 ${scrolled ? 'text-dark' : 'text-white'}`}>4BC Global</span>
-                <span className={`font-body text-[9px] tracking-widest uppercase transition-colors duration-300 ${scrolled ? 'text-text-muted' : 'text-white/50'}`}>Research Based Advisory</span>
+                <span className={`font-heading font-medium text-[15px] tracking-tight transition-colors duration-300 ${useDarkColors ? 'text-dark' : 'text-white'}`}>4BC Global</span>
+                <span className={`font-body text-[9px] tracking-widest uppercase transition-colors duration-300 ${useDarkColors ? 'text-text-muted' : 'text-white/50'}`}>Research Based Advisory</span>
               </div>
             </Link>
 
@@ -55,7 +57,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`font-body text-[14px] px-3.5 py-2 transition-colors duration-300 ${
-                    scrolled
+                    useDarkColors
                       ? pathname === link.href ? 'text-primary font-medium' : 'text-text hover:text-primary'
                       : pathname === link.href ? 'text-accent font-medium' : 'text-white/80 hover:text-white'
                   }`}
@@ -70,7 +72,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 className={`font-body text-[14px] font-medium rounded-full px-5 py-2 transition-all duration-300 ${
-                  scrolled
+                  useDarkColors
                     ? 'text-dark border border-dark hover:bg-dark hover:text-white'
                     : 'text-white border border-white/40 hover:bg-white hover:text-dark'
                 }`}
@@ -80,7 +82,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile hamburger */}
-            <button className={`lg:hidden p-2 transition-colors duration-300 ${scrolled ? 'text-text' : 'text-white'}`} onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
+            <button className={`lg:hidden p-2 transition-colors duration-300 ${useDarkColors ? 'text-text' : 'text-white'}`} onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>

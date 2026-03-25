@@ -11,10 +11,10 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2.5">
               <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                <span className="font-heading font-bold text-dark text-sm leading-none">4B</span>
+                <span className="font-heading font-medium text-dark text-sm leading-none">4B</span>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="font-heading font-bold text-[15px] text-white tracking-tight">4BC Global</span>
+                <span className="font-heading font-medium text-[15px] text-white tracking-tight">4BC Global</span>
                 <span className="font-body text-[9px] text-accent/80 tracking-widest uppercase">Research Based Advisory</span>
               </div>
             </Link>

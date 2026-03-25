@@ -130,9 +130,9 @@ function SectorCard({ sector }: { sector: typeof sectors[0] }) {
       >
         <div className="flex items-center gap-4 flex-1 min-w-0">
           <div>
-            <h3 className="font-heading font-semibold text-lg text-text">{sector.name}</h3>
+            <h3 className="font-heading font-medium text-lg text-text">{sector.name}</h3>
             {sector.engagements && (
-              <span className="text-xs font-heading font-semibold text-accent bg-accent/10 rounded-full px-2 py-0.5 mt-1 inline-block">
+              <span className="text-xs font-heading font-medium text-accent bg-accent/10 rounded-full px-2 py-0.5 mt-1 inline-block">
                 {sector.engagements} engagements
               </span>
             )}
@@ -146,18 +146,18 @@ function SectorCard({ sector }: { sector: typeof sectors[0] }) {
       {expanded && (
         <div className="px-6 pb-6 border-t border-border pt-4 space-y-4">
           <div>
-            <h4 className="font-heading font-semibold text-sm text-primary mb-2">What We Research</h4>
+            <h4 className="font-heading font-medium text-sm text-primary mb-2">What We Research</h4>
             <p className="font-body text-sm text-text-muted leading-relaxed">{sector.research}</p>
           </div>
           {sector.clients && (
             <div>
-              <h4 className="font-heading font-semibold text-sm text-primary mb-2">Sample Clients</h4>
+              <h4 className="font-heading font-medium text-sm text-primary mb-2">Sample Clients</h4>
               <p className="font-body text-sm text-text-muted">{sector.clients}</p>
             </div>
           )}
           {sector.engagementsList.length > 0 && (
             <div>
-              <h4 className="font-heading font-semibold text-sm text-primary mb-2">Key Engagements</h4>
+              <h4 className="font-heading font-medium text-sm text-primary mb-2">Key Engagements</h4>
               <ul className="space-y-1">
                 {sector.engagementsList.map((e) => (
                   <li key={e} className="flex items-start gap-2">
@@ -181,7 +181,7 @@ export default function SectorsPage() {
       <section className="bg-gradient-hero py-20 md:py-28 px-4">
         <div className="container-content text-center">
           <div className="h-[3px] w-20 mx-auto bg-gradient-accent rounded-full mb-6" />
-          <h1 className="font-heading font-bold text-4xl md:text-5xl text-white mb-4">
+          <h1 className="font-heading font-medium text-4xl md:text-5xl text-white mb-4">
             Sectors We Serve
           </h1>
           <p className="font-body text-lg text-gray-300 max-w-2xl mx-auto">
@@ -195,7 +195,7 @@ export default function SectorsPage() {
         <div className="container-content">
           <div className="text-center mb-12">
             <span className="section-tag">12 Sectors</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
               Deep Sector Expertise
             </h2>
             <p className="font-body text-text-muted mt-4 max-w-xl mx-auto">
@@ -217,7 +217,7 @@ export default function SectorsPage() {
       <section className="bg-primary py-16 px-4">
         <div className="container-content text-center">
           <AnimatedSection>
-            <h2 className="font-heading font-bold text-3xl text-white mb-4">
+            <h2 className="font-heading font-medium text-3xl text-white mb-4">
               Don't see your sector? We cover it.
             </h2>
             <p className="font-body text-gray-300 mb-8 max-w-lg mx-auto">

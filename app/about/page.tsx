@@ -98,7 +98,7 @@ export default function AboutPage() {
           <div className="max-w-3xl mx-auto">
             <AnimatedSection>
               <span className="section-tag">Our Story</span>
-              <h2 className="font-heading font-bold text-3xl md:text-4xl text-text mb-6">
+              <h2 className="font-heading font-medium text-3xl md:text-4xl text-text mb-6">
                 Built from Kantar Roots, Designed for MEA
               </h2>
               <div className="accent-divider mb-8 mx-0" style={{ margin: '0 0 2rem 0' }} />
@@ -122,7 +122,7 @@ export default function AboutPage() {
       <section id="our-purpose" className="bg-dark section-padding">
         <div className="container-content text-center">
           <AnimatedSection>
-            <span className="text-xs font-heading font-semibold tracking-widest uppercase text-accent mb-6 inline-block">Our Purpose</span>
+            <span className="text-xs font-heading font-medium tracking-widest uppercase text-accent mb-6 inline-block">Our Purpose</span>
             <blockquote className="font-heading text-2xl md:text-3xl lg:text-4xl text-accent italic leading-relaxed max-w-3xl mx-auto">
               "To aid our clients take strategic decisions based on accurate and timely insights."
             </blockquote>
@@ -135,7 +135,7 @@ export default function AboutPage() {
         <div className="container-content">
           <AnimatedSection className="text-center mb-12">
             <span className="section-tag">Our Philosophy</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
               Your Business Needs Dictate Our Approach
             </h2>
             <p className="font-body text-text-muted mt-4 max-w-2xl mx-auto">
@@ -147,12 +147,12 @@ export default function AboutPage() {
             {steps.map((step, i) => (
               <AnimatedSection key={step.step} delay={i * 0.2} className="relative">
                 <div className="card text-center md:rounded-none md:border-r-0 last:border-r first:rounded-l-card last:rounded-r-card h-full">
-                  <div className="text-5xl font-heading font-bold text-primary/10 mb-3">{step.step}</div>
-                  <h3 className="font-heading font-semibold text-xl text-primary mb-3">{step.title}</h3>
+                  <div className="text-5xl font-heading font-medium text-primary/10 mb-3">{step.step}</div>
+                  <h3 className="font-heading font-medium text-xl text-primary mb-3">{step.title}</h3>
                   <p className="font-body text-sm text-text-muted leading-relaxed">{step.body}</p>
                 </div>
                 {i < steps.length - 1 && (
-                  <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-8 h-8 bg-accent rounded-full items-center justify-center text-dark font-bold text-sm">
+                  <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-8 h-8 bg-accent rounded-full items-center justify-center text-dark font-medium text-sm">
                     →
                   </div>
                 )}
@@ -160,7 +160,7 @@ export default function AboutPage() {
             ))}
           </div>
           <AnimatedSection className="text-center mt-10">
-            <p className="font-heading text-lg font-semibold text-text">
+            <p className="font-heading text-lg font-medium text-text">
               Results that are: <span className="text-primary">Relevant</span> · <span className="text-primary">Precise</span> · <span className="text-primary">Actionable</span>
             </p>
           </AnimatedSection>
@@ -172,7 +172,7 @@ export default function AboutPage() {
         <div className="container-content">
           <AnimatedSection className="text-center mb-12">
             <span className="section-tag">Our Reach</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
               40+ Countries. 2 Offices. 4 Partner Hubs.
             </h2>
             <div className="accent-divider mt-4" />
@@ -198,7 +198,7 @@ export default function AboutPage() {
                       { num: '100+', label: 'Years Experience' },
                     ].map((item) => (
                       <div key={item.label} className="text-center">
-                        <div className="font-heading font-bold text-3xl text-accent">{item.num}</div>
+                        <div className="font-heading font-medium text-3xl text-accent">{item.num}</div>
                         <div className="font-body text-xs text-gray-300">{item.label}</div>
                       </div>
                     ))}
@@ -211,13 +211,13 @@ export default function AboutPage() {
                 {regions.map((r) => (
                   <div key={r.region} className="flex gap-4 p-4 rounded-lg border border-border hover:border-primary/30 transition-colors">
                     <div className="w-20 flex-shrink-0">
-                      <span className="font-heading font-semibold text-sm text-primary">{r.region}</span>
+                      <span className="font-heading font-medium text-sm text-primary">{r.region}</span>
                     </div>
                     <p className="font-body text-sm text-text-muted">{r.countries}</p>
                   </div>
                 ))}
                 <div className="p-4 rounded-lg bg-accent/10 border border-accent/30">
-                  <p className="font-heading font-semibold text-sm text-accent">Partner Offices</p>
+                  <p className="font-heading font-medium text-sm text-accent">Partner Offices</p>
                   <p className="font-body text-sm text-text-muted mt-1">India · Kenya · Algeria · South Africa</p>
                 </div>
               </div>
@@ -231,7 +231,7 @@ export default function AboutPage() {
         <div className="container-content">
           <AnimatedSection className="text-center mb-12">
             <span className="section-tag">Why We're Different</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
               What Sets 4BC Global Apart
             </h2>
             <div className="accent-divider mt-4" />
@@ -244,7 +244,7 @@ export default function AboutPage() {
                     <d.icon size={24} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-semibold text-lg text-text mb-2">{d.title}</h3>
+                    <h3 className="font-heading font-medium text-lg text-text mb-2">{d.title}</h3>
                     <p className="font-body text-sm text-text-muted leading-relaxed">{d.body}</p>
                   </div>
                 </div>
@@ -258,7 +258,7 @@ export default function AboutPage() {
       <section className="bg-primary py-16 px-4">
         <div className="container-content text-center">
           <AnimatedSection>
-            <h2 className="font-heading font-bold text-3xl text-white mb-4">
+            <h2 className="font-heading font-medium text-3xl text-white mb-4">
               Ready to work with a senior-led research team?
             </h2>
             <Link href="/contact" className="btn-primary">

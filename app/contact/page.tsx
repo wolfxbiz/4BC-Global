@@ -48,7 +48,7 @@ export default function ContactPage() {
       <section className="bg-gradient-hero py-20 md:py-28 px-4">
         <div className="container-content text-center">
           <div className="h-[3px] w-20 mx-auto bg-gradient-accent rounded-full mb-6" />
-          <h1 className="font-heading font-bold text-4xl md:text-5xl text-white mb-4">Get in Touch</h1>
+          <h1 className="font-heading font-medium text-4xl md:text-5xl text-white mb-4">Get in Touch</h1>
           <p className="font-body text-lg text-gray-300 max-w-2xl mx-auto">
             Let's talk about your next research project
           </p>
@@ -63,7 +63,7 @@ export default function ContactPage() {
             <div className="lg:col-span-3">
               <AnimatedSection>
                 <div className="bg-white rounded-card border border-border shadow-card p-8">
-                  <h2 className="font-heading font-bold text-2xl text-text mb-2">Send Us a Message</h2>
+                  <h2 className="font-heading font-medium text-2xl text-text mb-2">Send Us a Message</h2>
                   <p className="font-body text-sm text-text-muted mb-8">
                     Fill in the form below and our team will respond within 1–2 business days.
                   </p>
@@ -73,7 +73,7 @@ export default function ContactPage() {
                       <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <Send size={28} className="text-accent" />
                       </div>
-                      <h3 className="font-heading font-bold text-xl text-text mb-2">Message Received!</h3>
+                      <h3 className="font-heading font-medium text-xl text-text mb-2">Message Received!</h3>
                       <p className="font-body text-text-muted">
                         Thank you for reaching out. Our team will be in touch shortly.
                       </p>
@@ -207,7 +207,7 @@ export default function ContactPage() {
             <div className="lg:col-span-2 space-y-6">
               <AnimatedSection delay={0.2}>
                 <div className="bg-white rounded-card border border-border shadow-card p-6">
-                  <h3 className="font-heading font-semibold text-lg text-text mb-5">Contact Information</h3>
+                  <h3 className="font-heading font-medium text-lg text-text mb-5">Contact Information</h3>
                   <div className="space-y-4">
                     <div className="flex gap-3 items-start">
                       <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -258,7 +258,7 @@ export default function ContactPage() {
                   <div className="h-48 bg-gradient-to-br from-primary/20 to-plum/20 flex items-center justify-center">
                     <div className="text-center">
                       <MapPin size={32} className="text-primary mx-auto mb-2" />
-                      <p className="font-heading font-semibold text-sm text-primary">Dubai, UAE</p>
+                      <p className="font-heading font-medium text-sm text-primary">Dubai, UAE</p>
                       <p className="font-body text-xs text-text-muted">MEA Research Hub</p>
                     </div>
                   </div>
@@ -267,7 +267,7 @@ export default function ContactPage() {
 
               <AnimatedSection delay={0.35}>
                 <div className="bg-primary/5 border border-primary/20 rounded-card p-5">
-                  <h4 className="font-heading font-semibold text-sm text-primary mb-2">Partner Offices</h4>
+                  <h4 className="font-heading font-medium text-sm text-primary mb-2">Partner Offices</h4>
                   <div className="flex flex-wrap gap-2">
                     {['India', 'Kenya', 'Algeria', 'South Africa'].map((loc) => (
                       <span key={loc} className="text-xs font-body text-text-muted bg-white border border-border rounded-full px-3 py-1">

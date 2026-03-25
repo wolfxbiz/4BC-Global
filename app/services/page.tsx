@@ -118,7 +118,7 @@ export default function ServicesPage() {
         <div className="container-content">
           <AnimatedSection className="text-center mb-12">
             <span className="section-tag">Advisory Services</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
               We Support You at Every Stage of Growth
             </h2>
             <div className="accent-divider mt-4" />
@@ -127,8 +127,8 @@ export default function ServicesPage() {
             {lifecycleStages.map((stage, i) => (
               <AnimatedSection key={stage.stage} delay={i * 0.1}>
                 <div className="card h-full border-t-4 border-t-primary">
-                  <div className="text-xs font-heading font-semibold tracking-widest uppercase text-text-muted mb-2">Stage</div>
-                  <h3 className="font-heading font-bold text-xl text-primary mb-4">{stage.stage}</h3>
+                  <div className="text-xs font-heading font-medium tracking-widest uppercase text-text-muted mb-2">Stage</div>
+                  <h3 className="font-heading font-medium text-xl text-primary mb-4">{stage.stage}</h3>
                   <ul className="space-y-2">
                     {stage.services.map((svc) => (
                       <li key={svc} className="flex items-start gap-2">
@@ -149,7 +149,7 @@ export default function ServicesPage() {
         <div className="container-content">
           <AnimatedSection className="text-center mb-12">
             <span className="section-tag">Core Service Areas</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
               Comprehensive Research Capabilities
             </h2>
             <div className="accent-divider mt-4" />
@@ -161,7 +161,7 @@ export default function ServicesPage() {
                   <div className={`w-12 h-12 rounded-xl ${area.bgColor} flex items-center justify-center mb-4`}>
                     <area.icon size={24} className={area.color} />
                   </div>
-                  <h3 className="font-heading font-semibold text-xl text-text mb-4">{area.title}</h3>
+                  <h3 className="font-heading font-medium text-xl text-text mb-4">{area.title}</h3>
                   <ul className="space-y-2">
                     {area.services.map((svc) => (
                       <li key={svc} className="flex items-start gap-2">
@@ -181,7 +181,7 @@ export default function ServicesPage() {
       <section className="bg-dark section-padding">
         <div className="container-content">
           <AnimatedSection className="text-center mb-10">
-            <h2 className="font-heading font-bold text-3xl text-white mb-2">
+            <h2 className="font-heading font-medium text-3xl text-white mb-2">
               Diagnose · Design · Blend
             </h2>
             <p className="font-body text-gray-400 text-lg">
@@ -196,7 +196,7 @@ export default function ServicesPage() {
             ].map((item, i) => (
               <AnimatedSection key={item.title} delay={i * 0.15}>
                 <div className="bg-dark-surface border border-white/10 rounded-card p-6 text-center">
-                  <div className="font-heading font-bold text-2xl text-accent mb-2">{item.title}</div>
+                  <div className="font-heading font-medium text-2xl text-accent mb-2">{item.title}</div>
                   <p className="font-body text-sm text-gray-400">{item.desc}</p>
                 </div>
               </AnimatedSection>

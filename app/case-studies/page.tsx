@@ -114,10 +114,10 @@ function CaseStudyCard({ cs }: { cs: typeof caseStudies[0] }) {
   return (
     <div className="bg-white border border-border rounded-card shadow-card hover:shadow-card-hover transition-all duration-200 flex flex-col">
       <div className="p-6 flex-1">
-        <span className={`text-xs font-heading font-semibold tracking-wider uppercase rounded-full px-3 py-1 ${colorClass} inline-block mb-3`}>
+        <span className={`text-xs font-heading font-medium tracking-wider uppercase rounded-full px-3 py-1 ${colorClass} inline-block mb-3`}>
           {cs.sector}
         </span>
-        <h3 className="font-heading font-semibold text-lg text-text mb-3 leading-snug">{cs.title}</h3>
+        <h3 className="font-heading font-medium text-lg text-text mb-3 leading-snug">{cs.title}</h3>
         <div className="flex items-center gap-1 text-xs text-text-muted mb-2">
           <MapPin size={12} /> {cs.geography}
         </div>
@@ -126,15 +126,15 @@ function CaseStudyCard({ cs }: { cs: typeof caseStudies[0] }) {
         {expanded && (
           <div className="space-y-4 mt-4 pt-4 border-t border-border">
             <div>
-              <h4 className="font-heading font-semibold text-sm text-primary mb-1">The Challenge</h4>
+              <h4 className="font-heading font-medium text-sm text-primary mb-1">The Challenge</h4>
               <p className="font-body text-sm text-text-muted leading-relaxed">{cs.challenge}</p>
             </div>
             <div>
-              <h4 className="font-heading font-semibold text-sm text-primary mb-1">Our Approach</h4>
+              <h4 className="font-heading font-medium text-sm text-primary mb-1">Our Approach</h4>
               <p className="font-body text-sm text-text-muted leading-relaxed">{cs.approach}</p>
             </div>
             <div>
-              <h4 className="font-heading font-semibold text-sm text-primary mb-1">The Outcome</h4>
+              <h4 className="font-heading font-medium text-sm text-primary mb-1">The Outcome</h4>
               <p className="font-body text-sm text-text-muted leading-relaxed">{cs.outcome}</p>
             </div>
           </div>
@@ -165,7 +165,7 @@ export default function CaseStudiesPage() {
       <section className="bg-gradient-hero py-20 md:py-28 px-4">
         <div className="container-content text-center">
           <div className="h-[3px] w-20 mx-auto bg-gradient-accent rounded-full mb-6" />
-          <h1 className="font-heading font-bold text-4xl md:text-5xl text-white mb-4">Case Studies</h1>
+          <h1 className="font-heading font-medium text-4xl md:text-5xl text-white mb-4">Case Studies</h1>
           <p className="font-body text-lg text-gray-300 max-w-2xl mx-auto">Real challenges. Real clients. Real outcomes.</p>
         </div>
       </section>
@@ -205,7 +205,7 @@ export default function CaseStudiesPage() {
       <section className="bg-primary py-16 px-4">
         <div className="container-content text-center">
           <AnimatedSection>
-            <h2 className="font-heading font-bold text-3xl text-white mb-4">
+            <h2 className="font-heading font-medium text-3xl text-white mb-4">
               Want to discuss a specific challenge?
             </h2>
             <p className="font-body text-gray-300 mb-8">Let us design a bespoke research solution for your market.</p>

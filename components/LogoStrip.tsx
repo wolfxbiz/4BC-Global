@@ -47,7 +47,7 @@ export default function LogoStrip() {
         {allClients.map((client, i) => (
           <span
             key={i}
-            className="flex-shrink-0 font-heading font-bold text-2xl tracking-tight text-text-muted/40 hover:text-text-muted/70 transition-colors duration-300 select-none"
+            className="flex-shrink-0 font-heading font-medium text-2xl tracking-tight text-text-muted/40 hover:text-text-muted/70 transition-colors duration-300 select-none"
           >
             {client}
           </span>

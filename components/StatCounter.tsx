@@ -30,7 +30,7 @@ export default function StatCounter({ target, suffix = '', duration = 2000 }: Pr
   }, [inView, target, duration])
 
   return (
-    <span ref={ref} className="font-heading font-bold text-stat text-accent">
+    <span ref={ref} className="font-heading font-medium text-stat text-accent">
       {count}{suffix}
     </span>
   )

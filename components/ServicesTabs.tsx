@@ -1,10 +1,12 @@
 'use client'
 import { useState } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, BarChart2, Users, Zap, MapPin } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const tabs = [
   {
     label: 'Business Research',
+    icon: BarChart2,
     links: [
       { text: 'Market Entry & Sizing', href: '/services#business-research' },
       { text: 'Competition Mapping', href: '/services#business-research' },
@@ -15,6 +17,7 @@ const tabs = [
   },
   {
     label: 'Customer Experience',
+    icon: Users,
     links: [
       { text: 'Customer Satisfaction & NPS', href: '/services#customer-experience' },
       { text: 'Mystery Shopping', href: '/services#customer-experience' },
@@ -25,6 +28,7 @@ const tabs = [
   },
   {
     label: 'Impact Assessment',
+    icon: Zap,
     links: [
       { text: 'Social Impact Assessment (SIA)', href: '/services#impact-assessment' },
       { text: 'Economic Impact Assessment (EIA)', href: '/services#impact-assessment' },
@@ -35,6 +39,7 @@ const tabs = [
   },
   {
     label: 'Geolocation Services',
+    icon: MapPin,
     links: [
       { text: 'Network Planning', href: '/services#geolocation-services' },
       { text: 'Branch Optimization', href: '/services#geolocation-services' },
@@ -53,62 +58,112 @@ export default function ServicesTabs() {
       <div className="container-content">
         {/* Section header */}
         <div className="mb-10">
-          <span className="font-body text-xs font-semibold tracking-widest uppercase text-plum inline-block mb-1">Capabilities</span>
+          <span className="font-body text-xs font-medium tracking-widest uppercase text-plum inline-block mb-1">Capabilities</span>
           <div className="h-[3px] w-10 bg-accent rounded-full mb-4" />
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+          <h2 className="font-heading font-medium text-4xl md:text-5xl text-text">
             Our market research services
           </h2>
         </div>
 
-        {/* 3-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr_1fr] gap-0 rounded-2xl overflow-hidden border border-border bg-bg-soft">
+        {/* 3-column layout — separate cards with gap */}
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr_1fr] gap-4 items-start">
 
-          {/* Left — tab buttons */}
-          <div className="flex flex-col">
-            {tabs.map((tab, i) => (
-              <button
-                key={tab.label}
-                onClick={() => setActive(i)}
-                className={`text-left px-6 py-5 font-body text-[15px] transition-all duration-200 border-b border-border/60 last:border-b-0 relative ${
-                  active === i
-                    ? 'bg-dark text-white font-semibold'
-                    : 'bg-white text-text-muted hover:bg-bg-soft hover:text-text'
-                }`}
-              >
-                {/* Amber left accent on active */}
-                {active === i && (
-                  <span className="absolute left-0 top-0 bottom-0 w-[4px] bg-accent rounded-r" />
-                )}
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Center — active tab title + links */}
-          <div className="px-8 py-8 border-t lg:border-t-0 lg:border-l border-border/60 flex flex-col justify-center">
-            <h3 className="font-heading font-bold text-xl text-text mb-5">{tabs[active].label}</h3>
-            <div className="flex flex-col gap-3">
-              {tabs[active].links.map((link) => (
-                <a
-                  key={link.text}
-                  href={link.href}
-                  className="flex items-center gap-3 font-body text-[15px] text-primary font-medium hover:text-dark transition-colors group"
+          {/* Left — tab buttons card */}
+          <div className="flex flex-col rounded-2xl border border-border bg-white shadow-card overflow-hidden">
+            {tabs.map((tab, i) => {
+              const Icon = tab.icon
+              const isActive = active === i
+              return (
+                <button
+                  key={tab.label}
+                  onClick={() => setActive(i)}
+                  className={`relative text-left px-6 py-5 font-body text-[16px] transition-all duration-200 border-b border-border/60 last:border-b-0 flex items-center gap-4 ${
+                    isActive
+                      ? 'bg-dark text-white'
+                      : 'text-text-muted hover:bg-bg-soft hover:text-text'
+                  }`}
                 >
-                  <span>{link.text}</span>
-                  <span className="w-6 h-6 rounded-full border-[1.5px] border-primary/60 flex items-center justify-center flex-shrink-0 group-hover:border-dark group-hover:bg-dark group-hover:text-white transition-all">
-                    <ArrowRight size={12} />
+                  {isActive && (
+                    <motion.span
+                      layoutId="tab-accent"
+                      className="absolute left-0 top-0 bottom-0 w-[3px] bg-accent rounded-r"
+                    />
+                  )}
+                  <span className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-200 ${
+                    isActive ? 'bg-white/15' : 'bg-bg-soft'
+                  }`}>
+                    <Icon size={17} className={isActive ? 'text-accent' : 'text-text-muted'} />
                   </span>
-                </a>
-              ))}
-            </div>
+                  <span className={isActive ? 'font-medium' : ''}>{tab.label}</span>
+                </button>
+              )
+            })}
           </div>
 
-          {/* Right — description */}
-          <div className="px-8 py-8 border-t lg:border-t-0 lg:border-l border-border/60 flex items-center bg-bg-soft">
-            <p className="font-body text-[14px] text-text-muted leading-[1.75]">
-              {tabs[active].description}
-            </p>
+          {/* Center — service links card */}
+          <div className="rounded-2xl border border-border bg-white shadow-card overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.18 }}
+                className="px-8 py-8 flex flex-col"
+              >
+                <p className="font-body text-[12px] font-medium tracking-widest uppercase text-text-muted/50 mb-4">
+                  {String(active + 1).padStart(2, '0')} / {String(tabs.length).padStart(2, '0')}
+                </p>
+                <h3 className="font-heading font-medium text-2xl text-text mb-6 leading-tight">
+                  {tabs[active].label}
+                </h3>
+                <div className="flex flex-col gap-2">
+                  {tabs[active].links.map((link, li) => (
+                    <motion.a
+                      key={link.text}
+                      href={link.href}
+                      initial={{ opacity: 0, x: -6 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: li * 0.05, duration: 0.15 }}
+                      className="flex items-center justify-between gap-3 font-body text-[17px] font-medium text-primary px-4 py-3.5 rounded-xl hover:bg-primary/5 hover:text-dark transition-all duration-150 group"
+                    >
+                      <span>{link.text}</span>
+                      <span className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-dark group-hover:border-dark group-hover:text-white transition-all duration-150">
+                        <ArrowRight size={14} />
+                      </span>
+                    </motion.a>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
+
+          {/* Right — description card */}
+          <div className="rounded-2xl border border-border bg-bg-soft shadow-card overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="px-8 py-8 flex flex-col"
+              >
+                <div className="text-[72px] leading-none font-heading text-accent/20 mb-1 select-none">"</div>
+                <p className="font-body text-[16px] text-text-muted leading-[1.85]">
+                  {tabs[active].description}
+                </p>
+                <a
+                  href="/services"
+                  className="inline-flex items-center gap-2 mt-8 font-body text-[15px] font-medium text-primary hover:text-dark transition-colors group"
+                >
+                  Learn more about this service
+                  <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                </a>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
         </div>
       </div>
     </div>

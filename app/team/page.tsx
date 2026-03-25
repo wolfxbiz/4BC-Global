@@ -67,7 +67,7 @@ function TeamCard({ member }: { member: typeof team[0] }) {
           <User size={36} className="text-primary/60" />
         </div>
         <div className="text-center mb-4">
-          <h3 className="font-heading font-semibold text-lg text-text">{member.name}</h3>
+          <h3 className="font-heading font-medium text-lg text-text">{member.name}</h3>
           <p className="font-body text-sm text-accent font-medium mt-1">{member.title}</p>
         </div>
         <p className="font-body text-sm text-text-muted leading-relaxed mb-4 text-center">
@@ -105,7 +105,7 @@ export default function TeamPage() {
       <section className="bg-gradient-hero py-20 md:py-28 px-4">
         <div className="container-content text-center">
           <div className="h-[3px] w-20 mx-auto bg-gradient-accent rounded-full mb-6" />
-          <h1 className="font-heading font-bold text-4xl md:text-5xl text-white mb-4">Our Team</h1>
+          <h1 className="font-heading font-medium text-4xl md:text-5xl text-white mb-4">Our Team</h1>
           <p className="font-body text-lg text-gray-300 max-w-2xl mx-auto">
             Senior-led. MEA-experienced. Research-obsessed.
           </p>
@@ -140,7 +140,7 @@ export default function TeamPage() {
       <section className="bg-dark section-padding">
         <div className="container-content text-center">
           <AnimatedSection>
-            <h2 className="font-heading font-bold text-3xl text-white mb-4">
+            <h2 className="font-heading font-medium text-3xl text-white mb-4">
               Work With Our Team
             </h2>
             <p className="font-body text-gray-400 mb-8 max-w-lg mx-auto">

@@ -42,7 +42,7 @@ const config: Config = {
         body: ['SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       fontSize: {
-        'stat': ['2.625rem', { lineHeight: '1.1', fontWeight: '700' }],
+        'stat': ['2.625rem', { lineHeight: '1.1', fontWeight: '500' }],
       },
       backgroundImage: {
         'gradient-hero': 'linear-gradient(135deg, #1A1A2E 0%, #2B4A8C 55%, #7D2B5E 100%)',

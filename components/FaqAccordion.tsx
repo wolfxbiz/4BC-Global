@@ -43,8 +43,8 @@ export default function FaqAccordion() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
           {/* Left */}
           <div className="lg:col-span-2">
-            <span className="font-body text-xs font-semibold tracking-widest uppercase text-plum mb-3 inline-block">FAQs</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text leading-tight mb-4">
+            <span className="font-body text-xs font-medium tracking-widest uppercase text-plum mb-3 inline-block">FAQs</span>
+            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text leading-tight mb-4">
               Learn more about our MEA market research services
             </h2>
             <p className="font-body text-sm text-text-muted leading-relaxed mb-4">
