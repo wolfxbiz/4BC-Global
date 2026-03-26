@@ -18,8 +18,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
-  const isGradientPage = ['/', '/v2', '/v3', '/v4'].includes(pathname)
-  const useDarkColors = scrolled || !isGradientPage
+  const useDarkColors = scrolled
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
