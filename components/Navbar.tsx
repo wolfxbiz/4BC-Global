@@ -1,123 +1,144 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { gsap } from 'gsap'
+import PillButton from './PillButton'
 
-const navLinks = [
-  { href: '/about', label: 'Our Approach' },
-  { href: '/services', label: 'Services' },
-  { href: '/sectors', label: 'Sectors' },
-  { href: '/tools', label: 'Tools' },
-  { href: '/case-studies', label: 'Case Studies' },
-  { href: '/team', label: 'About Us' },
+const navItems = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Sectors', href: '/sectors' },
+  { label: 'Tools', href: '/tools' },
+  { label: 'Case Studies', href: '/case-studies' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
-  const useDarkColors = scrolled
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => { setMobileOpen(false) }, [pathname])
 
+  const toggleMobile = () => {
+    const next = !mobileOpen
+    setMobileOpen(next)
+    const hamburger = hamburgerRef.current
+    const menu = mobileMenuRef.current
+
+    if (hamburger) {
+      const lines = hamburger.querySelectorAll('.ham-line')
+      if (next) {
+        gsap.to(lines[0], { rotation: 45, y: 3.5, duration: 0.25, ease: 'power3.out' })
+        gsap.to(lines[1], { rotation: -45, y: -3.5, duration: 0.25, ease: 'power3.out' })
+      } else {
+        gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.25, ease: 'power3.out' })
+        gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.25, ease: 'power3.out' })
+      }
+    }
+
+    if (menu) {
+      if (next) {
+        gsap.set(menu, { visibility: 'visible' })
+        gsap.fromTo(menu, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.22, ease: 'power3.out' })
+      } else {
+        gsap.to(menu, { opacity: 0, y: 8, duration: 0.18, ease: 'power3.out', onComplete: () => { gsap.set(menu, { visibility: 'hidden' }) } })
+      }
+    }
+  }
+
   return (
-    <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white shadow-nav'
-          : 'bg-transparent'
-      }`}>
-        <div className="container-content">
-          <div className="flex items-center justify-between h-16 lg:h-[72px]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+      <div className="container-content h-16 lg:h-[72px] flex items-center justify-between gap-4">
 
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-              <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${useDarkColors ? 'bg-dark' : 'bg-accent'}`}>
-                <span className={`font-heading font-medium text-sm leading-none transition-colors duration-300 ${useDarkColors ? 'text-accent' : 'text-dark'}`}>4B</span>
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className={`font-heading font-medium text-[15px] tracking-tight transition-colors duration-300 ${useDarkColors ? 'text-dark' : 'text-white'}`}>4BC Global</span>
-                <span className={`font-body text-[9px] tracking-widest uppercase transition-colors duration-300 ${useDarkColors ? 'text-text-muted' : 'text-white/50'}`}>Research Based Advisory</span>
-              </div>
-            </Link>
+        {/* Logo — left */}
+        <Link href="/" className="flex-shrink-0">
+          <Image
+            src="/brand/logo-light.svg"
+            alt="4BC Global"
+            width={110}
+            height={32}
+            className="h-7 w-auto object-contain"
+            priority
+          />
+        </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-0.5">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`font-body text-[14px] px-3.5 py-2 transition-colors duration-300 ${
-                    useDarkColors
-                      ? pathname === link.href ? 'text-primary font-medium' : 'text-text hover:text-primary'
-                      : pathname === link.href ? 'text-accent font-medium' : 'text-white/80 hover:text-white'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* CTA — outline pill */}
-            <div className="hidden lg:block">
+        {/* Nav pills — centre */}
+        <nav className="hidden lg:flex items-center bg-slate-100 rounded-full px-1 py-1 gap-0.5">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+            return (
               <Link
-                href="/contact"
-                className={`font-body text-[14px] font-medium rounded-full px-5 py-2 transition-all duration-300 ${
-                  useDarkColors
-                    ? 'text-dark border border-dark hover:bg-dark hover:text-white'
-                    : 'text-white border border-white/40 hover:bg-white hover:text-dark'
+                key={item.href}
+                href={item.href}
+                className={`relative overflow-hidden font-body text-[13.5px] px-4 py-1.5 rounded-full transition-colors duration-200 whitespace-nowrap ${
+                  isActive
+                    ? 'bg-white text-primary font-semibold shadow-sm'
+                    : 'text-text hover:bg-white/70 hover:text-primary'
                 }`}
               >
-                Contact Us
+                {item.label}
               </Link>
-            </div>
+            )
+          })}
+        </nav>
 
-            {/* Mobile hamburger */}
-            <button className={`lg:hidden p-2 transition-colors duration-300 ${useDarkColors ? 'text-text' : 'text-white'}`} onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.18 }}
-            className="fixed inset-0 z-40 bg-white pt-16 px-6 overflow-y-auto lg:hidden"
+        {/* Contact Us — right, with pill animation */}
+        <div className="hidden lg:block flex-shrink-0">
+          <PillButton
+            href="/contact"
+            bgColor="#1A2E5C"
+            textColor="#ffffff"
+            fillColor="#E8A020"
+            hoverTextColor="#1A1A2E"
+            className="font-body font-semibold text-[13.5px] px-5 py-2"
           >
-            <nav className="flex flex-col gap-1 mt-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="font-body text-base py-3.5 border-b border-border text-text hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <div className="mt-6">
-                <Link href="/contact" className="block text-center font-body text-[15px] font-medium text-dark border border-dark rounded-full px-5 py-3 hover:bg-dark hover:text-white transition-all">
-                  Contact Us
-                </Link>
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            Contact Us
+          </PillButton>
+        </div>
 
-    </>
+        {/* Hamburger — mobile */}
+        <button
+          ref={hamburgerRef}
+          className="lg:hidden flex flex-col items-center justify-center gap-[5px] p-2"
+          onClick={toggleMobile}
+          aria-label="Toggle menu"
+        >
+          <span className="ham-line block w-5 h-[2px] bg-text rounded-full" />
+          <span className="ham-line block w-5 h-[2px] bg-text rounded-full" />
+        </button>
+      </div>
+
+      {/* Mobile dropdown */}
+      <div
+        ref={mobileMenuRef}
+        className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-border shadow-lg"
+        style={{ visibility: 'hidden', opacity: 0 }}
+      >
+        <nav className="container-content py-4 flex flex-col gap-1">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`font-body text-[15px] px-4 py-3 rounded-xl transition-colors ${
+                pathname === item.href ? 'bg-primary/8 text-primary font-semibold' : 'text-text hover:bg-slate-50'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <div className="pt-2 pb-1">
+            <Link
+              href="/contact"
+              className="block text-center font-body font-semibold text-[14px] bg-primary text-white rounded-full px-5 py-3 hover:bg-primary/90 transition-colors"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </nav>
+      </div>
+    </header>
   )
 }

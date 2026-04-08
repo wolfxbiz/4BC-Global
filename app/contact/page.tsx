@@ -3,6 +3,7 @@ import { useState } from 'react'
 import type { Metadata } from 'next'
 import { MapPin, Mail, Phone, Linkedin, Send } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import Grainient from '@/components/Grainient'
 
 const countries = [
   'United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Oman', 'Bahrain',
@@ -55,14 +56,33 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Callout banner */}
+      <section className="relative overflow-hidden px-4 py-10">
+        <div className="absolute inset-0">
+          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-dark/40 via-dark/25 to-dark/50 pointer-events-none" />
+        <div className="container-content relative z-10 max-w-3xl">
+          <AnimatedSection>
+            <p className="font-body text-[13px] font-medium text-white/60 uppercase tracking-widest mb-2">Have a question or an idea you're exploring?</p>
+            <p className="font-body text-[16px] text-white/85 leading-relaxed mb-4">
+              Whether you're shaping a detailed research proposal or simply testing the waters, we're here to listen and guide you forward. Our senior team responds promptly — usually the very same day — because meaningful conversations are where great insights begin.
+            </p>
+            <span className="inline-flex items-center gap-1.5 font-body text-[14px] font-medium text-white/60">
+              Submit the brief below ↓
+            </span>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Main Content */}
       <section className="bg-bg-soft section-padding">
         <div className="container-content">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Form - 3 cols */}
             <div className="lg:col-span-3">
               <AnimatedSection>
-                <div className="bg-white rounded-card border border-border shadow-card p-8">
+                <div className="bg-white rounded-card border border-border shadow-card p-5 sm:p-8">
                   <h2 className="font-heading font-medium text-2xl text-text mb-2">Send Us a Message</h2>
                   <p className="font-body text-sm text-text-muted mb-8">
                     Fill in the form below and our team will respond within 1–2 business days.
@@ -283,7 +303,10 @@ export default function ContactPage() {
       </section>
 
       {/* Bottom CTA Banner */}
-      <section className="bg-dark section-padding">
+      <section className="section-dark section-padding">
+        <div className="absolute inset-0" style={{ zIndex: -1 }}>
+          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
+        </div>
         <div className="container-content text-center">
           <AnimatedSection>
             <blockquote className="font-heading text-xl md:text-2xl text-gray-300 italic max-w-2xl mx-auto mb-8 leading-relaxed">

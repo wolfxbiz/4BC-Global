@@ -1,230 +1,320 @@
-'use client'
-import { useState } from 'react'
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import LogoStrip from '@/components/LogoStrip'
+import { sectors } from '@/lib/sectors-data'
+import PillButton from '@/components/PillButton'
+import Grainient from '@/components/Grainient'
 
-const sectors = [
+export const metadata: Metadata = {
+  title: 'Sectors We Serve — 4BC Global',
+  description: '450+ engagements across 12 sectors in MEA. Retail, banking, energy, logistics, telecom and more.',
+}
+
+const caseStudies = [
   {
-    name: 'Retail & Food Products',
-    engagements: '50+',
-    research: 'Chocolate Spreads, Dressings, Ready-to-eat foods, Frozen foods, HORECA, Beverages, Vegetable oils and fats, Bread improvers',
-    clients: 'Savola · LeSaffre · Nestlé · Unilever · BMMI · LuLu · Freshly Foods · KBBO Group · Nestlé Professional',
-    engagementsList: [
-      'Market sizing and opportunity assessment of Tea across Egypt and Pakistan',
-      'Concept evaluation for Chocolate Spread across HORECA in UAE and Saudi Arabia',
-      'Need state assessment of salad dressings across HORECA in UAE',
-      'Network planning for opening a new grocery store in UAE',
-    ],
+    tag: 'Retail',
+    title: 'Identifying Locations to Expand a Grocery Store Network',
+    excerpt: 'Geo-mapping exercise across Dubai and Abu Dhabi identified high-attractiveness clusters for new store openings.',
+    image: '/images/case-retail.jpg',
+    href: '/case-studies',
   },
   {
-    name: 'Banking & Finance',
-    engagements: '75+',
-    research: 'SME Banking, Corporate Banking, Credit Cards, Corporate Cards, Payment Solutions, Online Trading, Investment, Insurance, Fintech',
-    clients: 'VISA · ADCB · American Express · Bupa · RSA · UAE Insurance Authority · SABB · Cashee · HSBC · RFIGlobal',
-    engagementsList: [
-      'Market sizing and opportunity assessment for corporate credit cards across UAE and Egypt',
-      'Brand awareness and usage of medical insurance among consumers in UAE',
-      'Opportunity assessment for digitizing payments across mini-bus taxis in South Africa',
-      'Voice of customers and satisfaction with banking services in UAE',
-    ],
+    tag: 'Fintech / Transport',
+    title: 'Opportunity Assessment for Digitalization of Minibus Taxis',
+    excerpt: 'Quantitative and qualitative research across 500+ commuters and taxi stakeholders in South Africa.',
+    image: '/images/case-fintech.jpg',
+    href: '/case-studies',
   },
   {
-    name: 'Real Estate & Construction',
-    engagements: '30+',
-    research: 'Free Zones, Commercial Offices, Malls, Paints, Pipes, Cement, Adhesives, Coatings, Elevators. Construction Materials, Roofing, Insulation & Pipes, Elevators & Escalators',
-    clients: 'DP World · DMCC · Emaar · Dubai South · Dubai Airport Freezone · Dubai Development Authority · WJ Towell · Palm Hills · Nakheel · ThyssenKrupp · Al-Futtaim Engineering',
-    engagementsList: [
-      'Competitive intelligence and cost benchmarking of free zones in the UAE',
-      'Catchment area assessment for developing a new mall in UAE',
-      'Opportunity assessment for facility management services in UAE',
-      'Understanding trade flow within Dubai Fruit and Vegetable Market',
-    ],
-  },
-  {
-    name: 'Fuels, Energy & Environment',
-    engagements: '60+',
-    research: 'LPG, propane, lubricants, diesel, petrol, commercial fuels. Biotech, water treatment, environmental dust control equipment, waste water treatment. Boilers & industrial utilities.',
-    clients: 'Emirates Gas · Shell · Emarat · Horizon Terminals · ENOC · Castrol · Aramco · MARAFIQ · JW Azure',
-    engagementsList: [
-      'Market sizing and shares for lubricants in UAE',
-      'Market assessment for LPG and Propane gases for cylinders and bulk gas in UAE',
-      'Mystery audits for process compliance for fuel stations in UAE',
-      'Customer satisfaction and NPS for commercial fuels, LPG, Lubricants businesses',
-    ],
-  },
-  {
-    name: 'Industrial',
-    engagements: '50+',
-    research: 'Boilers, Water treatment plants, Environmental dust control equipment, Water and Waste-water treatment plants, Concrete pipes, Decorative paints, Construction equipment, Automotive services',
-    clients: 'ThyssenKrupp · Arkan · The Kanoo Group · Thermax · Twiga · Sadolin · Jotun · Amiantit Oman',
-    engagementsList: [
-      'Market feasibility for setting up a concrete pipe factory in Oman',
-      'Market sizing and shares for decorative paints in Qatar',
-      'Brand health assessment for decorative paints in UAE',
-      '5-year Network planning for a leading business house into automotive, construction equipment and services',
-    ],
-  },
-  {
-    name: 'Logistics & Transportation',
-    engagements: '30+',
-    research: 'LCV, HCV, Passenger cars, Spare parts, Tyres, Auto components, Port intelligence, Connected car services',
-    clients: 'Ford · Mercedes · Toyota · Nissan · Audi · Volvo · GM · Renault · Kia · Bridgestone',
-    engagementsList: [
-      'Industry landscape of used cars in UAE, DRC, Afghanistan and Yemen',
-      'Market sizing and dealer optimization for TSR tyres across UAE, Saudi Arabia and Egypt',
-      'Brand positioning and usage of connected car services among consumers in UAE and Saudi Arabia',
-      'Competitive intelligence on Ports across Middle East and Africa region',
-    ],
-  },
-  {
-    name: 'Telecom & ICT',
-    engagements: '50+',
-    research: 'Monitors, Home appliances, Office equipment, VOIP, Wired and Wireless communication systems, IT industry landscape among SMEs, Wireless presentation systems, Printers',
-    clients: 'Samsung · Maroc Telecom · du · e& (Etisalat) · Vodafone · LG · BARCO · Epson · Airtel · Dizzy',
-    engagementsList: [
-      'ICT industry landscape and usage among SMEs in Qatar',
-      'Market sizing and demand estimation for wireless presentation systems in UAE',
-      'Brand positioning and usage of printers among SMEs in UAE',
-      'Competitive intelligence on VOIP services in UAE',
-    ],
-  },
-  {
-    name: 'Government, Education & Regulators',
-    engagements: null,
-    research: 'Regulatory landscapes, policy impact, public service satisfaction, education sector demand',
-    clients: 'GACA · mada · Ministry clients',
-    engagementsList: [],
-  },
-  {
-    name: 'Regional Conglomerates',
-    engagements: null,
-    research: 'Multi-sector advisory for large regional business groups',
-    clients: 'Abdul Latif Jameel · JK Cement · Alghanim · Al-Futtaim Group',
-    engagementsList: [],
-  },
-  {
-    name: 'Metal & Core Industries',
-    engagements: null,
-    research: 'Steel, aluminium, construction materials, raw industrial inputs',
-    clients: '',
-    engagementsList: [],
-  },
-  {
-    name: 'FMCG / CPG',
-    engagements: '100+',
-    research: 'Consumer goods, packaged foods, personal care, household products across MEA',
-    clients: 'Unilever · Nestlé · Savola · KBBO Group',
-    engagementsList: [],
+    tag: 'Oil & Gas',
+    title: 'Customer Satisfaction Study for a Major O&G Business in UAE',
+    excerpt: 'Annual CX program across 10+ business lines. Findings contributed to the Dubai Quality Award.',
+    image: '/images/case-oilgas.jpg',
+    href: '/case-studies',
   },
 ]
 
-function SectorCard({ sector }: { sector: typeof sectors[0] }) {
-  const [expanded, setExpanded] = useState(false)
-
-  return (
-    <div className="bg-white border border-border rounded-card shadow-card hover:shadow-card-hover transition-all duration-200">
-      <button
-        className="w-full text-left p-6 flex items-center justify-between gap-4"
-        onClick={() => setExpanded(!expanded)}
-      >
-        <div className="flex items-center gap-4 flex-1 min-w-0">
-          <div>
-            <h3 className="font-heading font-medium text-lg text-text">{sector.name}</h3>
-            {sector.engagements && (
-              <span className="text-xs font-heading font-medium text-accent bg-accent/10 rounded-full px-2 py-0.5 mt-1 inline-block">
-                {sector.engagements} engagements
-              </span>
-            )}
-          </div>
-        </div>
-        <div className="flex-shrink-0 text-text-muted">
-          {expanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-        </div>
-      </button>
-
-      {expanded && (
-        <div className="px-6 pb-6 border-t border-border pt-4 space-y-4">
-          <div>
-            <h4 className="font-heading font-medium text-sm text-primary mb-2">What We Research</h4>
-            <p className="font-body text-sm text-text-muted leading-relaxed">{sector.research}</p>
-          </div>
-          {sector.clients && (
-            <div>
-              <h4 className="font-heading font-medium text-sm text-primary mb-2">Sample Clients</h4>
-              <p className="font-body text-sm text-text-muted">{sector.clients}</p>
-            </div>
-          )}
-          {sector.engagementsList.length > 0 && (
-            <div>
-              <h4 className="font-heading font-medium text-sm text-primary mb-2">Key Engagements</h4>
-              <ul className="space-y-1">
-                {sector.engagementsList.map((e) => (
-                  <li key={e} className="flex items-start gap-2">
-                    <span className="text-accent mt-1 flex-shrink-0">›</span>
-                    <span className="font-body text-sm text-text-muted">{e}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  )
-}
+const researchTypes = [
+  'Market Sizing & Demand Estimation',
+  'Competitive Intelligence',
+  'Customer Satisfaction & NPS',
+  'Market Entry Strategy',
+  'Channel & Network Planning',
+  'Feasibility Studies',
+  'Brand Health Tracking',
+  'Geo-mapping & Location Intelligence',
+]
 
 export default function SectorsPage() {
   return (
     <>
-      {/* Page Header - inline since this is client component */}
-      <section className="bg-gradient-hero py-20 md:py-28 px-4">
-        <div className="container-content text-center">
-          <div className="h-[3px] w-20 mx-auto bg-gradient-accent rounded-full mb-6" />
-          <h1 className="font-heading font-medium text-4xl md:text-5xl text-white mb-4">
-            Sectors We Serve
-          </h1>
-          <p className="font-body text-lg text-gray-300 max-w-2xl mx-auto">
-            Our market research solutions span a wide range of sectors across MEA
-          </p>
+      {/* ── HERO ── */}
+      <section className="relative min-h-[520px] sm:min-h-[640px] lg:min-h-[780px] flex items-center overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="Sectors hero"
+          fill
+          className="object-cover object-center scale-105"
+          priority
+        />
+        {/* Multi-layer overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-dark/95 via-primary/80 to-dark/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent" />
+
+        {/* Subtle dot pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,1) 1px, transparent 1px)',
+            backgroundSize: '32px 32px',
+          }}
+        />
+
+        <div className="relative z-10 container-content py-16 pt-28 sm:py-24 sm:pt-36 lg:py-36 lg:pt-44">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Left — headline */}
+            <AnimatedSection>
+              <div className="inline-flex items-center gap-2 border border-white/20 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-7">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+                <span className="font-body text-[12px] text-white/75 tracking-widest uppercase">11 Sectors · 450+ Engagements</span>
+              </div>
+              <h1 className="font-heading font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.07] mb-6">
+                Deep Expertise Across<br />
+                <span className="text-accent">MEA's Key Industries</span>
+              </h1>
+              <p className="font-body text-lg text-white/65 leading-relaxed mb-10 max-w-lg">
+                From retail to oil & gas — we bring proven market intelligence to every sector, backed by decades of in-region experience.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <PillButton href="/contact" bgColor="#E8A020" textColor="#1A1A2E" fillColor="#7D2B5E" hoverTextColor="#ffffff" className="font-body font-semibold text-[15px] px-7 py-3.5">
+                  Start a Conversation
+                </PillButton>
+                <Link href="#sectors" className="inline-flex items-center gap-2 border border-white/30 text-white font-body font-medium text-[15px] rounded-full px-7 py-3.5 hover:bg-white/10 transition-colors">
+                  Explore Sectors <ArrowRight size={16} />
+                </Link>
+              </div>
+            </AnimatedSection>
+
+            {/* Right — stat cards */}
+            <AnimatedSection delay={0.2} className="hidden lg:grid grid-cols-2 gap-4">
+              {[
+                { num: '450+', label: 'Engagements completed', color: 'from-accent/20 to-accent/5' },
+                { num: '11', label: 'Sectors covered', color: 'from-primary/40 to-primary/10' },
+                { num: '40+', label: 'Countries reached', color: 'from-plum/30 to-plum/5' },
+                { num: '100+', label: 'Years combined experience', color: 'from-white/15 to-white/5' },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className={`bg-gradient-to-br ${stat.color} backdrop-blur-sm border border-white/15 rounded-2xl p-6 text-center`}
+                >
+                  <div className="font-heading font-medium text-4xl text-white mb-1">{stat.num}</div>
+                  <div className="font-body text-[13px] text-white/60 leading-snug">{stat.label}</div>
+                </div>
+              ))}
+            </AnimatedSection>
+          </div>
+        </div>
+
+        {/* Wave */}
+        <div className="absolute -bottom-px left-0 right-0 z-10 leading-[0] pointer-events-none">
+          <svg viewBox="0 0 1440 80" className="w-full block" preserveAspectRatio="none">
+            <path d="M0,80 L0,40 Q360,0 720,35 Q1080,70 1440,30 L1440,80 Z" fill="white" />
+          </svg>
         </div>
       </section>
 
-      {/* Sector Grid */}
+      {/* ── SECTOR GRID ── */}
+      <section id="sectors" className="bg-white section-padding">
+        <div className="container-content">
+          <AnimatedSection className="mb-12">
+            <span className="section-tag">Our Sectors</span>
+            <h2 className="font-heading font-medium text-4xl md:text-5xl text-text">
+              Select a Sector
+            </h2>
+            <p className="font-body text-text-muted mt-3 max-w-lg">
+              Click any sector to explore what we research, our clients, and key engagements.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {sectors.map((sector, i) => {
+              const Icon = sector.icon
+              return (
+                <AnimatedSection key={sector.slug} delay={i * 0.05}>
+                  <Link
+                    href={`/sectors/${sector.slug}`}
+                    className="group block relative overflow-hidden rounded-2xl"
+                    style={{ aspectRatio: '4/3' }}
+                  >
+                    {/* Photo background */}
+                    {sector.image ? (
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                        style={{ backgroundImage: `url(${sector.image})` }}
+                      />
+                    ) : (
+                      <div
+                        className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
+                        style={{ background: sector.gradient }}
+                      />
+                    )}
+                    {/* Dark overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/10" />
+                    {/* Hover tint */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: sector.gradient, opacity: 0, mixBlendMode: 'multiply' }} />
+
+                    {/* Content */}
+                    <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                      {/* Top */}
+                      <div className="flex items-start justify-between">
+                        <div className="w-12 h-12 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                          <Icon size={22} className="text-white" />
+                        </div>
+                        {sector.engagements && (
+                          <span className="font-body text-[11px] font-medium text-white/70 bg-black/25 backdrop-blur-sm rounded-full px-3 py-1 border border-white/15">
+                            {sector.engagements} engagements
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Bottom */}
+                      <div>
+                        <h3 className="font-heading font-medium text-xl text-white mb-2 leading-snug">
+                          {sector.name}
+                        </h3>
+                        <div className="flex items-center gap-1.5 font-body text-[13px] font-medium text-white/60 group-hover:text-white transition-colors duration-300">
+                          Explore sector
+                          <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-300" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Hover border highlight */}
+                    <div className="absolute inset-0 rounded-2xl border-2 border-white/0 group-hover:border-white/25 transition-colors duration-300 pointer-events-none" />
+                  </Link>
+                </AnimatedSection>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT WE RESEARCH ── */}
       <section className="bg-bg-soft section-padding">
         <div className="container-content">
-          <div className="text-center mb-12">
-            <span className="section-tag">12 Sectors</span>
-            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
-              Deep Sector Expertise
-            </h2>
-            <p className="font-body text-text-muted mt-4 max-w-xl mx-auto">
-              Click any sector to expand and see what we research, our clients, and key engagements.
-            </p>
-            <div className="h-[3px] w-20 mx-auto bg-gradient-accent rounded-full mt-4" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+            <AnimatedSection>
+              <span className="section-tag">Our Capabilities</span>
+              <h2 className="font-heading font-medium text-4xl md:text-5xl text-text leading-tight mb-5">
+                What We Research Across Every Sector
+              </h2>
+              <p className="font-body text-text-muted leading-relaxed mb-8">
+                Regardless of industry, our method-neutral approach means we design the right research for your specific challenge — combining quantitative, qualitative, and secondary research to deliver intelligence that actually moves the needle.
+              </p>
+              <PillButton href="/services" bgColor="#1A2E5C" textColor="#ffffff" fillColor="#E8A020" hoverTextColor="#1A1A2E" className="font-body font-semibold text-[15px] px-7 py-3.5">
+                View Our Services
+              </PillButton>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.2}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {researchTypes.map((type) => (
+                  <div key={type} className="flex items-start gap-3 bg-white rounded-xl p-4 border border-border">
+                    <CheckCircle2 size={16} className="text-accent mt-0.5 flex-shrink-0" />
+                    <span className="font-body text-sm text-text leading-snug">{type}</span>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {sectors.map((sector, i) => (
-              <AnimatedSection key={sector.name} delay={i * 0.05}>
-                <SectorCard sector={sector} />
+        </div>
+      </section>
+
+      {/* ── CLIENT LOGOS ── */}
+      <section className="bg-white py-14 border-y border-border overflow-hidden">
+        <div className="container-content mb-6 text-center">
+          <p className="font-body text-sm font-medium text-text-muted tracking-widest uppercase">
+            Trusted by industry leaders across MEA
+          </p>
+        </div>
+        <LogoStrip />
+      </section>
+
+      {/* ── CASE STUDIES ── */}
+      <section className="bg-white section-padding">
+        <div className="container-content">
+          <div className="flex items-end justify-between mb-10">
+            <AnimatedSection>
+              <span className="section-tag">Case Studies</span>
+              <h2 className="font-heading font-medium text-4xl md:text-5xl text-text">
+                Intelligence in Action
+              </h2>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <Link href="/case-studies" className="hidden sm:inline-flex items-center gap-2 border border-border text-text font-body text-[14px] font-medium rounded-full px-5 py-2.5 hover:border-primary hover:text-primary transition-all">
+                View All <ArrowRight size={13} />
+              </Link>
+            </AnimatedSection>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {caseStudies.map((cs, i) => (
+              <AnimatedSection key={cs.title} delay={i * 0.1}>
+                <Link href={cs.href} className="group flex flex-col border border-border rounded-2xl overflow-hidden hover:shadow-card-hover hover:border-primary/20 transition-all duration-300">
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={cs.image}
+                      alt={cs.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent" />
+                    <span className="absolute top-4 left-4 font-body text-[11px] font-medium text-white bg-black/40 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1 uppercase tracking-wider">
+                      {cs.tag}
+                    </span>
+                  </div>
+                  <div className="p-5 flex flex-col gap-3 flex-1 bg-white">
+                    <h3 className="font-heading font-medium text-[17px] text-text leading-snug group-hover:text-primary transition-colors">
+                      {cs.title}
+                    </h3>
+                    <p className="font-body text-sm text-text-muted leading-relaxed flex-1">
+                      {cs.excerpt}
+                    </p>
+                    <div className="flex items-center gap-1.5 font-body text-[14px] font-medium text-primary group-hover:gap-2.5 transition-all">
+                      Read Case Study <ArrowRight size={13} />
+                    </div>
+                  </div>
+                </Link>
               </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-primary py-16 px-4">
-        <div className="container-content text-center">
+      {/* ── CTA ── */}
+      <section className="relative overflow-hidden section-padding">
+        <div className="absolute inset-0">
+          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-dark/40 via-dark/25 to-dark/50 pointer-events-none" />
+        <div className="container-content text-center relative z-10">
           <AnimatedSection>
-            <h2 className="font-heading font-medium text-3xl text-white mb-4">
-              Don't see your sector? We cover it.
+            <span className="inline-flex items-center gap-2 border border-white/20 bg-white/10 rounded-full px-4 py-1.5 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              <span className="font-body text-[13px] text-white/70 tracking-widest uppercase">Get Started</span>
+            </span>
+            <h2 className="font-heading font-medium text-4xl md:text-5xl text-white mb-5">
+              Don't see your sector?<br />We cover it.
             </h2>
-            <p className="font-body text-gray-300 mb-8 max-w-lg mx-auto">
-              4BC Global has executed 450+ engagements across MEA. Talk to us about your specific market.
+            <p className="font-body text-white/65 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
+              4BC Global has executed 450+ engagements across MEA. Talk to us about your specific market — we'll design the right research approach for you.
             </p>
-            <Link href="/contact" className="btn-primary">
-              Start a Conversation →
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[17px] rounded-full px-9 py-4 hover:bg-accent-warm transition-colors shadow-lg">
+              Start a Conversation <ArrowRight size={17} />
             </Link>
           </AnimatedSection>
         </div>

@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import AnimatedSection from '@/components/AnimatedSection'
 import PageHeader from '@/components/PageHeader'
+import PillButton from '@/components/PillButton'
+import Grainient from '@/components/Grainient'
 
 export const metadata: Metadata = {
   title: 'Our Clients — 4BC Global',
@@ -10,44 +13,101 @@ export const metadata: Metadata = {
 
 const clientGroups = [
   {
-    sector: 'Free Zone & Real Estate',
-    clients: ['Palmare', 'DMCC', 'Nakheel', 'Palm Hills', 'Dubai South', 'Dubai Airport Freezone', 'Dubai Development Authority', 'Emaar', 'DP World', 'WJ Towell'],
-  },
-  {
-    sector: 'Construction, Building Material & Engineering',
-    clients: ['Jotun', 'ACC', 'Sadolin', 'Twiga', 'Arkan', 'Geberit', 'ThyssenKrupp', 'Al-Futtaim Engineering', 'Amiantit Oman', 'The Kanoo Group', 'Thermax'],
-  },
-  {
-    sector: 'Petrochemicals, Energy & Utilities',
-    clients: ['Aramco', 'ENOC', 'Shell', 'Castrol', 'Emarat', 'Emirates Gas', 'Horizon Terminals', 'MARAFIQ', 'JW Azure'],
-  },
-  {
-    sector: 'IT, Electronics & Home Appliances',
-    clients: ['BARCO', 'Ariston', 'LG', 'Epson', 'Samsung'],
-  },
-  {
-    sector: 'Telecom',
-    clients: ['du', 'Maroc Telecom', 'Airtel', 'Vodafone', 'e& (Etisalat)', 'Dizzy'],
+    sector: 'Retail & Food Products',
+    logos: [
+      '/logos/01_Retail_and_Food/bmmi.png',
+      '/logos/01_Retail_and_Food/lulu.png',
+      '/logos/01_Retail_and_Food/freshly-foods.png',
+      '/logos/01_Retail_and_Food/lesaffre.png',
+      '/logos/01_Retail_and_Food/unilever.jpeg',
+      '/logos/01_Retail_and_Food/nestle.png',
+      '/logos/01_Retail_and_Food/kbbo-group.png',
+      '/logos/01_Retail_and_Food/savola.png',
+    ],
   },
   {
     sector: 'Banking, Finance & Insurance',
-    clients: ['VISA', 'ADCB', 'American Express', 'Bupa', 'RSA', 'UAE Insurance Authority', 'SABB', 'HSBC', 'Cashee', 'RFIGlobal'],
+    logos: [
+      '/logos/02_Banking_and_Finance/visa.png',
+      '/logos/02_Banking_and_Finance/rfi-global.png',
+      '/logos/02_Banking_and_Finance/hsbc.png',
+      '/logos/02_Banking_and_Finance/american-express.png',
+      '/logos/02_Banking_and_Finance/adcb.png',
+      '/logos/02_Banking_and_Finance/bupa.png',
+      '/logos/02_Banking_and_Finance/rsa.png',
+      '/logos/02_Banking_and_Finance/uae-insurance-authority.jpeg',
+      '/logos/02_Banking_and_Finance/sabb.png',
+      '/logos/02_Banking_and_Finance/cashee.png',
+    ],
   },
   {
-    sector: 'Automotive',
-    clients: ['Ford', 'Mercedes', 'Toyota', 'Nissan', 'Audi', 'Volvo', 'GM', 'Renault', 'Kia', 'Bridgestone'],
+    sector: 'Real Estate & Construction',
+    logos: [
+      '/logos/03_Real_Estate_and_Construction/emaar.png',
+      '/logos/03_Real_Estate_and_Construction/dubai-airport-freezone.jpeg',
+      '/logos/03_Real_Estate_and_Construction/dmcc.png',
+      '/logos/03_Real_Estate_and_Construction/dubai-south.png',
+      '/logos/03_Real_Estate_and_Construction/palm-hills.png',
+      '/logos/03_Real_Estate_and_Construction/wj-towell.png',
+      '/logos/03_Real_Estate_and_Construction/dp-world.jpeg',
+      '/logos/03_Real_Estate_and_Construction/dubai-development-authority.png',
+    ],
   },
   {
-    sector: 'Regional Conglomerates',
-    clients: ['Abdul Latif Jameel', 'JK Cement', 'Alghanim', 'Al-Futtaim Group'],
+    sector: 'Industrial',
+    logos: [
+      '/logos/04_Industrial/jotun.png',
+      '/logos/04_Industrial/kanoo-group.jpeg',
+      '/logos/04_Industrial/arkan.jpeg',
+      '/logos/04_Industrial/amiantit-oman.png',
+      '/logos/04_Industrial/thyssenkrupp.png',
+      '/logos/04_Industrial/sadolin.png',
+      '/logos/04_Industrial/twiga.png',
+      '/logos/04_Industrial/thermax.png',
+    ],
   },
   {
-    sector: 'Government & Regulators',
-    clients: ['GACA', 'mada'],
+    sector: 'Fuels, Energy & Environment',
+    logos: [
+      '/logos/05_Oil_and_Gas/pdo.png',
+      '/logos/05_Oil_and_Gas/emirates-gas.png',
+      '/logos/05_Oil_and_Gas/enoc.png',
+      '/logos/05_Oil_and_Gas/emarat.png',
+      '/logos/05_Oil_and_Gas/castrol.jpeg',
+      '/logos/05_Oil_and_Gas/shell.png',
+      '/logos/05_Oil_and_Gas/horizon-terminals.jpeg',
+      '/logos/05_Oil_and_Gas/gasco.png',
+    ],
   },
   {
-    sector: 'FMCG & Food',
-    clients: ['Savola', 'Nestlé', 'Nestlé Professional', 'Unilever', 'LeSaffre', 'BMMI', 'LuLu', 'Freshly Foods', 'KBBO Group'],
+    sector: 'Logistics & Transportation',
+    logos: [
+      '/logos/06_Logistics_and_Transportation/bridgestone.png',
+      '/logos/06_Logistics_and_Transportation/ford.png',
+      '/logos/06_Logistics_and_Transportation/kia.jpeg',
+      '/logos/06_Logistics_and_Transportation/nissan.jpeg',
+      '/logos/06_Logistics_and_Transportation/audi.jpeg',
+      '/logos/06_Logistics_and_Transportation/mercedes.png',
+      '/logos/06_Logistics_and_Transportation/volvo.png',
+      '/logos/06_Logistics_and_Transportation/gm.png',
+      '/logos/06_Logistics_and_Transportation/renault.jpeg',
+      '/logos/06_Logistics_and_Transportation/toyota.jpeg',
+    ],
+  },
+  {
+    sector: 'Telecom & ICT',
+    logos: [
+      '/logos/07_Telecom_and_ICT/du.png',
+      '/logos/07_Telecom_and_ICT/maroc-telecom.png',
+      '/logos/08_Extended_Clients/airtel.png',
+      '/logos/07_Telecom_and_ICT/etisalat.png',
+      '/logos/07_Telecom_and_ICT/vodafone.png',
+      '/logos/07_Telecom_and_ICT/djezzy.jpeg',
+      '/logos/07_Telecom_and_ICT/barco.png',
+      '/logos/07_Telecom_and_ICT/epson.png',
+      '/logos/07_Telecom_and_ICT/samsung.jpeg',
+      '/logos/07_Telecom_and_ICT/lg.png',
+    ],
   },
 ]
 
@@ -96,27 +156,35 @@ export default function ClientsPage() {
       {/* Client Logo Wall by Sector */}
       <section className="bg-bg-soft section-padding">
         <div className="container-content">
-          <AnimatedSection className="text-center mb-12">
+          <AnimatedSection className="text-center mb-14">
             <span className="section-tag">Our Clients</span>
-            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
-              100+ Clients Across 10 Sectors
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+              100+ Clients Across 7 Sectors
             </h2>
-            <div className="accent-divider mt-4" />
           </AnimatedSection>
-          <div className="space-y-12">
+          <div className="space-y-14">
             {clientGroups.map((group, gi) => (
               <AnimatedSection key={group.sector} delay={gi * 0.05}>
                 <div>
-                  <h3 className="font-heading font-medium text-sm text-text-muted uppercase tracking-wider mb-4 border-b border-border pb-2">
-                    {group.sector}
-                  </h3>
-                  <div className="flex flex-wrap gap-3">
-                    {group.clients.map((client) => (
+                  <div className="flex items-center gap-4 mb-6">
+                    <h3 className="font-heading font-semibold text-[13px] text-primary uppercase tracking-[0.1em] whitespace-nowrap">
+                      {group.sector}
+                    </h3>
+                    <div className="flex-1 h-px bg-border" />
+                  </div>
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                    {group.logos.map((src, i) => (
                       <div
-                        key={client}
-                        className="font-heading font-medium text-sm text-text-muted bg-white border border-border rounded-lg px-4 py-2.5 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-default"
+                        key={i}
+                        className="flex items-center justify-center bg-white border border-border rounded-2xl p-5 h-28 hover:border-primary/25 hover:shadow-md transition-all duration-200"
                       >
-                        {client}
+                        <Image
+                          src={src}
+                          alt={`${group.sector} client logo`}
+                          width={140}
+                          height={70}
+                          className="object-contain w-full h-full"
+                        />
                       </div>
                     ))}
                   </div>
@@ -128,7 +196,10 @@ export default function ClientsPage() {
       </section>
 
       {/* Testimonials 2x2 Grid */}
-      <section className="bg-dark section-padding">
+      <section className="section-dark section-padding">
+        <div className="absolute inset-0" style={{ zIndex: -1 }}>
+          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
+        </div>
         <div className="container-content">
           <AnimatedSection className="text-center mb-12">
             <span className="text-xs font-heading font-medium tracking-widest uppercase text-accent mb-3 inline-block">Testimonials</span>
@@ -156,8 +227,12 @@ export default function ClientsPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary py-16 px-4">
-        <div className="container-content text-center">
+      <section className="relative overflow-hidden py-16 px-4">
+        <div className="absolute inset-0">
+          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-dark/40 via-dark/25 to-dark/50 pointer-events-none" />
+        <div className="container-content relative z-10 text-center">
           <AnimatedSection>
             <h2 className="font-heading font-medium text-3xl text-white mb-4">
               Join Our Growing Client List
@@ -165,9 +240,9 @@ export default function ClientsPage() {
             <p className="font-body text-gray-300 mb-8">
               Let us bring the same depth of insight to your business challenges.
             </p>
-            <Link href="/contact" className="btn-primary">
-              Start a Conversation →
-            </Link>
+            <PillButton href="/contact" bgColor="#E8A020" textColor="#1A1A2E" fillColor="#7D2B5E" hoverTextColor="#ffffff" className="font-heading font-semibold text-[15px] px-7 py-3.5">
+              Start a Conversation
+            </PillButton>
           </AnimatedSection>
         </div>
       </section>

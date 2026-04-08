@@ -58,7 +58,7 @@ export default function ServicesTabs() {
       <div className="container-content">
         {/* Section header */}
         <div className="mb-10">
-          <span className="font-body text-xs font-medium tracking-widest uppercase text-plum inline-block mb-1">Capabilities</span>
+          <span className="font-body text-xs font-medium tracking-widest uppercase text-primary inline-block mb-1">Capabilities</span>
           <div className="h-[3px] w-10 bg-accent rounded-full mb-4" />
           <h2 className="font-heading font-medium text-4xl md:text-5xl text-text">
             Our market research services
@@ -149,7 +149,7 @@ export default function ServicesTabs() {
                 transition={{ duration: 0.2 }}
                 className="px-8 py-8 flex flex-col"
               >
-                <div className="text-[72px] leading-none font-heading text-accent/20 mb-1 select-none">"</div>
+                <div className="text-[72px] leading-none font-heading text-primary/20 mb-1 select-none">"</div>
                 <p className="font-body text-[16px] text-text-muted leading-[1.85]">
                   {tabs[active].description}
                 </p>

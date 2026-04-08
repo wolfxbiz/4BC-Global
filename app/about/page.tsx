@@ -3,6 +3,10 @@ import Link from 'next/link'
 import { CheckCircle2, Globe, Users, Award, Lightbulb } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import PageHeader from '@/components/PageHeader'
+import TeamCard from '@/components/TeamCard'
+import type { TeamMember } from '@/components/TeamCard'
+import PillButton from '@/components/PillButton'
+import Grainient from '@/components/Grainient'
 
 export const metadata: Metadata = {
   title: 'About 4BC Global — Our Story, Team & Approach',
@@ -58,6 +62,65 @@ const steps = [
   },
 ]
 
+const team: TeamMember[] = [
+  {
+    name: 'Sukhdev Singh',
+    title: 'Partner, Insights & Strategy',
+    photo: '/team/sukhdev-singh.png',
+    shortBio: 'Head of Business Research and Consulting practice in MEA. 25+ years of experience across Africa, Middle East, Asia and Far-East Asian markets.',
+    fullBio: 'Sukhdev is the head of Business Research and Consulting practice in the MEA region. Till recently he headed the same practice at Kantar MEA since 2007. He possesses over 25 years of experience in Africa & Middle East, Asia and Far-East Asian markets. During his long career Sukhdev has helped many clients with their market entry strategies across industries as diverse as biscuits to boilers. He is also a Stakeholder Satisfaction Expert and along with Business-to-Business and Government Sector expert.',
+    expertise: ['Market Entry Strategy', 'B2B Research', 'Government Sector', 'Stakeholder Satisfaction'],
+  },
+  {
+    name: 'Siva Sankar',
+    title: 'Director, Insights',
+    photo: '/team/siva-sankar.png',
+    shortBio: 'More than a decade of rich experience in Business and Industrial Research across Middle East, North Africa, India, China, Russia, and Turkey.',
+    fullBio: 'Siva has more than a decade of rich experience in Business and Industrial Research, and has worked across diverse geographies including the Middle East, North Africa, India, China, Russia, and Turkey. He has been helping clients with their market entry and business expansion strategies, and is responsible for comprehensive delivery of solutions related to opportunity assessment, market sizing, competitor analysis, new product & market entry strategy development, channel assessment, network development, geo-mapping, and understanding regulatory environments.',
+    expertise: ['Market Sizing', 'Competitor Analysis', 'Geo-mapping', 'Regulatory Environments'],
+  },
+  {
+    name: 'Sandeep Vaddey',
+    title: 'Director, Insights',
+    photo: '/team/sandeep-vaddey.png',
+    shortBio: '19+ years of Business Research and Consulting experience across Middle East, Africa, Turkey and Russia. Expert in Oil & Gas, Energy, Construction, ICT sectors.',
+    fullBio: 'Sandeep has more than 19 years of Business Research and Consulting experience across Middle East, Africa, Turkey and Russia. He has advised clients across a wide range of sectors including Oil & Gas, Energy, Construction, Petrochemicals, General Engineering, and ICT. Sandeep\'s core competence is in conducting Market and Competitive Assessment, Market entry strategies, Market expansion, New product development, Geo-mapping and Feasibility studies.',
+    expertise: ['Oil & Gas', 'Energy', 'Market Assessment', 'Feasibility Studies'],
+  },
+  {
+    name: 'Angad Kenghe',
+    title: 'Senior Manager, Insights',
+    photo: '/team/angad-kenghe.png',
+    shortBio: '5+ years of diverse research experience across consumer insights, business research, videometrics, and retail panel-based methodology.',
+    fullBio: 'Angad comes with over 5+ years of diverse research experience across consumer insights, business research, videometrics, and retail panel-based methodology. He has worked with small & medium businesses as well as large players, spanning MEA, US & Europe, and India regions. He has helped clients with projects across market overview, industry analysis, competitor landscape, new product development, feasibility, mystery shopping, and customer experience.',
+    expertise: ['Consumer Insights', 'Mystery Shopping', 'Competitor Landscape', 'New Product Development'],
+  },
+  {
+    name: 'Tarun Sinhal',
+    title: 'Senior Consultant',
+    photo: '/team/tarun-sinhal.png',
+    shortBio: '18+ years of experience in Market Research across Middle East, Africa, India. Expert in Branding, Communication, Demand Estimation, Pricing, and Channel Dynamics.',
+    fullBio: 'Tarun possesses over 18 years of experience in Market Research across Middle East, Africa, India, including a brief exposure to research projects in North America. He has worked on custom research projects across various domains including Branding, Communication, Demand Estimation, Pricing, New Product Development, Channel Dynamics, and Market Landscape. Key clients include Multinationals (Unilever, Daimler, LG, Samsung, Kia Motors), Regional businesses (Al-Futtaim, du, Etisalat, Thermax), and Government (MoTC Qatar, Insurance Authority UAE).',
+    expertise: ['Branding Research', 'Demand Estimation', 'Pricing Studies', 'Channel Dynamics'],
+  },
+  {
+    name: 'Anu Param',
+    title: 'Sr. Project Management Executive',
+    photo: '/team/anu-param.png',
+    shortBio: '15+ years in the MR industry. Responsible for end-to-end client servicing from project management through final reports across Telecom, Finance, Retail, and Auto.',
+    fullBio: 'Anu has over 15 years in the MR industry and has been working within Business Consulting since 2020. She has worked with clients across sectors including Telecom, Financial services, Retail, and Auto. Anu is responsible for end-to-end client servicing from project management activities (including Field & Tab Projects) through to preparation of final reports. She is directly involved in all project activities including questionnaire scripting, briefing of interviewers, monitoring fieldwork quality & timelines, managing vendors, and managing client co-ordination activities.',
+    expertise: ['Project Management', 'Field Operations', 'Questionnaire Design', 'Client Coordination'],
+  },
+  {
+    name: 'Vamsi Ganti',
+    title: 'Senior Consultant',
+    photo: '/team/vamsi-ganti.png',
+    shortBio: '15+ years specializing in Customer Experience — relationship assessment, mystery shopping, employee engagement across Telecom, Retail, Oil & Gas, Automotive.',
+    fullBio: 'Vamsi brings more than 15 years of specialization in the Customer Experience domain with experience in relationship assessment, mystery shopping, employee engagement studies. His expertise varies in helping clients find solutions on developing customer experience programs, mystery shopping programs, employee experience, and trade experience. He has been engaged in developing CX programs across a wide variety of clients in diverse fields like Telecom, Retail, Oil & Gas, Automotive, SEZ, Finance, and Regulatory bodies. He also has experience in conducting client engagement workshops to drive customer experience adoption across the client organization.',
+    expertise: ['Customer Experience', 'Mystery Shopping', 'Employee Engagement', 'CX Workshops'],
+  },
+]
+
 // Using a workaround since we can't import BarChart2 twice
 function BarChart2Icon(props: any) {
   return (
@@ -76,10 +139,10 @@ export default function AboutPage() {
       />
 
       {/* Sub-nav anchors */}
-      <nav className="bg-white border-b border-border sticky top-16 lg:top-20 z-30">
+      <nav className="bg-white border-b border-border sticky top-16 lg:top-[72px] z-30">
         <div className="container-content">
           <div className="flex gap-6 overflow-x-auto py-3 text-sm font-heading font-medium text-text-muted">
-            {['Our Story', 'Our Purpose', 'Our Philosophy', 'Geographical Footprint', "Why We're Different"].map((item) => (
+            {['Our Story', 'Our Purpose', 'Our Philosophy', 'Geographical Footprint', "Why We're Different", 'Our Team'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '')}`}
@@ -119,7 +182,10 @@ export default function AboutPage() {
       </section>
 
       {/* Our Purpose */}
-      <section id="our-purpose" className="bg-dark section-padding">
+      <section id="our-purpose" className="section-dark section-padding">
+        <div className="absolute inset-0" style={{ zIndex: -1 }}>
+          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
+        </div>
         <div className="container-content text-center">
           <AnimatedSection>
             <span className="text-xs font-heading font-medium tracking-widest uppercase text-accent mb-6 inline-block">Our Purpose</span>
@@ -254,16 +320,45 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Our Team */}
+      <section id="our-team" className="bg-white section-padding">
+        <div className="container-content">
+          <AnimatedSection className="text-center mb-6">
+            <span className="section-tag">Our Team</span>
+            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
+              Senior-Led. MEA-Experienced. Research-Obsessed.
+            </h2>
+            <div className="accent-divider mt-4" />
+          </AnimatedSection>
+          <AnimatedSection className="text-center mb-12">
+            <p className="font-body text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
+              Our team brings a cumulative <strong className="text-primary">100+ years</strong> of market research and consulting experience across the Middle East, Africa, Asia and Europe. Every engagement is led by senior practitioners — never delegated to junior researchers.
+            </p>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {team.map((member, i) => (
+              <AnimatedSection key={member.name} delay={i * 0.1}>
+                <TeamCard member={member} />
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="bg-primary py-16 px-4">
-        <div className="container-content text-center">
+      <section className="relative overflow-hidden py-16 px-4">
+        <div className="absolute inset-0">
+          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-dark/40 via-dark/25 to-dark/50 pointer-events-none" />
+        <div className="container-content relative z-10 text-center">
           <AnimatedSection>
             <h2 className="font-heading font-medium text-3xl text-white mb-4">
               Ready to work with a senior-led research team?
             </h2>
-            <Link href="/contact" className="btn-primary">
-              Get in Touch →
-            </Link>
+            <PillButton href="/contact" bgColor="#E8A020" textColor="#1A1A2E" fillColor="#7D2B5E" hoverTextColor="#ffffff" className="font-heading font-semibold text-[15px] px-7 py-3.5">
+              Get in Touch
+            </PillButton>
           </AnimatedSection>
         </div>
       </section>

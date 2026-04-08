@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { Search, Map, TrendingUp, CheckCircle2 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import PageHeader from '@/components/PageHeader'
+import PillButton from '@/components/PillButton'
+import Grainient from '@/components/Grainient'
 
 export const metadata: Metadata = {
   title: 'Proprietary Tools — 4BC Global',
@@ -112,9 +114,9 @@ export default function ToolsPage() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/contact" className="btn-primary">
-                  Learn More about {tool.name.replace('4BC ', '')} →
-                </Link>
+                <PillButton href="/contact" bgColor="#1A2E5C" textColor="#ffffff" fillColor="#E8A020" hoverTextColor="#1A1A2E" className="font-heading font-semibold text-[14px] px-6 py-3">
+                  Learn More about {tool.name.replace('4BC ', '')}
+                </PillButton>
               </AnimatedSection>
               <AnimatedSection delay={0.2} className={i % 2 === 1 ? 'order-first lg:order-last' : ''}>
                 <div className={`border-2 ${tool.borderColor} rounded-2xl p-8 bg-white`}>
@@ -153,7 +155,10 @@ export default function ToolsPage() {
       ))}
 
       {/* Comparison Table */}
-      <section className="bg-dark section-padding">
+      <section className="section-dark section-padding">
+        <div className="absolute inset-0" style={{ zIndex: -1 }}>
+          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
+        </div>
         <div className="container-content">
           <AnimatedSection className="text-center mb-10">
             <span className="text-xs font-heading font-medium tracking-widest uppercase text-accent mb-3 inline-block">Compare</span>
@@ -185,9 +190,9 @@ export default function ToolsPage() {
             </div>
           </AnimatedSection>
           <AnimatedSection className="text-center mt-10">
-            <Link href="/contact" className="btn-primary">
+            <PillButton href="/contact" bgColor="#E8A020" textColor="#1A1A2E" fillColor="#7D2B5E" hoverTextColor="#ffffff" className="font-heading font-semibold text-[15px] px-7 py-3.5">
               Request a Demo of Our Tools
-            </Link>
+            </PillButton>
           </AnimatedSection>
         </div>
       </section>

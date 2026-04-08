@@ -1,30 +1,14 @@
-@font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-primary:      #E8A020; /* golden amber — buttons, highlights, brand accents */
-  --color-secondary:    #2B4A8C; /* navy blue — headers, cards, navigation */
+  --color-primary:      #2B4A8C; /* navy blue — headers, cards, navigation */
+  --color-secondary:    #E8A020; /* golden amber — buttons, highlights, brand accents */
   --color-accent:       #7D2B5E; /* deep plum — section backgrounds, tags */
   --color-accent-light: #F2A8C8; /* soft rose — pills, light backgrounds */
   --color-amber-light:  #F5B840; /* amber tint — card header tints */
-  --color-bg:           #F5F4F0; /* off-white — page background */
+  --color-bg:           #EEF3FF; /* light navy tint — page background */
   --color-text:         #1A1A2E; /* deep charcoal — body text */
   --color-surface:      #FFFFFF; /* white — card surfaces */
   --color-mauve:        #C890B0; /* dusty mauve — secondary accents */
@@ -33,148 +17,168 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   body {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--font-jakarta), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--color-text);
     background-color: var(--color-bg);
-    letter-spacing: 0em;
+    font-size: 1rem;
     line-height: 1.6;
-  }
-  h1 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: -0.025em;
-    line-height: 1.15;
-  }
-  h2 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-  }
-  h3, h4, h5, h6 {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: -0.015em;
-    line-height: 1.3;
-  }
-  p {
-    letter-spacing: 0.01em;
-    line-height: 1.7;
-  }
-  a, button, span {
+    font-weight: 400;
     letter-spacing: 0.005em;
   }
+
+  /* ── Heading hierarchy ── */
+  h1 {
+    font-weight: 800;
+    font-size: 2rem;         /* 32px mobile */
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  @media (min-width: 640px) {
+    h1 { font-size: 2.75rem; letter-spacing: -0.035em; }
+  }
+  @media (min-width: 1024px) {
+    h1 { font-size: 3.5rem; line-height: 1.08; letter-spacing: -0.04em; }
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 1.5rem;       /* 24px mobile */
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  @media (min-width: 640px) {
+    h2 { font-size: 1.875rem; }
+  }
+  @media (min-width: 1024px) {
+    h2 { font-size: 2.25rem; line-height: 1.15; letter-spacing: -0.02em; }
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 1.125rem;     /* 18px mobile */
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  @media (min-width: 640px) {
+    h3 { font-size: 1.25rem; letter-spacing: -0.015em; }
+  }
+  @media (min-width: 1024px) {
+    h3 { font-size: 1.375rem; }
+  }
+  h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    line-height: 1.65;
+    letter-spacing: 0.005em;
+    max-width: 68ch;
+  }
+
+  /* ── Interactive elements ── */
+  button, [role="button"] {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  a {
+    letter-spacing: inherit;
+  }
   nav a {
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+    font-weight: 500;
   }
 }
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 @layer components {
+
+  /* ── Primary CTA button — amber, semi-bold, sentence-case ── */
   .btn-primary {
-    @apply bg-gradient-cta text-dark font-heading font-medium text-[15px] py-[14px] px-7 rounded-lg transition-all duration-200 hover:scale-[1.02] hover:brightness-105 inline-block;
+    @apply inline-flex items-center gap-2
+           bg-gradient-cta text-dark
+           font-heading font-semibold text-cta
+           py-[14px] px-7 rounded-full
+           shadow-md hover:shadow-lg
+           hover:scale-[1.02] hover:brightness-105
+           transition-all duration-200;
   }
+
+  /* ── Secondary button — navy outline ── */
   .btn-secondary {
-    @apply border-[1.5px] border-primary text-primary font-heading font-medium text-[15px] py-[14px] px-7 rounded-lg transition-all duration-200 hover:bg-primary hover:text-white inline-block;
+    @apply inline-flex items-center gap-2
+           border-[1.5px] border-primary text-primary
+           font-heading font-semibold text-cta
+           py-[14px] px-7 rounded-full
+           transition-all duration-200
+           hover:bg-primary hover:text-white;
   }
+
+  /* ── Dark-bg secondary ── */
   .btn-secondary-dark {
-    @apply border-[1.5px] border-white text-white font-heading font-medium text-[15px] py-[14px] px-7 rounded-lg transition-all duration-200 hover:bg-white hover:text-dark inline-block;
+    @apply inline-flex items-center gap-2
+           border-[1.5px] border-white text-white
+           font-heading font-semibold text-cta
+           py-[14px] px-7 rounded-full
+           transition-all duration-200
+           hover:bg-white hover:text-dark;
   }
+
+  /* ── Layout ── */
   .section-padding {
-    @apply py-20 md:py-16 px-4;
+    @apply py-12 px-4 sm:py-16 md:py-20 lg:py-24;
   }
   .container-content {
     @apply max-w-content mx-auto px-4 sm:px-6 lg:px-8;
   }
+
+  /* ── Card ── */
   .card {
-    @apply bg-white border border-border rounded-card shadow-card hover:shadow-card-hover transition-shadow duration-200 p-8;
+    @apply bg-white border border-border rounded-card
+           shadow-card hover:shadow-card-hover
+           transition-shadow duration-200 p-8;
   }
-  .accent-divider {
-    @apply h-[3px] w-20 mx-auto bg-gradient-accent rounded-full;
-  }
+
+  /* ── Eyebrow / section label ── */
+  /* All-caps, wide tracking, semi-bold, navy — strictly no orange decoratively */
   .section-tag {
-    @apply text-xs font-heading font-medium tracking-widest uppercase text-accent mb-3 inline-block;
+    @apply text-label font-heading font-semibold
+           tracking-[0.1em] uppercase
+           text-primary mb-3 inline-block;
+  }
+
+  /* ── Accent divider ── */
+  .accent-divider {
+    @apply h-[3px] w-16 mx-auto bg-gradient-accent rounded-full;
+  }
+
+  /* ── Dark sections — Grainient WebGL background ── */
+  .section-dark {
+    background: #1A1A2E;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(13,17,35,0.40) 0%, rgba(13,17,35,0.25) 50%, rgba(13,17,35,0.50) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .section-dark > * {
+    position: relative;
+    z-index: 1;
   }
 }
 
-/* ─────────────────────────────────────────────────────
-   DESIGN VERSION THEMES — homepage color palette swaps
-   ───────────────────────────────────────────────────── */
-
-/* ── V2: Amber Light — amber hero · navy secondary · plum lead ── */
-.theme-v2 .bg-accent                              { background-color: #E8A020; }
-.theme-v2 .bg-accent\/15                          { background-color: rgb(232 160 32 / 0.15); }
-.theme-v2 .bg-accent\/20                          { background-color: rgb(232 160 32 / 0.2); }
-.theme-v2 .text-accent                            { color: #E8A020; }
-.theme-v2 .text-accent\/30                       { color: rgb(232 160 32 / 0.3); }
-.theme-v2 .border-accent\/20                      { border-color: rgb(232 160 32 / 0.2); }
-.theme-v2 .border-accent\/30                      { border-color: rgb(232 160 32 / 0.3); }
-.theme-v2 .hover\:bg-accent-warm:hover            { background-color: #F5B840; }
-.theme-v2 .text-plum                              { color: #2B4A8C; }
-.theme-v2 .text-primary                           { color: #7D2B5E; }
-.theme-v2 .hover\:text-primary:hover              { color: #7D2B5E; }
-.theme-v2 .hover\:border-primary:hover            { border-color: #7D2B5E; }
-.theme-v2 .bg-bg-soft                             { background-color: #FFF9F0; }
-/* Tools section: light amber tint instead of dark */
-.theme-v2 .bg-dark:not(.text-white)               { background-color: #FFF9F0; }
-.theme-v2 .bg-dark:not(.text-white) .text-white   { color: #1A1A2E; }
-.theme-v2 .bg-dark:not(.text-white) .text-gray-400{ color: #6B7280; }
-/* ServicesTabs active button: themed dark */
-.theme-v2 .bg-dark.text-white                     { background-color: #2B4A8C; }
-/* Tool cards */
-.theme-v2 .bg-dark-surface                        { background-color: #FFFFFF; border-color: rgb(232 160 32 / 0.2) !important; }
-.theme-v2 .bg-dark-surface .text-white            { color: #1A1A2E; }
-.theme-v2 .bg-dark-surface .text-gray-400         { color: #6B7280; }
-
-/* ── V3: Navy Light — navy hero · plum secondary · amber lead ── */
-.theme-v3 .bg-accent                              { background-color: #2B4A8C; }
-.theme-v3 .bg-accent\/15                          { background-color: rgb(43 74 140 / 0.15); }
-.theme-v3 .bg-accent\/20                          { background-color: rgb(43 74 140 / 0.2); }
-.theme-v3 .text-accent                            { color: #2B4A8C; }
-.theme-v3 .text-accent\/30                       { color: rgb(43 74 140 / 0.3); }
-.theme-v3 .border-accent\/20                      { border-color: rgb(43 74 140 / 0.2); }
-.theme-v3 .border-accent\/30                      { border-color: rgb(43 74 140 / 0.3); }
-.theme-v3 .hover\:bg-accent-warm:hover            { background-color: #3A5CA8; }
-.theme-v3 .bg-accent .text-dark                   { color: #FFFFFF; }
-.theme-v3 .text-plum                              { color: #7D2B5E; }
-.theme-v3 .text-primary                           { color: #E8A020; }
-.theme-v3 .hover\:text-primary:hover              { color: #E8A020; }
-.theme-v3 .hover\:border-primary:hover            { border-color: #E8A020; }
-.theme-v3 .bg-bg-soft                             { background-color: #EEF3FF; }
-.theme-v3 .bg-dark:not(.text-white)               { background-color: #EEF3FF; }
-.theme-v3 .bg-dark:not(.text-white) .text-white   { color: #1A1A2E; }
-.theme-v3 .bg-dark:not(.text-white) .text-gray-400{ color: #6B7280; }
-.theme-v3 .bg-dark.text-white                     { background-color: #7D2B5E; }
-.theme-v3 .bg-dark-surface                        { background-color: #FFFFFF; border-color: rgb(43 74 140 / 0.2) !important; }
-.theme-v3 .bg-dark-surface .text-white            { color: #1A1A2E; }
-.theme-v3 .bg-dark-surface .text-gray-400         { color: #6B7280; }
-
-/* ── V4: Plum Light — plum hero · amber secondary · navy lead ── */
-.theme-v4 .bg-accent                              { background-color: #7D2B5E; }
-.theme-v4 .bg-accent\/15                          { background-color: rgb(125 43 94 / 0.15); }
-.theme-v4 .bg-accent\/20                          { background-color: rgb(125 43 94 / 0.2); }
-.theme-v4 .text-accent                            { color: #7D2B5E; }
-.theme-v4 .text-accent\/30                       { color: rgb(125 43 94 / 0.3); }
-.theme-v4 .border-accent\/20                      { border-color: rgb(125 43 94 / 0.2); }
-.theme-v4 .border-accent\/30                      { border-color: rgb(125 43 94 / 0.3); }
-.theme-v4 .hover\:bg-accent-warm:hover            { background-color: #9D3B7E; }
-.theme-v4 .bg-accent .text-dark                   { color: #FFFFFF; }
-.theme-v4 .text-plum                              { color: #E8A020; }
-.theme-v4 .text-primary                           { color: #2B4A8C; }
-.theme-v4 .hover\:text-primary:hover              { color: #2B4A8C; }
-.theme-v4 .hover\:border-primary:hover            { border-color: #2B4A8C; }
-.theme-v4 .bg-bg-soft                             { background-color: #FDF2F8; }
-.theme-v4 .bg-dark:not(.text-white)               { background-color: #FDF2F8; }
-.theme-v4 .bg-dark:not(.text-white) .text-white   { color: #1A1A2E; }
-.theme-v4 .bg-dark:not(.text-white) .text-gray-400{ color: #6B7280; }
-.theme-v4 .bg-dark.text-white                     { background-color: #2B4A8C; }
-.theme-v4 .bg-dark-surface                        { background-color: #FFFFFF; border-color: rgb(125 43 94 / 0.2) !important; }
-.theme-v4 .bg-dark-surface .text-white            { color: #1A1A2E; }
-.theme-v4 .bg-dark-surface .text-gray-400         { color: #6B7280; }
-
-/* ─────────────────────────────────────────────────────
-   ACCENT BUTTON TEXT CONTRAST
-   Unlayered rules win over @layer utilities (text-dark etc.)
-   Default/V3/V4: accent = plum or navy (dark) → white text
-   V2: accent = amber (light) → dark text for WCAG contrast
-   ───────────────────────────────────────────────────── */
-.bg-accent            { color: #FFFFFF; }
-.theme-v2 .bg-accent  { color: #1A1A2E; }

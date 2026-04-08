@@ -1,5 +1,5 @@
 import HomePageContent from '@/components/HomePageContent'
 
 export default function HomePage() {
-  return <HomePageContent variant="dark" />
+  return <HomePageContent />
 }

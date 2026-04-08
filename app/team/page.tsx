@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronDown, ChevronUp, User } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import PillButton from '@/components/PillButton'
+import Grainient from '@/components/Grainient'
 
 const team = [
   {
@@ -137,7 +139,10 @@ export default function TeamPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-dark section-padding">
+      <section className="section-dark section-padding">
+        <div className="absolute inset-0" style={{ zIndex: -1 }}>
+          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
+        </div>
         <div className="container-content text-center">
           <AnimatedSection>
             <h2 className="font-heading font-medium text-3xl text-white mb-4">
@@ -146,9 +151,9 @@ export default function TeamPage() {
             <p className="font-body text-gray-400 mb-8 max-w-lg mx-auto">
               Senior-led engagements. Every project is personally managed by our directors and partners.
             </p>
-            <Link href="/contact" className="btn-primary">
-              Get in Touch →
-            </Link>
+            <PillButton href="/contact" bgColor="#E8A020" textColor="#1A1A2E" fillColor="#7D2B5E" hoverTextColor="#ffffff" className="font-heading font-semibold text-[15px] px-7 py-3.5">
+              Get in Touch
+            </PillButton>
           </AnimatedSection>
         </div>
       </section>
