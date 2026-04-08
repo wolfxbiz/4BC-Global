@@ -80,19 +80,19 @@ export default function ContactModal() {
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"
           />
 
-          {/* Modal container — full screen on mobile, centered panel on desktop */}
-          <div className="fixed inset-0 z-[70] flex items-end sm:items-center justify-center sm:p-4 sm:p-6">
+          {/* Modal container — sheet on mobile, centered panel on desktop */}
+          <div className="fixed inset-0 z-[70] flex items-end sm:items-center justify-center sm:p-6">
             <motion.div
               key="modal"
               ref={ref}
-              initial={{ opacity: 0, y: 40, scale: 0.97 }}
+              initial={{ opacity: 0, y: 48, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 40, scale: 0.97 }}
+              exit={{ opacity: 0, y: 48, scale: 0.98 }}
               transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-              className="relative w-full sm:max-w-lg md:max-w-2xl bg-white rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[96vh]"
+              className="relative w-full sm:max-w-lg md:max-w-2xl bg-white rounded-t-[2rem] sm:rounded-[2rem] overflow-hidden shadow-2xl flex flex-col max-h-[96dvh]"
             >
               {/* ── Header — grainient dark ── */}
-              <div className="relative flex-shrink-0 px-6 pt-8 pb-7 sm:px-8 overflow-hidden">
+              <div className="relative flex-shrink-0 overflow-hidden">
                 {/* Grainient bg */}
                 <div className="absolute inset-0">
                   <Grainient
@@ -104,26 +104,28 @@ export default function ContactModal() {
                     contrast={1.5} gamma={1} saturation={1} zoom={0.9}
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-b from-dark/35 via-dark/20 to-dark/50 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-dark/40 via-dark/20 to-dark/55 pointer-events-none" />
 
-                {/* Close button */}
-                <button
-                  onClick={closeModal}
-                  className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/15 border border-white/25 flex items-center justify-center hover:bg-white/25 transition-colors"
-                  aria-label="Close"
-                >
-                  <X size={14} className="text-white" />
-                </button>
-
-                {/* Header text */}
-                <div className="relative z-10">
-                  <p className="font-body text-[11px] font-semibold text-white/55 uppercase tracking-[0.12em] mb-2">
+                {/* Top bar: eyebrow + close */}
+                <div className="relative z-10 flex items-center justify-between px-6 sm:px-8 pt-6 pb-0">
+                  <p className="font-body text-[10px] sm:text-[11px] font-semibold text-white/50 uppercase tracking-[0.13em]">
                     Have a question or an idea you&apos;re exploring?
                   </p>
-                  <h2 className="font-heading font-bold text-[22px] sm:text-[26px] text-white leading-snug tracking-[-0.02em] max-w-[360px]">
+                  <button
+                    onClick={closeModal}
+                    className="flex-shrink-0 ml-4 w-8 h-8 rounded-full bg-white/15 border border-white/25 flex items-center justify-center hover:bg-white/28 transition-colors"
+                    aria-label="Close"
+                  >
+                    <X size={14} className="text-white" />
+                  </button>
+                </div>
+
+                {/* Header text */}
+                <div className="relative z-10 px-6 sm:px-8 pt-3 pb-7">
+                  <h2 className="font-heading font-bold text-[24px] sm:text-[28px] text-white leading-[1.15] tracking-[-0.025em] mb-2">
                     Tell us what you&apos;re trying to solve.
                   </h2>
-                  <p className="font-body text-[13px] text-white/65 mt-2 max-w-[38ch] leading-relaxed">
+                  <p className="font-body text-[13px] text-white/60 leading-relaxed max-w-[42ch]">
                     Our senior team responds the same day — because meaningful conversations are where great insights begin.
                   </p>
                 </div>
