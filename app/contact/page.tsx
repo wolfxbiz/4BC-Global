@@ -157,7 +157,7 @@ export default function ContactPage() {
         {/* Wave divider */}
         <div className="absolute -bottom-px left-0 right-0 leading-[0] pointer-events-none">
           <svg viewBox="0 0 1440 60" className="w-full block" preserveAspectRatio="none">
-            <path d="M0,60 L0,30 Q360,0 720,30 Q1080,60 1440,15 L1440,60 Z" fill="#F7F8FC" />
+            <path d="M0,60 L0,30 Q360,0 720,30 Q1080,60 1440,15 L1440,60 Z" fill="#FFFFFF" />
           </svg>
         </div>
       </section>
