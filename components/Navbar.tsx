@@ -90,7 +90,7 @@ export default function Navbar() {
         {/* Contact Us — right, with pill animation */}
         <div className="hidden lg:block flex-shrink-0">
           <PillButton
-            onClick={openModal}
+            href="/contact"
             bgColor="#1A2E5C"
             textColor="#ffffff"
             fillColor="#E8A020"
@@ -132,12 +132,12 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="pt-2 pb-1">
-            <button
-              onClick={() => { toggleMobile(); openModal() }}
-              className="block w-full text-center font-body font-semibold text-[14px] bg-primary text-white rounded-full px-5 py-3 hover:bg-primary/90 transition-colors"
+            <Link
+              href="/contact"
+              className="block text-center font-body font-semibold text-[14px] bg-primary text-white rounded-full px-5 py-3 hover:bg-primary/90 transition-colors"
             >
               Contact Us
-            </button>
+            </Link>
           </div>
         </nav>
       </div>
