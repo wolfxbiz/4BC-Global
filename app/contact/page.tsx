@@ -163,7 +163,7 @@ export default function ContactPage() {
       </section>
 
       {/* ─── TRUST SIGNALS ─── */}
-      <section className="bg-bg-soft py-14 px-4 border-b border-border">
+      <section className="bg-white py-14 px-4 border-b border-border">
         <div className="container-content">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             {trustSignals.map((t, i) => (
@@ -184,7 +184,7 @@ export default function ContactPage() {
       </section>
 
       {/* ─── HOW IT WORKS ─── */}
-      <section className="bg-bg-soft py-14 sm:py-16 px-4">
+      <section className="bg-white py-14 sm:py-16 px-4 border-b border-border">
         <div className="container-content">
           <AnimatedSection className="mb-10">
             <span className="font-body text-[11px] font-semibold text-primary uppercase tracking-widest block mb-1">Process</span>
@@ -194,7 +194,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {steps.map((step, i) => (
               <AnimatedSection key={step.num} delay={i * 0.08}>
-                <div className="relative bg-white border border-border rounded-2xl p-5 sm:p-6 h-full">
+                <div className="relative bg-bg-soft border border-border rounded-2xl p-5 sm:p-6 h-full">
                   {/* connector line on desktop */}
                   {i < steps.length - 1 && (
                     <div className="hidden lg:block absolute top-8 -right-3 z-10">
