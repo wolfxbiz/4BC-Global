@@ -411,7 +411,7 @@ export default function ContactPage() {
                   <div className="absolute inset-0 bg-dark/45 pointer-events-none" />
                   <div className="relative z-10">
                     <p className="font-heading italic text-[15px] text-white/85 leading-relaxed mb-4">
-                      &quot;Whether you need a quick market snapshot or a full strategic study — we&apos;re ready to design the right research for you.&quot;
+                      &quot;Whether you need a quick market snapshot or a detailed market entry strategy development — we&apos;re ready to design the right research for you.&quot;
                     </p>
                     <div className="flex items-center gap-2.5">
                       <div className="w-7 h-7 rounded-full bg-white/20 border border-white/30 flex items-center justify-center">
