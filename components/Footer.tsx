@@ -1,8 +1,11 @@
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Linkedin } from 'lucide-react'
+import { useContactModal } from '@/lib/contact-modal-context'
 
 export default function Footer() {
+  const { openModal } = useContactModal()
   return (
     <footer className="relative text-white overflow-hidden bg-[#0F1320]">
 
@@ -78,12 +81,12 @@ export default function Footer() {
             <p className="font-body text-sm text-gray-400 leading-relaxed">
               Let's bring the same depth of insight to your business challenges.
             </p>
-            <Link
-              href="/contact"
+            <button
+              onClick={openModal}
               className="font-body text-sm font-medium text-dark bg-accent rounded-full px-5 py-2.5 hover:brightness-110 transition-all duration-200 inline-block"
             >
               Start a Conversation →
-            </Link>
+            </button>
           </div>
         </div>
 

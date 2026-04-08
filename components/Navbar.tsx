@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { gsap } from 'gsap'
 import PillButton from './PillButton'
+import { useContactModal } from '@/lib/contact-modal-context'
 
 const navItems = [
   { label: 'About Us', href: '/about' },
@@ -16,6 +17,7 @@ const navItems = [
 
 export default function Navbar() {
   const pathname = usePathname()
+  const { openModal } = useContactModal()
   const [mobileOpen, setMobileOpen] = useState(false)
   const hamburgerRef = useRef<HTMLButtonElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
@@ -88,7 +90,7 @@ export default function Navbar() {
         {/* Contact Us — right, with pill animation */}
         <div className="hidden lg:block flex-shrink-0">
           <PillButton
-            href="/contact"
+            onClick={openModal}
             bgColor="#1A2E5C"
             textColor="#ffffff"
             fillColor="#E8A020"
@@ -130,12 +132,12 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="pt-2 pb-1">
-            <Link
-              href="/contact"
-              className="block text-center font-body font-semibold text-[14px] bg-primary text-white rounded-full px-5 py-3 hover:bg-primary/90 transition-colors"
+            <button
+              onClick={() => { toggleMobile(); openModal() }}
+              className="block w-full text-center font-body font-semibold text-[14px] bg-primary text-white rounded-full px-5 py-3 hover:bg-primary/90 transition-colors"
             >
               Contact Us
-            </Link>
+            </button>
           </div>
         </nav>
       </div>

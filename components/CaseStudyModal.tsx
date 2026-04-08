@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { MapPin, BarChart2, ArrowRight, Target, Lightbulb, TrendingUp, X } from 'lucide-react'
 import { useOutsideClick } from '@/hooks/use-outside-click'
 import { CaseStudy, sectorConfig } from '@/lib/case-studies-data'
+import { useContactModal } from '@/lib/contact-modal-context'
 
 interface CaseStudyModalProps {
   study: CaseStudy
@@ -15,6 +16,7 @@ interface CaseStudyModalProps {
 
 export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
   const ref = useRef<HTMLDivElement>(null)
+  const { openModal: openContactModal } = useContactModal()
   useOutsideClick(ref, onClose)
 
   useEffect(() => {
@@ -122,13 +124,12 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
               </div>
 
               <div className="mt-6 pt-5 border-t border-border flex flex-wrap items-center justify-between gap-3">
-                <Link
-                  href="/contact"
+                <button
                   className="inline-flex items-center gap-2 font-body font-semibold text-[14px] text-primary hover:text-primary-light transition-colors"
-                  onClick={onClose}
+                  onClick={() => { onClose(); setTimeout(openContactModal, 200) }}
                 >
                   Start a similar project <ArrowRight size={14} />
-                </Link>
+                </button>
                 <Link
                   href="/case-studies"
                   className="inline-flex items-center gap-2 font-body font-medium text-[13px] text-text-muted border border-border rounded-full px-4 py-2 hover:border-primary hover:text-primary transition-all"

@@ -5,11 +5,11 @@ import AnimatedSection from '@/components/AnimatedSection'
 import TestimonialSlider from '@/components/TestimonialSlider'
 import FaqAccordion from '@/components/FaqAccordion'
 import LogoStrip from '@/components/LogoStrip'
-import PillButton from '@/components/PillButton'
 import HeroDashboard from '@/components/HeroDashboard'
 import Grainient from '@/components/Grainient'
 import CapabilitiesBento from '@/components/CapabilitiesBento'
 import HomeCaseStudies from '@/components/HomeCaseStudies'
+import { OpenContactPill, OpenContactButton } from '@/components/OpenContactButton'
 import { sectors } from '@/lib/sectors-data'
 
 const approachFeatures = [
@@ -114,8 +114,7 @@ export default function HomePageContent() {
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8 sm:mb-10">
-              <PillButton
-                href="/contact"
+              <OpenContactPill
                 bgColor="#E8A020"
                 textColor="#1A1A2E"
                 fillColor="#7D2B5E"
@@ -123,7 +122,7 @@ export default function HomePageContent() {
                 className="font-heading font-semibold text-[16px] px-8 py-4 shadow-lg"
               >
                 Get Started <ArrowRight size={16} />
-              </PillButton>
+              </OpenContactPill>
               <Link
                 href="/about"
                 className="inline-flex items-center gap-1.5 font-body font-medium text-body-md text-white/65 hover:text-white transition-colors group"
@@ -385,12 +384,9 @@ export default function HomePageContent() {
             <h2 className="font-heading text-h2-lg text-text mb-10">
               Ready to Get Started?
             </h2>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[17px] rounded-full px-9 py-4.5 hover:bg-accent-warm transition-colors"
-            >
-              Submit a Request <ArrowRight size={17} />
-            </Link>
+            <OpenContactButton className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[17px] rounded-full px-9 py-4 hover:bg-accent-warm transition-colors">
+              Book a Consultation <ArrowRight size={17} />
+            </OpenContactButton>
           </AnimatedSection>
         </div>
       </section>

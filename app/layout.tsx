@@ -3,6 +3,8 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { ContactModalProvider } from '@/lib/contact-modal-context'
+import ContactModal from '@/components/ContactModal'
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -35,10 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={plusJakarta.variable}>
       <body className={plusJakarta.className}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-
+        <ContactModalProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <ContactModal />
+        </ContactModalProvider>
       </body>
     </html>
   )
