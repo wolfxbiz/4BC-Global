@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   },
   description: 'Specialist B2B and B2C market research firm serving 40+ countries across Middle East & Africa. Market entry, customer experience, impact assessment and more.',
   icons: {
-    icon: '/brand/logo-dark.svg',
-    shortcut: '/brand/logo-dark.svg',
+    icon: '/brand/favicon.svg',
+    shortcut: '/brand/favicon.svg',
   },
   openGraph: {
     type: 'website',

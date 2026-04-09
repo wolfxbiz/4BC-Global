@@ -58,11 +58,11 @@ export default function Navbar() {
         {/* Logo — left */}
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/brand/logo-light.svg"
+            src="/brand/logo-full.png"
             alt="4BC Global"
-            width={110}
-            height={32}
-            className="h-7 w-auto object-contain"
+            width={160}
+            height={46}
+            className="h-8 w-auto object-contain"
             priority
           />
         </Link>

@@ -13,10 +13,10 @@ export default function Footer() {
       <div className="relative z-10 bg-white py-10 px-4">
         <Link href="/" className="block w-full max-w-5xl mx-auto">
           <Image
-            src="/brand/logo-dark.svg"
+            src="/brand/logo-full.png"
             alt="4BC Global"
             width={1200}
-            height={300}
+            height={340}
             className="w-full h-auto object-contain"
           />
         </Link>

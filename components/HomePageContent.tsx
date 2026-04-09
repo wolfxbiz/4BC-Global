@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowRight, Search, Map, TrendingUp, MapPin, Users } from 'lucide-react'
+import { ArrowRight, Search, MapPin, Users } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import TestimonialSlider from '@/components/TestimonialSlider'
 import FaqAccordion from '@/components/FaqAccordion'
@@ -31,9 +30,33 @@ const approachFeatures = [
 ]
 
 const tools = [
-  { name: '4BC InFuse', desc: 'Secondary intelligence platform for industry landscapes and competitive profiling across MEA.', icon: Search },
-  { name: '4BC Landscape', desc: 'Geo-mapping tool for retail network planning and location intelligence.', icon: Map },
-  { name: '4BC ImpactIQ', desc: 'Socio-economic impact measurement framework for events, projects, and programs.', icon: TrendingUp },
+  {
+    name: '4BC InFuse',
+    tagline: 'Your desk research, supercharged.',
+    desc: 'Secondary intelligence platform for industry landscapes and competitive profiling across MEA.',
+    type: 'Secondary Research Platform',
+    href: '/tools#infuse',
+    accent: 'border-primary group-hover:border-primary',
+    tag: 'bg-primary/15 text-primary',
+  },
+  {
+    name: '4BC Landscape',
+    tagline: 'Know exactly where to grow.',
+    desc: 'Geo-mapping tool for retail network planning and location intelligence across MEA markets.',
+    type: 'Geo-Intelligence Tool',
+    href: '/tools#landscape',
+    accent: 'border-plum group-hover:border-plum',
+    tag: 'bg-plum/15 text-plum',
+  },
+  {
+    name: '4BC ImpactIQ',
+    tagline: 'Measure what matters — socially and economically.',
+    desc: 'Socio-economic impact measurement framework for events, projects, and programs.',
+    type: 'Impact Assessment Framework',
+    href: '/tools#impactiq',
+    accent: 'border-accent group-hover:border-accent',
+    tag: 'bg-accent/15 text-accent',
+  },
 ]
 
 
@@ -345,17 +368,27 @@ export default function HomePageContent() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3">
                 {tools.map((tool) => (
-                  <div key={tool.name} className="flex gap-4 bg-dark-surface border border-white/10 rounded-2xl p-5 hover:border-white/20 transition-colors duration-200">
-                    <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center flex-shrink-0">
-                      <tool.icon size={20} className="text-white/80" strokeWidth={1.5} />
+                  <Link
+                    key={tool.name}
+                    href={tool.href}
+                    className={`group block bg-white/95 border-l-2 border border-white/40 ${tool.accent} rounded-2xl p-5 hover:bg-white hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl transition-all duration-200 shadow-sm`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-heading font-bold text-[17px] text-text tracking-[-0.01em]">{tool.name}</h4>
+                          <span className={`text-[10px] font-body font-medium px-2 py-0.5 rounded-full ${tool.tag} hidden sm:inline-block`}>
+                            {tool.type}
+                          </span>
+                        </div>
+                        <p className="font-body text-[13px] text-text-muted mb-2">{tool.tagline}</p>
+                        <p className="font-body text-[13px] text-text-muted/80 leading-relaxed">{tool.desc}</p>
+                      </div>
+                      <ArrowRight size={16} className="text-text-muted/40 group-hover:text-primary group-hover:translate-x-1 transition-all duration-200 flex-shrink-0 mt-1" />
                     </div>
-                    <div>
-                      <h4 className="font-heading font-semibold text-[17px] text-white mb-1 tracking-[-0.01em]">{tool.name}</h4>
-                      <p className="font-body text-body-sm text-gray-400 max-w-[40ch]">{tool.desc}</p>
-                    </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </AnimatedSection>
@@ -367,26 +400,70 @@ export default function HomePageContent() {
       <HomeCaseStudies />
 
       {/* ─── 9. TESTIMONIALS ─── */}
-      <section className="bg-bg-soft py-20 px-4 border-t border-border">
+      {/* ─── 9. Testimonials ─── */}
+      <section className="bg-[#0F1320] py-20 px-4">
         <div className="container-content">
           <AnimatedSection>
-            <p className="font-heading font-semibold text-label tracking-[0.1em] uppercase text-primary text-center mb-2">Hear From Our Clients</p>
+            <p className="font-heading font-semibold text-[11px] tracking-[0.12em] uppercase text-accent mb-10">
+              What Our Clients Say
+            </p>
             <TestimonialSlider />
           </AnimatedSection>
         </div>
       </section>
 
       {/* ─── 10. CTA ─── */}
-      <section className="bg-white py-20 px-4 text-center border-t border-border">
-        <div className="container-content">
-          <AnimatedSection>
-            <p className="font-heading font-semibold text-label tracking-[0.1em] uppercase text-primary mb-3">Get in Touch</p>
-            <h2 className="font-heading text-h2-lg text-text mb-10">
+      <section className="relative py-20 md:py-28 px-4 overflow-hidden">
+        {/* Same Grainient as hero */}
+        <div className="absolute inset-0">
+          <Grainient
+            color1="#351e6b"
+            color2="#9a4788"
+            color3="#b19f2b"
+            timeSpeed={2.35}
+            colorBalance={-0.47}
+            warpStrength={1.9}
+            warpFrequency={4.2}
+            warpSpeed={0.5}
+            warpAmplitude={26}
+            blendAngle={28}
+            blendSoftness={0.39}
+            rotationAmount={260}
+            noiseScale={2}
+            grainAmount={0.1}
+            grainScale={2}
+            grainAnimated={false}
+            contrast={1.5}
+            gamma={1}
+            saturation={1}
+            centerX={0}
+            centerY={0}
+            zoom={0.9}
+          />
+        </div>
+
+        <div className="container-content relative z-10">
+          <AnimatedSection className="text-center">
+            <p className="font-heading font-semibold text-[11px] tracking-[0.12em] uppercase text-accent mb-4">
+              Get in Touch
+            </p>
+            <h2 className="font-heading text-[32px] md:text-[44px] lg:text-[52px] font-bold text-white mb-4 tracking-[-0.02em] leading-tight">
               Ready to Get Started?
             </h2>
-            <OpenContactButton className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[17px] rounded-full px-9 py-4 hover:bg-accent-warm transition-colors">
-              Book a Consultation <ArrowRight size={17} />
-            </OpenContactButton>
+            <p className="font-body text-white/55 text-[15px] md:text-[16px] max-w-md mx-auto mb-10 leading-relaxed">
+              From market entry to customer intelligence — we deliver research that drives real decisions across MEA.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              <OpenContactButton className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-accent text-dark font-body font-semibold text-[15px] rounded-full px-7 py-3.5 hover:brightness-110 transition-all">
+                Book a Consultation <ArrowRight size={16} />
+              </OpenContactButton>
+              <Link
+                href="/case-studies"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white font-body font-medium text-[15px] rounded-full px-7 py-3.5 hover:bg-white/18 transition-all"
+              >
+                View Case Studies
+              </Link>
+            </div>
           </AnimatedSection>
         </div>
       </section>

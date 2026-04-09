@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const testimonials = [
   {
@@ -52,96 +52,121 @@ export default function TestimonialSlider() {
 
   return (
     <div
-      className="relative max-w-3xl mx-auto"
+      className="grid lg:grid-cols-[1fr_300px] gap-12 lg:gap-16 items-center"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={current}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -16 }}
-          transition={{ duration: 0.4 }}
-          className="text-center"
+      {/* Left — Quote */}
+      <div className="relative">
+        {/* Decorative giant quote mark */}
+        <span
+          aria-hidden
+          className="absolute -top-6 -left-2 text-[100px] leading-none font-serif text-white/8 select-none pointer-events-none"
         >
-          {/* Big quote icon */}
-          <div className="flex justify-center mb-8">
-            <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">
-              <Quote size={26} className="text-primary" strokeWidth={1.5} />
-            </div>
-          </div>
+          &ldquo;
+        </span>
 
-          {/* Quote */}
-          <blockquote className="font-heading font-semibold text-2xl md:text-[28px] lg:text-[32px] text-text leading-tight mb-10 tracking-[-0.02em] text-wrap-balance">
+        <AnimatePresence mode="wait">
+          <motion.blockquote
+            key={current}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.45, ease: 'easeOut' }}
+            className="relative font-heading font-semibold text-[22px] md:text-[28px] lg:text-[32px] text-white leading-snug tracking-[-0.02em]"
+          >
             &ldquo;{t.quote}&rdquo;
-          </blockquote>
+          </motion.blockquote>
+        </AnimatePresence>
 
-          {/* Author + logo */}
-          <div className="flex flex-col items-center gap-4">
-            {/* Company logo or name badge */}
-            {t.logo ? (
-              <div className="h-12 w-32 flex items-center justify-center">
-                <Image
-                  src={t.logo}
-                  alt={t.company}
-                  width={128}
-                  height={48}
-                  className="object-contain w-full h-full"
-                />
-              </div>
-            ) : (
-              <div className="h-10 px-5 bg-primary/8 border border-primary/15 rounded-xl flex items-center">
-                <span className="font-heading font-bold text-primary text-sm tracking-tight">{t.company}</span>
-              </div>
-            )}
-
-            {/* Divider */}
-            <div className="w-8 h-px bg-border" />
-
-            {/* Author */}
-            <div>
-              <p className="font-heading font-semibold text-[15px] text-text">{t.author}</p>
-              <p className="font-body text-[13px] text-text-muted mt-0.5">{t.company} · {t.sector}</p>
-            </div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Navigation */}
-      <div className="flex items-center justify-center gap-6 mt-12">
-        <button
-          onClick={prev}
-          className="w-11 h-11 rounded-full border border-border bg-white flex items-center justify-center text-text-muted hover:border-primary hover:text-primary transition-all duration-200 shadow-sm"
-          aria-label="Previous"
-        >
-          <ChevronLeft size={18} />
-        </button>
-
-        {/* Dots */}
-        <div className="flex items-center gap-2">
+        {/* Dots — desktop below quote */}
+        <div className="hidden lg:flex items-center gap-2 mt-10">
           {testimonials.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
               className={`rounded-full transition-all duration-300 ${
                 i === current
-                  ? 'w-6 h-2 bg-primary'
-                  : 'w-2 h-2 bg-border hover:bg-primary/40'
+                  ? 'w-6 h-2 bg-accent'
+                  : 'w-2 h-2 bg-white/20 hover:bg-white/40'
               }`}
               aria-label={`Go to testimonial ${i + 1}`}
             />
           ))}
         </div>
-
-        <button
-          onClick={next}
-          className="w-11 h-11 rounded-full border border-border bg-white flex items-center justify-center text-text-muted hover:border-primary hover:text-primary transition-all duration-200 shadow-sm"
-          aria-label="Next"
-        >
-          <ChevronRight size={18} />
-        </button>
       </div>
+
+      {/* Right — Author card + navigation */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, x: 16 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -16 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+          className="flex flex-col gap-6"
+        >
+          {/* Logo card */}
+          {t.logo ? (
+            <div className="bg-white rounded-2xl p-5 h-20 w-44 flex items-center justify-center shadow-lg">
+              <Image
+                src={t.logo}
+                alt={t.company}
+                width={140}
+                height={60}
+                className="object-contain w-full h-full"
+              />
+            </div>
+          ) : (
+            <div className="bg-white/10 border border-white/15 rounded-2xl px-5 py-3 inline-flex w-fit">
+              <span className="font-heading font-bold text-white text-sm tracking-tight">{t.company}</span>
+            </div>
+          )}
+
+          {/* Author info */}
+          <div className="border-l-2 border-accent pl-4">
+            <p className="font-heading font-semibold text-white text-[15px]">{t.author}</p>
+            <p className="font-body text-white/50 text-[13px] mt-0.5">{t.company}</p>
+            <span className="mt-2 inline-block bg-accent/15 text-accent text-[11px] font-body font-medium px-3 py-1 rounded-full tracking-wide">
+              {t.sector}
+            </span>
+          </div>
+
+          {/* Navigation arrows */}
+          <div className="flex items-center gap-3 mt-2">
+            <button
+              onClick={prev}
+              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-accent hover:text-accent transition-all duration-200"
+              aria-label="Previous"
+            >
+              <ChevronLeft size={17} />
+            </button>
+            <button
+              onClick={next}
+              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-accent hover:text-accent transition-all duration-200"
+              aria-label="Next"
+            >
+              <ChevronRight size={17} />
+            </button>
+
+            {/* Dots — mobile */}
+            <div className="flex lg:hidden items-center gap-1.5 ml-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === current
+                      ? 'w-5 h-1.5 bg-accent'
+                      : 'w-1.5 h-1.5 bg-white/20'
+                  }`}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   )
 }
