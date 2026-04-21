@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { CheckCircle2 } from 'lucide-react'
+import GradientText from '@/components/GradientText'
 import AnimatedSection from '@/components/AnimatedSection'
 import PillButton from '@/components/PillButton'
 import Grainient from '@/components/Grainient'
@@ -123,7 +124,7 @@ export default function ToolsPage() {
                 </div>
                 <span className="section-tag">{tool.type}</span>
                 <h2 className="font-heading font-medium text-3xl md:text-4xl text-text mb-2">
-                  {tool.name}
+                  <GradientText hoverOnly animationSpeed={2}>{tool.name}</GradientText>
                 </h2>
                 <p className="font-heading text-lg text-text-muted italic mb-6">{tool.tagline}</p>
                 <p className="font-body text-text-muted leading-relaxed mb-6">{tool.description}</p>

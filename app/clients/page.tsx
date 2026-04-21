@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import AnimatedSection from '@/components/AnimatedSection'
+import GradientText from '@/components/GradientText'
 import PageHeader from '@/components/PageHeader'
 import PillButton from '@/components/PillButton'
 import Grainient from '@/components/Grainient'
@@ -159,7 +160,7 @@ export default function ClientsPage() {
           <AnimatedSection className="text-center mb-14">
             <span className="section-tag">Our Clients</span>
             <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
-              100+ Clients Across 7 Sectors
+              <GradientText hoverOnly animationSpeed={2}>100+ Clients Across 7 Sectors</GradientText>
             </h2>
           </AnimatedSection>
           <div className="space-y-14">

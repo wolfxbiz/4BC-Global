@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Search, MapPin, Users } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import GradientText from '@/components/GradientText'
 import TestimonialSlider from '@/components/TestimonialSlider'
 import FaqAccordion from '@/components/FaqAccordion'
 import LogoStrip from '@/components/LogoStrip'
@@ -211,7 +212,7 @@ export default function HomePageContent() {
             <AnimatedSection>
               <span className="section-tag">Approach</span>
               <h2 className="font-heading text-h2-lg text-text mb-6 max-w-[440px]">
-                Market insights you can believe in
+                <GradientText hoverOnly animationSpeed={2}>Market insights you can believe in</GradientText>
               </h2>
               <p className="font-body text-body-lg text-primary font-semibold leading-relaxed mb-6 max-w-[48ch]">
                 There is a better way to do market intelligence for MEA — one that gives you genuine confidence in critical business decisions.
@@ -270,7 +271,7 @@ export default function HomePageContent() {
             <AnimatedSection>
               <span className="section-tag">Sectors</span>
               <h2 className="font-heading text-h2-lg text-text mb-4 max-w-[400px]">
-                A research firm that understands your sector
+                <GradientText hoverOnly animationSpeed={2}>A research firm that understands your sector</GradientText>
               </h2>
               <p className="font-body text-body-sm text-text-muted max-w-[46ch]">
                 We pride ourselves on the depth of our sector knowledge across MEA markets.
@@ -354,7 +355,7 @@ export default function HomePageContent() {
             <AnimatedSection>
               <span className="font-heading font-semibold text-label tracking-[0.1em] uppercase text-primary mb-4 inline-block">Proprietary Tools</span>
               <h2 className="font-heading text-h2-lg text-text mb-6 max-w-[400px]">
-                Intelligence platforms built for MEA
+                <GradientText hoverOnly animationSpeed={2}>Intelligence platforms built for MEA</GradientText>
               </h2>
               <p className="font-body text-body-sm text-text-muted mb-3 max-w-[50ch]">
                 Our ultimate aim is for our insights to drive meaningful decisions for your organization.

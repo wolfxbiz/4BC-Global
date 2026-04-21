@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle2, Globe, Users, Award, Lightbulb } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import GradientText from '@/components/GradientText'
 import PageHeader from '@/components/PageHeader'
 import TeamCard from '@/components/TeamCard'
 import type { TeamMember } from '@/components/TeamCard'
@@ -162,7 +163,7 @@ export default function AboutPage() {
             <AnimatedSection>
               <span className="section-tag">Our Story</span>
               <h2 className="font-heading font-medium text-3xl md:text-4xl text-text mb-6">
-                Built from Kantar Roots, Designed for MEA
+                <GradientText hoverOnly animationSpeed={2}>Built from Kantar Roots, Designed for MEA</GradientText>
               </h2>
               <div className="accent-divider mb-8 mx-0" style={{ margin: '0 0 2rem 0' }} />
               <div className="space-y-4 font-body text-text-muted leading-relaxed text-lg">
@@ -202,7 +203,7 @@ export default function AboutPage() {
           <AnimatedSection className="text-center mb-12">
             <span className="section-tag">Our Philosophy</span>
             <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
-              Your Business Needs Dictate Our Approach
+              <GradientText hoverOnly animationSpeed={2}>Your Business Needs Dictate Our Approach</GradientText>
             </h2>
             <p className="font-body text-text-muted mt-4 max-w-2xl mx-auto">
               We reject one-size-fits-all methodologies. Our method-neutral approach is bespoke to each client's specific business challenge.
@@ -239,7 +240,7 @@ export default function AboutPage() {
           <AnimatedSection className="text-center mb-12">
             <span className="section-tag">Our Reach</span>
             <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
-              40+ Countries. 2 Offices. 4 Partner Hubs.
+              <GradientText hoverOnly animationSpeed={2}>40+ Countries. 2 Offices. 4 Partner Hubs.</GradientText>
             </h2>
             <div className="accent-divider mt-4" />
           </AnimatedSection>
@@ -298,7 +299,7 @@ export default function AboutPage() {
           <AnimatedSection className="text-center mb-12">
             <span className="section-tag">Why We're Different</span>
             <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
-              What Sets 4BC Global Apart
+              <GradientText hoverOnly animationSpeed={2}>What Sets 4BC Global Apart</GradientText>
             </h2>
             <div className="accent-divider mt-4" />
           </AnimatedSection>
@@ -326,7 +327,7 @@ export default function AboutPage() {
           <AnimatedSection className="text-center mb-6">
             <span className="section-tag">Our Team</span>
             <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
-              Senior-Led. MEA-Experienced. Research-Obsessed.
+              <GradientText hoverOnly animationSpeed={2}>Senior-Led. MEA-Experienced. Research-Obsessed.</GradientText>
             </h2>
             <div className="accent-divider mt-4" />
           </AnimatedSection>

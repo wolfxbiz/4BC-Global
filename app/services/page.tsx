@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Search, Users, BarChart2, MapPin, Lightbulb, ArrowRight, CheckCircle2 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import GradientText from '@/components/GradientText'
 import PageHeader from '@/components/PageHeader'
 import PillButton from '@/components/PillButton'
 import Grainient from '@/components/Grainient'
@@ -155,7 +156,7 @@ export default function ServicesPage() {
           <AnimatedSection className="text-center mb-16">
             <span className="section-tag">Advisory Services</span>
             <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
-              We Support You at Every Stage of Growth
+              <GradientText hoverOnly animationSpeed={2}>We Support You at Every Stage of Growth</GradientText>
             </h2>
             <p className="font-body text-text-muted mt-3 max-w-xl mx-auto">
               From first idea to market renewal — our advisory practice is structured around your business lifecycle.
@@ -238,7 +239,7 @@ export default function ServicesPage() {
           <AnimatedSection className="text-center mb-12">
             <span className="section-tag">Core Service Areas</span>
             <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
-              Comprehensive Research Capabilities
+              <GradientText hoverOnly animationSpeed={2}>Comprehensive Research Capabilities</GradientText>
             </h2>
             <div className="accent-divider mt-4" />
           </AnimatedSection>

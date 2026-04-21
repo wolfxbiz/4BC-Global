@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { ArrowRight, ArrowLeft, CheckCircle2, Users } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import GradientText from '@/components/GradientText'
 import { sectors, getSectorBySlug } from '@/lib/sectors-data'
 
 interface Props {
@@ -124,7 +125,7 @@ export default function SectorPage({ params }: Props) {
             <AnimatedSection>
               <span className="section-tag">Overview</span>
               <h2 className="font-heading font-medium text-3xl md:text-4xl text-text mb-5">
-                Our {sector.name} Practice
+                <GradientText hoverOnly animationSpeed={2}>Our {sector.name} Practice</GradientText>
               </h2>
               <p className="font-body text-text-muted text-lg leading-relaxed mb-6">
                 {sector.description}
@@ -145,7 +146,7 @@ export default function SectorPage({ params }: Props) {
             <AnimatedSection delay={0.2}>
               <span className="section-tag">What We Research</span>
               <h2 className="font-heading font-medium text-3xl text-text mb-6">
-                Research Capabilities
+                <GradientText hoverOnly animationSpeed={2}>Research Capabilities</GradientText>
               </h2>
               <div className="space-y-3">
                 {sector.researchList.map((item) => (
@@ -167,7 +168,7 @@ export default function SectorPage({ params }: Props) {
             <AnimatedSection className="mb-10">
               <span className="section-tag">Our Work</span>
               <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
-                Key Engagements
+                <GradientText hoverOnly animationSpeed={2}>Key Engagements</GradientText>
               </h2>
               <p className="font-body text-text-muted mt-3">
                 A sample of research projects we have executed in this sector.
@@ -199,7 +200,7 @@ export default function SectorPage({ params }: Props) {
             <AnimatedSection className="text-center mb-10">
               <span className="section-tag">Clients</span>
               <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
-                Who We've Worked With
+                <GradientText hoverOnly animationSpeed={2}>Who We've Worked With</GradientText>
               </h2>
             </AnimatedSection>
             <AnimatedSection>

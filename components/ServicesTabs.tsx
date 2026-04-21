@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { ArrowRight, BarChart2, Users, Zap, MapPin } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import GradientText from '@/components/GradientText'
 
 const tabs = [
   {
@@ -61,7 +62,7 @@ export default function ServicesTabs() {
           <span className="font-body text-xs font-medium tracking-widest uppercase text-primary inline-block mb-1">Capabilities</span>
           <div className="h-[3px] w-10 bg-accent rounded-full mb-4" />
           <h2 className="font-heading font-medium text-4xl md:text-5xl text-text">
-            Our market research services
+            <GradientText hoverOnly animationSpeed={2}>Our market research services</GradientText>
           </h2>
         </div>
 

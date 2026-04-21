@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Plus, Minus } from 'lucide-react'
+import GradientText from '@/components/GradientText'
 
 const faqs = [
   {
@@ -45,7 +46,7 @@ export default function FaqAccordion() {
           <div className="lg:col-span-2">
             <span className="font-body text-xs font-medium tracking-widest uppercase text-primary mb-3 inline-block">FAQs</span>
             <h2 className="font-heading font-medium text-3xl md:text-4xl text-text leading-tight mb-4">
-              Learn more about our MEA market research services
+              <GradientText hoverOnly animationSpeed={2}>Learn more about our MEA market research services</GradientText>
             </h2>
             <p className="font-body text-sm text-text-muted leading-relaxed mb-4">
               Here are some frequently asked questions about working with 4BC Global.

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import GradientText from '@/components/GradientText'
 import LogoStrip from '@/components/LogoStrip'
 import { sectors } from '@/lib/sectors-data'
 import PillButton from '@/components/PillButton'
@@ -133,7 +134,7 @@ export default function SectorsPage() {
           <AnimatedSection className="mb-12">
             <span className="section-tag">Our Sectors</span>
             <h2 className="font-heading font-medium text-4xl md:text-5xl text-text">
-              Select a Sector
+              <GradientText hoverOnly animationSpeed={2}>Select a Sector</GradientText>
             </h2>
             <p className="font-body text-text-muted mt-3 max-w-lg">
               Click any sector to explore what we research, our clients, and key engagements.
@@ -210,7 +211,7 @@ export default function SectorsPage() {
             <AnimatedSection>
               <span className="section-tag">Our Capabilities</span>
               <h2 className="font-heading font-medium text-4xl md:text-5xl text-text leading-tight mb-5">
-                What We Research Across Every Sector
+                <GradientText hoverOnly animationSpeed={2}>What We Research Across Every Sector</GradientText>
               </h2>
               <p className="font-body text-text-muted leading-relaxed mb-8">
                 Regardless of industry, our method-neutral approach means we design the right research for your specific challenge — combining quantitative, qualitative, and secondary research to deliver intelligence that actually moves the needle.
@@ -251,7 +252,7 @@ export default function SectorsPage() {
             <AnimatedSection>
               <span className="section-tag">Case Studies</span>
               <h2 className="font-heading font-medium text-4xl md:text-5xl text-text">
-                Intelligence in Action
+                <GradientText hoverOnly animationSpeed={2}>Intelligence in Action</GradientText>
               </h2>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>

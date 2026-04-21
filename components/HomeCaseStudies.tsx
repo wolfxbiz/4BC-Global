@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { AnimatePresence } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import GradientText from '@/components/GradientText'
 import { CaseStudyModal } from '@/components/CaseStudyModal'
 import { caseStudies, CaseStudy } from '@/lib/case-studies-data'
 
@@ -64,7 +65,7 @@ export default function HomeCaseStudies() {
               <div>
                 <span className="section-tag">Featured Case Study</span>
                 <h2 className="font-heading text-h2 md:text-h2-lg text-text mb-6 max-w-[440px]">
-                  Why the Best Decisions Come from In-Market Data
+                  <GradientText hoverOnly animationSpeed={2}>Why the Best Decisions Come from In-Market Data</GradientText>
                 </h2>
                 <p className="font-body text-body-sm text-text-muted mb-4 max-w-[48ch]">
                   For a leading card payment company, 4BC Global conducted 500+ in-market interviews across commuters, taxi owners, and associations in South Africa.
@@ -98,7 +99,7 @@ export default function HomeCaseStudies() {
           <div className="flex items-end justify-between mb-8">
             <AnimatedSection>
               <span className="section-tag">Featured Case Studies</span>
-              <h2 className="font-heading text-h2 text-text max-w-[380px]">Our MEA market intelligence experience</h2>
+              <h2 className="font-heading text-h2 text-text max-w-[380px]"><GradientText hoverOnly animationSpeed={2}>Our MEA market intelligence experience</GradientText></h2>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
               <Link
