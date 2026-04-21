@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { MapPin, BarChart2, ArrowRight, Target, Lightbulb, TrendingUp, X } from 'lucide-react'
 import { useOutsideClick } from '@/hooks/use-outside-click'
 import { CaseStudy, sectorConfig } from '@/lib/case-studies-data'
@@ -44,16 +44,16 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
         className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
       />
 
-      {/* Modal */}
-      <div className="fixed inset-0 grid place-items-center z-50 p-4">
+      {/* Modal — clears navbar on desktop, full-screen on mobile */}
+      <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:px-6 md:pt-20 md:pb-6">
         <motion.div
           key={study.id}
           ref={ref}
-          initial={{ opacity: 0, scale: 0.96, y: 16 }}
+          initial={{ opacity: 0, scale: 0.97, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.96, y: 16 }}
+          exit={{ opacity: 0, scale: 0.97, y: 20 }}
           transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
-          className="w-full max-w-2xl h-full md:h-fit md:max-h-[90vh] flex flex-col bg-white rounded-3xl overflow-hidden shadow-2xl relative"
+          className="w-full max-w-5xl h-full md:h-auto md:max-h-[calc(100vh-7rem)] flex flex-col md:flex-row bg-white md:rounded-3xl overflow-hidden shadow-2xl relative"
         >
           {/* Close button */}
           <button
@@ -63,8 +63,8 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
             <X size={15} className="text-text" />
           </button>
 
-          {/* Image */}
-          <div className="relative h-56 sm:h-72 flex-shrink-0">
+          {/* Left — image panel (full width mobile, fixed width desktop) */}
+          <div className="relative h-56 sm:h-72 md:h-auto md:w-[360px] lg:w-[420px] flex-shrink-0">
             <Image src={study.image} alt={study.title} fill className="object-cover" />
             <div className={`absolute inset-0 bg-gradient-to-br ${cfg.gradient} opacity-70`} />
             <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6">
@@ -89,14 +89,14 @@ export function CaseStudyModal({ study, onClose }: CaseStudyModalProps) {
             </div>
           </div>
 
-          {/* Content */}
+          {/* Right — scrollable content */}
           <div className="overflow-y-auto flex-1">
-            <div className="p-5 sm:p-7">
+            <div className="p-5 sm:p-7 md:p-8">
               <div className="flex items-center gap-2 mb-3">
                 <MapPin size={13} className="text-text-muted flex-shrink-0" />
                 <span className="font-body text-[13px] text-text-muted">{study.geography}</span>
               </div>
-              <h3 className="font-heading font-bold text-[20px] sm:text-[22px] text-text leading-snug mb-3 tracking-[-0.02em]">
+              <h3 className="font-heading font-bold text-[20px] sm:text-[24px] text-text leading-snug mb-3 tracking-[-0.02em]">
                 {study.title}
               </h3>
               <p className="font-body text-[12px] sm:text-[13px] text-text-muted italic mb-6 flex items-center gap-1.5">

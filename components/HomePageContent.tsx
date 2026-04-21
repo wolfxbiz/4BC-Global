@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Search, MapPin, Users } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import TestimonialSlider from '@/components/TestimonialSlider'
@@ -36,6 +37,8 @@ const tools = [
     desc: 'Secondary intelligence platform for industry landscapes and competitive profiling across MEA.',
     type: 'Secondary Research Platform',
     href: '/tools#infuse',
+    logo: '/brand/infuse-logo.png',
+    logoScale: 0.72,
     accent: 'border-primary group-hover:border-primary',
     tag: 'bg-primary/15 text-primary',
   },
@@ -45,6 +48,8 @@ const tools = [
     desc: 'Geo-mapping tool for retail network planning and location intelligence across MEA markets.',
     type: 'Geo-Intelligence Tool',
     href: '/tools#landscape',
+    logo: '/brand/landscape-logo.png',
+    logoScale: 1,
     accent: 'border-plum group-hover:border-plum',
     tag: 'bg-plum/15 text-plum',
   },
@@ -54,6 +59,8 @@ const tools = [
     desc: 'Socio-economic impact measurement framework for events, projects, and programs.',
     type: 'Impact Assessment Framework',
     href: '/tools#impactiq',
+    logo: '/brand/impactiq-logo.png',
+    logoScale: 1,
     accent: 'border-accent group-hover:border-accent',
     tag: 'bg-accent/15 text-accent',
   },
@@ -334,34 +341,30 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      {/* ─── 7. TOOLS (dark) ─── */}
-      <section className="relative section-padding overflow-hidden">
-        <div className="absolute inset-0">
-          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
+      {/* ─── 7. TOOLS ─── */}
+      <section className="relative section-padding overflow-hidden bg-white">
+        {/* Skyline decorative backdrop */}
+        <div className="absolute bottom-0 left-0 right-0 h-[72%] pointer-events-none select-none">
+          <img src="/brand/skyline.png" alt="" aria-hidden className="w-full h-full object-contain object-bottom opacity-35" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/40 to-transparent" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-dark/40 via-dark/20 to-dark/10 pointer-events-none" />
-        <div className="absolute right-0 top-0 w-[40%] h-full opacity-[0.06] pointer-events-none">
-          <svg viewBox="0 0 600 700" className="w-full h-full" fill="none">
-            <circle cx="500" cy="350" r="380" stroke="white" strokeWidth="1" />
-            <circle cx="500" cy="350" r="270" stroke="white" strokeWidth="0.7" />
-          </svg>
-        </div>
+
         <div className="container-content relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
-              <span className="font-heading font-semibold text-label tracking-[0.1em] uppercase text-white/50 mb-4 inline-block">Proprietary Tools</span>
-              <h2 className="font-heading text-h2-lg text-white mb-6 max-w-[400px]">
+              <span className="font-heading font-semibold text-label tracking-[0.1em] uppercase text-primary mb-4 inline-block">Proprietary Tools</span>
+              <h2 className="font-heading text-h2-lg text-text mb-6 max-w-[400px]">
                 Intelligence platforms built for MEA
               </h2>
-              <p className="font-body text-body-sm text-gray-400 mb-3 max-w-[50ch]">
+              <p className="font-body text-body-sm text-text-muted mb-3 max-w-[50ch]">
                 Our ultimate aim is for our insights to drive meaningful decisions for your organization.
               </p>
-              <p className="font-body text-body-sm text-gray-400 mb-10 max-w-[50ch]">
+              <p className="font-body text-body-sm text-text-muted mb-10 max-w-[50ch]">
                 Three proprietary platforms — InFuse, Landscape, and ImpactIQ — give clients a faster path to answers.
               </p>
               <Link
                 href="/tools"
-                className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[16px] rounded-full px-7 py-3.5 hover:bg-accent-warm hover:brightness-105 transition-all"
+                className="inline-flex items-center gap-2 bg-primary text-white font-body font-medium text-[16px] rounded-full px-7 py-3.5 hover:bg-primary/90 transition-all"
               >
                 Explore Our Tools <ArrowRight size={16} />
               </Link>
@@ -377,11 +380,8 @@ export default function HomePageContent() {
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-heading font-bold text-[17px] text-text tracking-[-0.01em]">{tool.name}</h4>
-                          <span className={`text-[10px] font-body font-medium px-2 py-0.5 rounded-full ${tool.tag} hidden sm:inline-block`}>
-                            {tool.type}
-                          </span>
+                        <div className="mb-3 h-10 w-44 flex items-center overflow-hidden">
+                          <Image src={tool.logo} alt={tool.name} width={176} height={40} className="h-full w-full object-contain object-left origin-left transition-none" style={{ transform: `scale(${tool.logoScale})` }} />
                         </div>
                         <p className="font-body text-[13px] text-text-muted mb-2">{tool.tagline}</p>
                         <p className="font-body text-[13px] text-text-muted/80 leading-relaxed">{tool.desc}</p>

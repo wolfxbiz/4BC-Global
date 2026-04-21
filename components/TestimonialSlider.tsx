@@ -24,7 +24,7 @@ const testimonials = [
     author: "Senior Manager",
     company: "Al-Futtaim Group",
     sector: "Regional Conglomerates",
-    logo: null,
+    logo: '/logos/al-futtaim.png',
   },
   {
     quote: "The insights and the market strategy is very useful for our roll out. The insights have greater details for developing our strategy.",

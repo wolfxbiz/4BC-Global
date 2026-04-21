@@ -280,7 +280,7 @@ export const sectors: Sector[] = [
     researchList: ['Multi-sector market intelligence', 'Portfolio opportunity assessment', 'Network planning', 'Competitive benchmarking', 'Strategic advisory'],
     clients: 'Abdul Latif Jameel · JK Cement · Alghanim · Al-Futtaim Group',
     clientList: ['Abdul Latif Jameel', 'JK Cement', 'Alghanim', 'Al-Futtaim Group'],
-    logoImages: [],
+    logoImages: ['/logos/al-futtaim.png'],
     engagementsList: [
       'Develop channel strategy for a large business group across automobile, industrial equipment and services in UAE',
     ],

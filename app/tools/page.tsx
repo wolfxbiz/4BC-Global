@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { Search, Map, TrendingUp, CheckCircle2 } from 'lucide-react'
+import Image from 'next/image'
+import { CheckCircle2 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
-import PageHeader from '@/components/PageHeader'
 import PillButton from '@/components/PillButton'
 import Grainient from '@/components/Grainient'
 
@@ -14,7 +13,8 @@ export const metadata: Metadata = {
 const tools = [
   {
     id: 'infuse',
-    icon: Search,
+    logo: '/brand/infuse-logo.png',
+    logoScale: 0.72,
     name: '4BC InFuse',
     tagline: 'Your desk research, supercharged.',
     description: '4BC InFuse is a secondary research platform used for understanding the industry landscape, competitive intelligence, and competition profiles across any sector in the MEA region.',
@@ -33,7 +33,8 @@ const tools = [
   },
   {
     id: 'landscape',
-    icon: Map,
+    logo: '/brand/landscape-logo.png',
+    logoScale: 1,
     name: '4BC Landscape',
     tagline: 'Know exactly where to grow.',
     description: '4BC Landscape is a geo-mapping tool used for network planning — identifying optimal locations for opening new stores or branches based on demographics, competition presence, and market gaps.',
@@ -53,7 +54,8 @@ const tools = [
   },
   {
     id: 'impactiq',
-    icon: TrendingUp,
+    logo: '/brand/impactiq-logo.png',
+    logoScale: 1,
     name: '4BC ImpactIQ',
     tagline: 'Measure what matters — socially, economically, globally.',
     description: '4BC ImpactIQ is a deep-dive analysis framework for assessing the socio-economic impact of events, activities, and projects. Built on a proprietary in-house assessment model.',
@@ -82,10 +84,29 @@ const tools = [
 export default function ToolsPage() {
   return (
     <>
-      <PageHeader
-        headline="Proprietary Tools"
-        subheadline="Intelligence platforms built from 15+ years of MEA research experience"
-      />
+      {/* Hero */}
+      <section className="relative min-h-[420px] md:min-h-[500px] flex items-end overflow-hidden bg-[#0F1320]">
+        {/* Skyline image — bottom-anchored */}
+        <div className="absolute inset-0 pointer-events-none select-none">
+          <img src="/brand/skyline.png" alt="" aria-hidden className="absolute bottom-0 left-0 w-full object-contain object-bottom opacity-40" />
+          {/* gradient: dark top → transparent bottom so skyline peeks through */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0F1320] via-[#0F1320]/70 to-transparent" />
+        </div>
+
+        <div className="container-content relative z-10 pb-16 pt-32 md:pt-40">
+          <AnimatedSection>
+            <span className="font-heading font-semibold text-[11px] tracking-[0.12em] uppercase text-accent mb-4 inline-block">
+              Proprietary Tools
+            </span>
+            <h1 className="font-heading font-bold text-[36px] md:text-[52px] text-white leading-tight tracking-[-0.02em] mb-4 max-w-2xl">
+              Intelligence platforms built for MEA
+            </h1>
+            <p className="font-body text-white/55 text-[16px] max-w-xl leading-relaxed">
+              Built from 15+ years of MEA research experience — InFuse, Landscape, and ImpactIQ give clients a faster, sharper path to decisions.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
 
       {/* Tool Cards */}
       {tools.map((tool, i) => (
@@ -97,8 +118,8 @@ export default function ToolsPage() {
           <div className="container-content">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection className={i % 2 === 1 ? 'order-last lg:order-first' : ''}>
-                <div className={`w-16 h-16 rounded-2xl ${tool.bgColor} flex items-center justify-center mb-6`}>
-                  <tool.icon size={32} className={tool.color} />
+                <div className="h-11 w-52 flex items-center mb-6 overflow-hidden">
+                  <Image src={tool.logo} alt={tool.name} width={208} height={44} className="h-full w-full object-contain object-left origin-left" style={{ transform: `scale(${tool.logoScale})` }} />
                 </div>
                 <span className="section-tag">{tool.type}</span>
                 <h2 className="font-heading font-medium text-3xl md:text-4xl text-text mb-2">
