@@ -131,7 +131,7 @@ export default function SectorPage({ params }: Props) {
                 {sector.description}
               </p>
               <p className="font-body text-text-muted leading-relaxed mb-8">
-                Every engagement in this sector is led by senior practitioners with deep regional expertise — never delegated to junior researchers. We design bespoke research solutions tailored to the specific dynamics of {sector.name.toLowerCase()} markets across MEA.
+                Every engagement is led by a research director with deep regional expertise. We design bespoke research solutions tailored to the specific dynamics of {sector.name.toLowerCase()} markets across MEA.
               </p>
               <Link
                 href="/contact"

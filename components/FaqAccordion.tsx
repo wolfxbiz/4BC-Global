@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: 'What makes 4BC Global different from other research firms?',
-    a: 'Our method-neutral approach means we diagnose your business challenge first, then design the optimal research methodology. Every engagement is led by senior practitioners with 15+ years of MEA experience — never delegated to junior researchers.',
+    a: 'Our method-neutral approach means we diagnose your business challenge first, then design the right research methodology. Every engagement is led by a research director with 15+ years of MEA experience — so you get clarity at every step.',
   },
   {
     q: 'Which geographies do you cover?',

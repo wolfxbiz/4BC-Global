@@ -109,7 +109,7 @@ export default function TeamPage() {
           <div className="h-[3px] w-20 mx-auto bg-gradient-accent rounded-full mb-6" />
           <h1 className="font-heading font-medium text-4xl md:text-5xl text-white mb-4">Our Team</h1>
           <p className="font-body text-lg text-gray-300 max-w-2xl mx-auto">
-            Senior-led. MEA-experienced. Research-obsessed.
+            Senior-led. MEA-experienced. Genuinely curious.
           </p>
         </div>
       </section>
@@ -119,7 +119,7 @@ export default function TeamPage() {
         <div className="container-content text-center">
           <AnimatedSection>
             <p className="font-body text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
-              Our team brings a cumulative <strong className="text-primary">100+ years</strong> of market research and consulting experience across the Middle East, Africa, Asia and Europe. Every engagement is led by senior practitioners — never delegated to junior researchers.
+              Our team brings a cumulative <strong className="text-primary">100+ years</strong> of market research and consulting experience across the Middle East, Africa, Asia and Europe. Every engagement is led by a research director — so you always work with the person who truly understands your challenge.
             </p>
           </AnimatedSection>
         </div>

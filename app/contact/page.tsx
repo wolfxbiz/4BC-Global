@@ -37,7 +37,7 @@ const trustSignals = [
   {
     icon: Clock,
     title: 'Same-day response',
-    desc: 'Our senior team responds to every enquiry within the same business day — no junior gatekeeping.',
+    desc: 'A research director reviews every enquiry and responds within the same business day.',
   },
   {
     icon: Users,
@@ -237,7 +237,7 @@ export default function ContactPage() {
                     </div>
                     <h3 className="font-heading font-bold text-[22px] text-text mb-2">Brief received.</h3>
                     <p className="font-body text-[14px] text-text-muted max-w-[36ch] leading-relaxed">
-                      Our senior team will review your challenge and get back to you today. No junior researchers, no delays.
+                      A research director will review your challenge personally and get back to you the same day.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}

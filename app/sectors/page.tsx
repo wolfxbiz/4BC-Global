@@ -214,7 +214,7 @@ export default function SectorsPage() {
                 <GradientText hoverOnly animationSpeed={2}>What We Research Across Every Sector</GradientText>
               </h2>
               <p className="font-body text-text-muted leading-relaxed mb-8">
-                Regardless of industry, our method-neutral approach means we design the right research for your specific challenge — combining quantitative, qualitative, and secondary research to deliver intelligence that actually moves the needle.
+                Regardless of industry, our method-neutral approach means we design the right research for your specific challenge — combining quantitative, qualitative, and secondary research to deliver intelligence you can act on with confidence.
               </p>
               <PillButton href="/services" bgColor="#1A2E5C" textColor="#ffffff" fillColor="#E8A020" hoverTextColor="#1A1A2E" className="font-body font-semibold text-[15px] px-7 py-3.5">
                 View Our Services

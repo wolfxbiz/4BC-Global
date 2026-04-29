@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Search, MapPin, Users } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import GradientText from '@/components/GradientText'
 import TestimonialSlider from '@/components/TestimonialSlider'
@@ -13,21 +13,26 @@ import HomeCaseStudies from '@/components/HomeCaseStudies'
 import { OpenContactPill, OpenContactButton } from '@/components/OpenContactButton'
 import { sectors } from '@/lib/sectors-data'
 
-const approachFeatures = [
+const approachPrinciples = [
   {
-    icon: Users,
-    title: 'Senior-led research',
-    desc: 'Every engagement is led by practitioners with 15+ years of MEA market research experience — never delegated to junior researchers.',
+    num: '01',
+    title: 'Diagnose first',
+    desc: 'Every engagement starts with a deep understanding of your specific business challenge — through structured discovery sessions before any research begins.',
   },
   {
-    icon: Search,
-    title: 'Method-neutral approach',
-    desc: 'We diagnose your business challenge first, then design the optimal research methodology — not the other way around.',
+    num: '02',
+    title: 'Design the right method',
+    desc: 'We craft the optimal research methodology based on your core objective, the available information, and the market dynamics at play — not a templated solution.',
   },
   {
-    icon: MapPin,
-    title: 'MEA-specialist expertise',
-    desc: 'With 100+ years cumulative experience in the region, we understand the nuance, culture, and complexity of MEA markets.',
+    num: '03',
+    title: 'Blend the right techniques',
+    desc: 'Quantitative rigour, qualitative depth, and strategic secondary research — combined in the right proportions for your specific challenge.',
+  },
+  {
+    num: '04',
+    title: 'Deliver what you can act on',
+    desc: 'Every report is structured for decision-making — clear findings, direct recommendations, and the strategic context to move forward with confidence.',
   },
 ]
 
@@ -106,6 +111,13 @@ export default function HomePageContent() {
           zoom={0.9}
         />
       </div>
+      {/* Large watermark text */}
+      <div aria-hidden className="absolute inset-0 flex items-center pointer-events-none select-none overflow-hidden" style={{ left: '-2%' }}>
+        <span className="font-heading font-black text-white opacity-[0.10] leading-none" style={{ fontSize: 'clamp(200px, 32vw, 480px)', letterSpacing: '-0.05em' }}>
+          4BC
+        </span>
+      </div>
+
       {/* Legibility overlay — stronger on left where text sits */}
       <div className="absolute inset-0 bg-gradient-to-r from-dark/40 via-dark/15 to-transparent pointer-events-none" />
       {/* Vignette — top & bottom */}
@@ -132,7 +144,7 @@ export default function HomePageContent() {
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 border border-white/20 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
-              <span className="font-body text-[12px] font-medium text-white/80 tracking-widest uppercase">MEA Market Intelligence Specialists</span>
+              <span className="font-body text-[12px] font-medium text-white/80 tracking-widest uppercase">Middle East &amp; Africa Market Intelligence</span>
             </div>
 
             <h1 className="font-heading text-hero text-white mb-5 max-w-[560px]">
@@ -140,7 +152,7 @@ export default function HomePageContent() {
               <span className="italic font-extrabold">intelligence.</span>
             </h1>
             <p className="font-body text-[16px] text-white/70 leading-relaxed mb-8 max-w-[50ch]">
-              The specialist firm with 100+ years of cumulative MEA experience — delivering validated intelligence that moves the needle.
+              A specialist research firm with 100+ years of cumulative research expertise — built for the complexity of Middle East &amp; Africa markets.
             </p>
 
             {/* CTAs */}
@@ -148,7 +160,7 @@ export default function HomePageContent() {
               <OpenContactPill
                 bgColor="#E8A020"
                 textColor="#1A1A2E"
-                fillColor="#7D2B5E"
+                fillColor="#1A4FA0"
                 hoverTextColor="#ffffff"
                 className="font-heading font-semibold text-[16px] px-8 py-4 shadow-lg"
               >
@@ -206,40 +218,33 @@ export default function HomePageContent() {
       {/* ─── 3. APPROACH ─── */}
       <section className="bg-white section-padding">
         <div className="container-content">
-          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16 items-start">
 
             {/* Left */}
-            <AnimatedSection>
-              <span className="section-tag">Approach</span>
-              <h2 className="font-heading text-h2-lg text-text mb-6 max-w-[440px]">
-                <GradientText hoverOnly animationSpeed={2}>Market insights you can believe in</GradientText>
+            <AnimatedSection className="lg:sticky lg:top-28">
+              <span className="section-tag">The 4BC Approach</span>
+              <h2 className="font-heading text-h2-lg text-text mb-5 max-w-[400px]">
+                <GradientText hoverOnly animationSpeed={2}>Research designed around your challenge</GradientText>
               </h2>
-              <p className="font-body text-body-lg text-primary font-semibold leading-relaxed mb-6 max-w-[48ch]">
-                There is a better way to do market intelligence for MEA — one that gives you genuine confidence in critical business decisions.
-              </p>
-              <p className="font-body text-body-sm text-text-muted mb-10 max-w-[50ch]">
-                We design and deliver custom qualitative and quantitative research — from market entry assessments to customer experience programs. Real primary data, method-neutral process, genuine MEA expertise.
+              <p className="font-body text-body-sm text-text-muted mb-10 max-w-[46ch] leading-relaxed">
+                We are method-neutral by design. We start with your business question, then build the right research approach around it — blending quantitative, qualitative, and secondary techniques as the challenge demands.
               </p>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[16px] rounded-full px-7 py-3.5 hover:bg-accent-warm hover:brightness-105 transition-all"
+                className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[15px] rounded-full px-7 py-3.5 hover:bg-accent-warm hover:brightness-105 transition-all"
               >
-                Learn More <ArrowRight size={16} />
+                How We Work <ArrowRight size={15} />
               </Link>
             </AnimatedSection>
 
-            {/* Right — stacked features */}
-            <AnimatedSection delay={0.2}>
-              <div className="flex flex-col divide-y divide-border">
-                {approachFeatures.map((f) => (
-                  <div key={f.title} className="flex gap-5 py-8 first:pt-0 last:pb-0">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/8 border border-primary/12 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <f.icon size={26} className="text-primary" strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <h3 className="font-heading text-h3 text-text mb-2">{f.title}</h3>
-                      <p className="font-body text-body-sm text-text-muted max-w-[44ch]">{f.desc}</p>
-                    </div>
+            {/* Right — 4 numbered principle cards */}
+            <AnimatedSection delay={0.15}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {approachPrinciples.map((p) => (
+                  <div key={p.num} className="group bg-bg-soft border border-border rounded-2xl p-6 hover:border-primary/30 hover:bg-primary/[0.03] transition-all duration-200">
+                    <span className="font-heading font-black text-[32px] leading-none text-primary/20 group-hover:text-primary/40 transition-colors duration-200 block mb-4">{p.num}</span>
+                    <h3 className="font-heading font-semibold text-[16px] text-text mb-2 leading-snug">{p.title}</h3>
+                    <p className="font-body text-[13px] text-text-muted leading-relaxed">{p.desc}</p>
                   </div>
                 ))}
               </div>
