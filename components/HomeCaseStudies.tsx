@@ -44,8 +44,8 @@ export default function HomeCaseStudies() {
                   <div className="absolute inset-0 rounded-full border border-primary/8 scale-125" />
                   <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl relative">
                     <Image
-                      src="/images/featured-case-study.jpg"
-                      alt="South Africa transport research"
+                      src="/images/case-minibus.jpg"
+                      alt="Minibus taxi digitalization research, South Africa"
                       fill
                       className="object-cover"
                     />

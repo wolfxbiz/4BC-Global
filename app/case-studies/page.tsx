@@ -64,15 +64,28 @@ function ExpandableCaseStudies({ studies }: { studies: CaseStudy[] }) {
                     </p>
                   </div>
 
-                  {/* Stats pills — desktop only */}
-                  <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
-                    {cs.stats.slice(0, 2).map((s) => (
-                      <div key={s.label} className="text-center bg-bg-soft border border-border rounded-xl px-3 py-2">
-                        <div className="font-heading font-bold text-text text-base leading-none">{s.value}</div>
-                        <div className="font-body text-text-muted text-[10px] mt-0.5">{s.label}</div>
+                  {/* Stats 2x2 grid — desktop only */}
+                  {(() => {
+                    const tileStyles = [
+                      { bg: 'bg-amber-50',  border: 'border-amber-200',  value: 'text-amber-700',  label: 'text-amber-500'  },
+                      { bg: 'bg-blue-50',   border: 'border-blue-200',   value: 'text-blue-700',   label: 'text-blue-400'   },
+                      { bg: 'bg-purple-50', border: 'border-purple-200', value: 'text-purple-700', label: 'text-purple-400' },
+                      { bg: 'bg-pink-50',   border: 'border-pink-200',   value: 'text-pink-700',   label: 'text-pink-400'   },
+                    ]
+                    return (
+                      <div className="hidden lg:grid grid-cols-2 gap-1.5 flex-shrink-0">
+                        {cs.stats.map((s, i) => {
+                          const t = tileStyles[i % tileStyles.length]
+                          return (
+                            <div key={s.label} className={`text-center ${t.bg} border ${t.border} rounded-xl w-[72px] h-[72px] flex flex-col items-center justify-center`}>
+                              <div className={`font-heading font-bold ${t.value} text-sm leading-none`}>{s.value}</div>
+                              <div className={`font-body ${t.label} text-[9px] mt-0.5 leading-tight px-1`}>{s.label}</div>
+                            </div>
+                          )
+                        })}
                       </div>
-                    ))}
-                  </div>
+                    )
+                  })()}
 
                   {/* Arrow */}
                   <div className="flex-shrink-0 w-9 h-9 rounded-full border border-border flex items-center justify-center text-text-muted group-hover:border-primary group-hover:text-primary transition-all duration-200">

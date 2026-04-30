@@ -18,21 +18,25 @@ const approachPrinciples = [
     num: '01',
     title: 'Diagnose first',
     desc: 'Every engagement starts with a deep understanding of your specific business challenge — through structured discovery sessions before any research begins.',
+    bg: 'bg-amber-50', border: 'border-amber-200', numColor: 'text-amber-300', titleColor: 'text-amber-900', hoverBorder: 'hover:border-amber-400',
   },
   {
     num: '02',
     title: 'Design the right method',
     desc: 'We craft the optimal research methodology based on your core objective, the available information, and the market dynamics at play — not a templated solution.',
+    bg: 'bg-blue-50', border: 'border-blue-200', numColor: 'text-blue-300', titleColor: 'text-blue-900', hoverBorder: 'hover:border-blue-400',
   },
   {
     num: '03',
     title: 'Blend the right techniques',
     desc: 'Quantitative rigour, qualitative depth, and strategic secondary research — combined in the right proportions for your specific challenge.',
+    bg: 'bg-purple-50', border: 'border-purple-200', numColor: 'text-purple-300', titleColor: 'text-purple-900', hoverBorder: 'hover:border-purple-400',
   },
   {
     num: '04',
     title: 'Deliver what you can act on',
     desc: 'Every report is structured for decision-making — clear findings, direct recommendations, and the strategic context to move forward with confidence.',
+    bg: 'bg-pink-50', border: 'border-pink-200', numColor: 'text-pink-300', titleColor: 'text-pink-900', hoverBorder: 'hover:border-pink-400',
   },
 ]
 
@@ -241,9 +245,9 @@ export default function HomePageContent() {
             <AnimatedSection delay={0.15}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {approachPrinciples.map((p) => (
-                  <div key={p.num} className="group bg-bg-soft border border-border rounded-2xl p-6 hover:border-primary/30 hover:bg-primary/[0.03] transition-all duration-200">
-                    <span className="font-heading font-black text-[32px] leading-none text-primary/20 group-hover:text-primary/40 transition-colors duration-200 block mb-4">{p.num}</span>
-                    <h3 className="font-heading font-semibold text-[16px] text-text mb-2 leading-snug">{p.title}</h3>
+                  <div key={p.num} className={`group ${p.bg} border ${p.border} ${p.hoverBorder} rounded-2xl p-6 transition-all duration-200`}>
+                    <span className={`font-heading font-black text-[64px] leading-none ${p.numColor} block mb-4`}>{p.num}</span>
+                    <h3 className={`font-heading font-semibold text-[16px] ${p.titleColor} mb-2 leading-snug`}>{p.title}</h3>
                     <p className="font-body text-[13px] text-text-muted leading-relaxed">{p.desc}</p>
                   </div>
                 ))}
