@@ -9,19 +9,6 @@ export default function Footer() {
   return (
     <footer className="relative text-white overflow-hidden bg-[#0F1320]">
 
-      {/* ── Big logo banner ── */}
-      <div className="relative z-10 bg-white py-10 px-4">
-        <Link href="/" className="block w-full max-w-5xl mx-auto">
-          <Image
-            src="/brand/logo-full.png"
-            alt="4BC Global"
-            width={1200}
-            height={340}
-            className="w-full h-auto object-contain"
-          />
-        </Link>
-      </div>
-
       {/* ── Footer columns ── */}
       <div className="container-content relative z-10 pt-12 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 pb-10">

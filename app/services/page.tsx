@@ -151,81 +151,77 @@ export default function ServicesPage() {
       />
 
       {/* Business Lifecycle */}
-      <section id="business-lifecycle-advisory" className="bg-white section-padding overflow-hidden">
+      <section id="business-lifecycle-advisory" className="bg-bg-soft section-padding overflow-hidden">
         <div className="container-content">
-          <AnimatedSection className="text-center mb-16">
+
+          {/* Header */}
+          <AnimatedSection className="text-center mb-14">
             <span className="section-tag">Advisory Services</span>
-            <h2 className="font-heading font-medium text-3xl md:text-4xl text-text">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text mb-3">
               <GradientText hoverOnly animationSpeed={2}>We Support You at Every Stage of Growth</GradientText>
             </h2>
-            <p className="font-body text-text-muted mt-3 max-w-xl mx-auto">
+            <p className="font-body text-text-muted text-lg max-w-xl mx-auto">
               From first idea to market renewal — our advisory practice is structured around your business lifecycle.
             </p>
           </AnimatedSection>
 
-          {/* Timeline connector — desktop only */}
-          <div className="hidden lg:block relative mb-0">
-            {/* Line */}
-            <div className="absolute top-7 left-[12.5%] right-[12.5%] h-px z-0" style={{ background: 'linear-gradient(to right, #E8A020, #2B4A8C, #7D2B5E, #047857)' }} />
-            {/* Dots on the line */}
-            <div className="relative z-10 grid grid-cols-4 text-center">
-              {lifecycleStages.map((s) => (
-                <div key={s.num} className="flex flex-col items-center">
-                  <div
-                    className={`w-14 h-14 rounded-full ${s.dot} flex items-center justify-center shadow-lg mb-0`}
-                  >
-                    <span className="font-heading font-medium text-white text-base">{s.num}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {lifecycleStages.map((stage, i) => (
               <AnimatedSection key={stage.stage} delay={i * 0.1}>
-                <div className={`relative h-full rounded-2xl bg-gradient-to-b ${stage.bg} border ${stage.border} border-opacity-40 p-6 overflow-hidden group hover:shadow-lg transition-all duration-300`}>
-                  {/* Large ghost number */}
-                  <div
-                    className="absolute -right-3 -top-4 font-heading font-medium text-[80px] leading-none select-none pointer-events-none opacity-[0.07]"
-                    style={{ color: stage.color }}
-                  >
-                    {stage.num}
-                  </div>
+                <div
+                  className="relative h-full rounded-2xl bg-white border overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col"
+                  style={{ borderColor: stage.color + '40' }}
+                >
+                  {/* Coloured top bar */}
+                  <div className="h-1.5 w-full flex-shrink-0" style={{ backgroundColor: stage.color }} />
 
-                  {/* Mobile step dot */}
-                  <div className={`lg:hidden inline-flex items-center gap-2 ${stage.dot} rounded-full px-3 py-1 mb-4`}>
-                    <span className="font-heading font-medium text-white text-xs">{stage.num}</span>
-                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    {/* Large display number */}
+                    <span
+                      className="font-heading font-black text-[72px] leading-none block mb-3"
+                      style={{ color: stage.color + '30' }}
+                    >
+                      {stage.num}
+                    </span>
 
-                  <div className={`font-body text-[10px] font-medium uppercase tracking-widest ${stage.textColor} mb-1`}>
-                    Stage {stage.num}
-                  </div>
-                  <h3 className={`font-heading font-medium text-2xl ${stage.textColor} mb-1`}>
-                    {stage.stage}
-                  </h3>
-                  <p className="font-body text-xs text-text-muted italic mb-5 leading-snug">
-                    {stage.tagline}
-                  </p>
+                    {/* Stage label */}
+                    <span
+                      className="font-body text-[10px] font-semibold uppercase tracking-[0.15em] mb-1"
+                      style={{ color: stage.color }}
+                    >
+                      Stage {stage.num}
+                    </span>
 
-                  <div className="space-y-2">
-                    {stage.services.map((svc) => (
-                      <div key={svc} className="flex items-start gap-2.5">
-                        <div
-                          className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2"
-                          style={{ backgroundColor: stage.color }}
-                        />
-                        <span className="font-body text-[13px] text-text leading-snug">{svc}</span>
-                      </div>
-                    ))}
-                  </div>
+                    {/* Title */}
+                    <h3
+                      className="font-heading font-bold text-[26px] leading-tight mb-1"
+                      style={{ color: stage.color }}
+                    >
+                      {stage.stage}
+                    </h3>
 
-                  {/* Bottom bar */}
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-1 opacity-60"
-                    style={{ backgroundColor: stage.color }}
-                  />
+                    {/* Tagline */}
+                    <p className="font-body text-[12px] text-text-muted italic mb-5 leading-snug">
+                      {stage.tagline}
+                    </p>
+
+                    {/* Divider */}
+                    <div className="h-px mb-5" style={{ backgroundColor: stage.color + '25' }} />
+
+                    {/* Services list */}
+                    <div className="space-y-2.5 flex-1">
+                      {stage.services.map((svc) => (
+                        <div key={svc} className="flex items-start gap-2.5">
+                          <div
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-[6px]"
+                            style={{ backgroundColor: stage.color }}
+                          />
+                          <span className="font-body text-[13px] text-text leading-snug">{svc}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
@@ -288,39 +284,65 @@ export default function ServicesPage() {
       </section>
 
       {/* Methodology Banner */}
-      <section className="relative overflow-hidden section-padding" style={{ background: '#0F1320' }}>
-        <div className="absolute inset-0">
-          <Grainient color1="#351e6b" color2="#9a4788" color3="#b19f2b" timeSpeed={2.35} colorBalance={-0.47} warpStrength={1.9} warpFrequency={4.2} warpSpeed={0.5} warpAmplitude={26} blendAngle={28} blendSoftness={0.39} rotationAmount={260} noiseScale={2} grainAmount={0.1} grainScale={2} contrast={1.5} gamma={1} saturation={1} zoom={0.9} />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/40 via-dark/20 to-dark/50 pointer-events-none" />
+      <section className="relative overflow-hidden section-padding bg-white">
         <div className="container-content relative z-10">
-          <AnimatedSection className="text-center mb-10">
-            <h2 className="font-heading font-medium text-3xl text-white mb-2">
-              Diagnose · Design · Blend
+
+          {/* Header */}
+          <AnimatedSection className="text-center mb-14">
+            <span className="section-tag">Our Methodology</span>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text mb-3">
+              How we approach every engagement
             </h2>
-            <p className="font-body text-gray-400 text-lg">
+            <p className="font-body text-text-muted text-lg max-w-[44ch] mx-auto">
               Methodology neutral, client-first, results-driven.
             </p>
           </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+          {/* Step cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
             {[
-              { title: 'Diagnose', desc: 'Deep discovery sessions to understand your specific business challenge before prescribing any methodology.' },
-              { title: 'Design', desc: 'Craft a bespoke research approach tailored to your objectives, budget, and market dynamics.' },
-              { title: 'Blend', desc: 'Combine quantitative, qualitative, and secondary research techniques for the most complete picture.' },
+              {
+                num: '01',
+                title: 'Diagnose',
+                subtitle: 'Understand before prescribing',
+                desc: 'Every engagement starts with deep discovery sessions to fully understand your specific business challenge before any methodology is prescribed.',
+                bg: 'bg-amber-50', border: 'border-amber-200', numColor: 'text-amber-400', titleColor: 'text-amber-900', tagBg: 'bg-amber-100', tagText: 'text-amber-700',
+              },
+              {
+                num: '02',
+                title: 'Design',
+                subtitle: 'Bespoke, not templated',
+                desc: 'We craft a research approach tailored to your objectives, available information, budget, and the market dynamics at play — never a one-size-fits-all solution.',
+                bg: 'bg-blue-50', border: 'border-blue-200', numColor: 'text-blue-400', titleColor: 'text-blue-900', tagBg: 'bg-blue-100', tagText: 'text-blue-700',
+              },
+              {
+                num: '03',
+                title: 'Blend',
+                subtitle: 'The complete picture',
+                desc: 'Quantitative rigour, qualitative depth, and strategic secondary research — combined in the right proportions to deliver findings you can act on with confidence.',
+                bg: 'bg-purple-50', border: 'border-purple-200', numColor: 'text-purple-400', titleColor: 'text-purple-900', tagBg: 'bg-purple-100', tagText: 'text-purple-700',
+              },
             ].map((item, i) => (
-              <AnimatedSection key={item.title} delay={i * 0.15}>
-                <div className="bg-dark-surface border border-white/10 rounded-card p-6 text-center">
-                  <div className="font-heading font-medium text-2xl text-accent mb-2">{item.title}</div>
-                  <p className="font-body text-sm text-gray-400">{item.desc}</p>
+              <AnimatedSection key={item.title} delay={i * 0.12}>
+                <div className={`${item.bg} border ${item.border} rounded-2xl p-7 h-full flex flex-col`}>
+                  <span className={`font-heading font-black text-[72px] leading-none ${item.numColor} block mb-4`}>{item.num}</span>
+                  <span className={`inline-block self-start text-[11px] font-semibold uppercase tracking-wider ${item.tagBg} ${item.tagText} rounded-full px-3 py-1 mb-4`}>
+                    {item.subtitle}
+                  </span>
+                  <h3 className={`font-heading font-bold text-[26px] ${item.titleColor} mb-3 leading-tight`}>{item.title}</h3>
+                  <p className="font-body text-[14px] text-text-muted leading-relaxed flex-1">{item.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
           </div>
+
+          {/* CTA */}
           <AnimatedSection className="text-center">
             <PillButton href="/contact" bgColor="#E8A020" textColor="#1A1A2E" fillColor="#7D2B5E" hoverTextColor="#ffffff" className="font-heading font-semibold text-[15px] px-7 py-3.5">
               Talk to Us About Your Challenge
             </PillButton>
           </AnimatedSection>
+
         </div>
       </section>
     </>

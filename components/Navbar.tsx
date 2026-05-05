@@ -60,9 +60,9 @@ export default function Navbar() {
           <Image
             src="/brand/logo-full.png"
             alt="4BC Global"
-            width={200}
-            height={58}
-            className="h-11 w-auto object-contain"
+            width={150}
+            height={44}
+            className="h-8 w-auto object-contain"
             priority
           />
         </Link>
