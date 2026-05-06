@@ -84,11 +84,11 @@ export default function SectorsPage() {
                 <span className="font-body text-[12px] text-white/75 tracking-widest uppercase">11 Sectors · 450+ Engagements</span>
               </div>
               <h1 className="font-heading font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.07] mb-6">
-                Deep Expertise Across<br />
-                <span className="text-accent">MEA's Key Industries</span>
+                MEA Is Not a Single Market.<br />
+                <span className="text-accent">It's a Mosaic of Opportunities.</span>
               </h1>
               <p className="font-body text-lg text-white/65 leading-relaxed mb-10 max-w-lg">
-                From retail to oil & gas — we bring proven market intelligence to every sector, backed by decades of in-region experience.
+                We bring decades of in-region experience across 11 industries — each with its own nuances, competitive dynamics, and growth levers.
               </p>
               <div className="flex flex-wrap gap-4">
                 <PillButton href="/contact" bgColor="#E8A020" textColor="#1A1A2E" fillColor="#7D2B5E" hoverTextColor="#ffffff" className="font-body font-semibold text-[15px] px-7 py-3.5">
@@ -125,6 +125,23 @@ export default function SectorsPage() {
           <svg viewBox="0 0 1440 80" className="w-full block" preserveAspectRatio="none">
             <path d="M0,80 L0,40 Q360,0 720,35 Q1080,70 1440,30 L1440,80 Z" fill="white" />
           </svg>
+        </div>
+      </section>
+
+      {/* ── INTRO ── */}
+      <section className="bg-white py-14 px-4 border-b border-border">
+        <div className="container-content max-w-3xl mx-auto text-center">
+          <AnimatedSection>
+            <p className="font-body text-body-sm text-text-muted leading-relaxed">
+              The Middle East and Africa are not just diverse — they are layered. What works in Dubai rarely applies directly to Riyadh. The challenges of South Africa's informal economy are worlds apart from the structured retail markets of the GCC. And the regulatory landscape in Egypt bears little resemblance to Kenya's.
+            </p>
+            <p className="font-body text-body-sm text-text-muted mt-4 leading-relaxed">
+              That's why we don't offer generic sector expertise. We bring decades of in-region experience across 11 industries — each with its own nuances, competitive dynamics, and growth levers.
+            </p>
+            <p className="font-body text-body-sm text-text font-semibold mt-5">
+              450+ engagements. 40+ countries. 100+ years of combined experience. This is what it means to understand MEA sectors at scale.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -296,6 +313,64 @@ export default function SectorsPage() {
         </div>
       </section>
 
+      {/* ── WHY OUR SECTOR EXPERTISE MATTERS ── */}
+      <section className="bg-white section-padding border-t border-border">
+        <div className="container-content">
+          <AnimatedSection className="text-center mb-12">
+            <span className="section-tag">Our Advantage</span>
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+              <GradientText hoverOnly animationSpeed={2}>Why Our Sector Expertise Matters</GradientText>
+            </h2>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {[
+              {
+                num: '01',
+                title: 'We Don\'t Rely on Generic Models',
+                desc: 'MEA markets defy global templates. What works in Europe or Asia often fails here. We bring localized insight — not imported assumptions.',
+                color: '#E8A020',
+              },
+              {
+                num: '02',
+                title: 'We Combine Macro Trends with Ground-Level Reality',
+                desc: 'It\'s not enough to know the market size. You need to understand how decisions are actually made — by consumers, businesses, and regulators.',
+                color: '#2B4A8C',
+              },
+              {
+                num: '03',
+                title: 'We Speak the Language of Each Sector',
+                desc: 'Our teams don\'t just collect data. They interpret it through the lens of industry experience — whether that\'s retail, oil and gas, or public sector strategy.',
+                color: '#7D2B5E',
+              },
+              {
+                num: '04',
+                title: 'We\'ve Seen What Works — and What Doesn\'t',
+                desc: 'With 450+ engagements across 11 sectors, we don\'t just advise. We anticipate risks and opportunities before they become obvious.',
+                color: '#047857',
+              },
+            ].map((item, i) => (
+              <AnimatedSection key={item.num} delay={i * 0.1}>
+                <div
+                  className="rounded-2xl bg-white border p-6 flex gap-5 h-full"
+                  style={{ borderColor: item.color + '30' }}
+                >
+                  <span
+                    className="font-heading font-black text-[52px] leading-none flex-shrink-0"
+                    style={{ color: item.color + '25' }}
+                  >
+                    {item.num}
+                  </span>
+                  <div>
+                    <h3 className="font-heading font-bold text-[17px] text-text mb-2 leading-tight">{item.title}</h3>
+                    <p className="font-body text-[13.5px] text-text-muted leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="relative overflow-hidden section-padding">
         <div className="absolute inset-0">
@@ -309,14 +384,19 @@ export default function SectorsPage() {
               <span className="font-body text-[13px] text-white/70 tracking-widest uppercase">Get Started</span>
             </span>
             <h2 className="font-heading font-medium text-4xl md:text-5xl text-white mb-5">
-              Don't see your sector?<br />We cover it.
+              Explore How We Can Support Your Sector
             </h2>
             <p className="font-body text-white/65 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
               4BC Global has executed 450+ engagements across MEA. Talk to us about your specific market — we'll design the right research approach for you.
             </p>
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[17px] rounded-full px-9 py-4 hover:bg-accent-warm transition-colors shadow-lg">
-              Start a Conversation <ArrowRight size={17} />
-            </Link>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link href="/contact" className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[17px] rounded-full px-9 py-4 hover:bg-accent-warm transition-colors shadow-lg">
+                Start a Conversation <ArrowRight size={17} />
+              </Link>
+              <Link href="/case-studies" className="inline-flex items-center gap-2 border border-white/30 text-white font-body font-medium text-[15px] rounded-full px-7 py-4 hover:bg-white/10 transition-colors">
+                See Our Case Studies <ArrowRight size={15} />
+              </Link>
+            </div>
           </AnimatedSection>
         </div>
       </section>

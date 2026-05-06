@@ -16,26 +16,26 @@ import { sectors } from '@/lib/sectors-data'
 const approachPrinciples = [
   {
     num: '01',
-    title: 'Diagnose first',
-    desc: 'Every engagement starts with a deep understanding of your specific business challenge — through structured discovery sessions before any research begins.',
+    title: 'Diagnostic Rigor',
+    desc: 'We start with a structured discovery session to understand the commercial "why" behind your request, ensuring the research targets your specific strategic blind spots.',
     bg: 'bg-amber-50', border: 'border-amber-200', numColor: 'text-amber-300', titleColor: 'text-amber-900', hoverBorder: 'hover:border-amber-400',
   },
   {
     num: '02',
-    title: 'Design the right method',
-    desc: 'We craft the optimal research methodology based on your core objective, the available information, and the market dynamics at play — not a templated solution.',
+    title: 'Bespoke Architecture',
+    desc: 'No off-the-shelf templates. We design a custom methodology based on the unique cultural, regulatory, and demographic landscape of your target market.',
     bg: 'bg-blue-50', border: 'border-blue-200', numColor: 'text-blue-300', titleColor: 'text-blue-900', hoverBorder: 'hover:border-blue-400',
   },
   {
     num: '03',
-    title: 'Blend the right techniques',
-    desc: 'Quantitative rigour, qualitative depth, and strategic secondary research — combined in the right proportions for your specific challenge.',
+    title: 'Hybrid Intelligence',
+    desc: 'We blend high-touch qualitative depth (IDIs, ethnography) with quantitative rigor and AI-assisted data processing for a 360-degree view of the market.',
     bg: 'bg-purple-50', border: 'border-purple-200', numColor: 'text-purple-300', titleColor: 'text-purple-900', hoverBorder: 'hover:border-purple-400',
   },
   {
     num: '04',
-    title: 'Deliver what you can act on',
-    desc: 'Every report is structured for decision-making — clear findings, direct recommendations, and the strategic context to move forward with confidence.',
+    title: 'Actionable Strategy',
+    desc: 'We don\'t deliver data dumps. Every report is structured for high-stakes decision-making, providing clear recommendations and the strategic context to act with confidence.',
     bg: 'bg-pink-50', border: 'border-pink-200', numColor: 'text-pink-300', titleColor: 'text-pink-900', hoverBorder: 'hover:border-pink-400',
   },
 ]
@@ -43,8 +43,8 @@ const approachPrinciples = [
 const tools = [
   {
     name: '4BC InFuse',
-    tagline: 'Your desk research, supercharged.',
-    desc: 'Secondary intelligence platform for industry landscapes and competitive profiling across MEA.',
+    tagline: 'Your secondary intelligence, supercharged.',
+    desc: 'A dynamic platform for rapid industry landscaping and competitive profiling across MEA.',
     type: 'Secondary Research Platform',
     href: '/tools#infuse',
     logo: '/brand/infuse-logo.png',
@@ -54,8 +54,8 @@ const tools = [
   },
   {
     name: '4BC Landscape',
-    tagline: 'Know exactly where to grow.',
-    desc: 'Geo-mapping tool for retail network planning and location intelligence across MEA markets.',
+    tagline: 'Precision location intelligence.',
+    desc: 'Advanced geo-mapping for retail network optimization and expansion planning.',
     type: 'Geo-Intelligence Tool',
     href: '/tools#landscape',
     logo: '/brand/landscape-logo.png',
@@ -65,8 +65,8 @@ const tools = [
   },
   {
     name: '4BC ImpactIQ',
-    tagline: 'Measure what matters — socially and economically.',
-    desc: 'Socio-economic impact measurement framework for events, projects, and programs.',
+    tagline: 'Socio-economic measurement.',
+    desc: 'Quantifying the tangible impact of mega-projects, events, and national initiatives.',
     type: 'Impact Assessment Framework',
     href: '/tools#impactiq',
     logo: '/brand/impactiq-logo.png',
@@ -80,9 +80,9 @@ const tools = [
 export default function HomePageContent() {
 
   const heroStats = [
-    { num: '450+', label: 'Engagements' },
-    { num: '40+', label: 'Countries' },
-    { num: '100+', label: 'Yrs Combined' },
+    { num: '450+', label: 'Bespoke Engagements' },
+    { num: '40+', label: 'Markets Navigated' },
+    { num: '100+', label: 'Yrs Combined Expertise' },
   ]
 
   const heroContent = (
@@ -148,15 +148,15 @@ export default function HomePageContent() {
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 border border-white/20 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
-              <span className="font-body text-[12px] font-medium text-white/80 tracking-widest uppercase">Middle East &amp; Africa Market Intelligence</span>
+              <span className="font-body text-[12px] font-medium text-white/80 tracking-widest uppercase">Middle East &amp; Africa Market Advisory</span>
             </div>
 
             <h1 className="font-heading text-hero text-white mb-5 max-w-[560px]">
-              Confident decisions start with the right{' '}
-              <span className="italic font-extrabold">intelligence.</span>
+              Clarity Where{' '}
+              <span className="italic font-extrabold">Data is Opaque.</span>
             </h1>
             <p className="font-body text-[16px] text-white/70 leading-relaxed mb-8 max-w-[50ch]">
-              A specialist research firm with 100+ years of cumulative research expertise — built for the complexity of Middle East &amp; Africa markets.
+              We bridge the gap between regional complexity and commercial certainty. 4BC Global is a specialist research firm built to navigate the nuances of MEA markets through ground-level primary research and AI-accelerated synthesis.
             </p>
 
             {/* CTAs */}
@@ -168,19 +168,19 @@ export default function HomePageContent() {
                 hoverTextColor="#ffffff"
                 className="font-heading font-semibold text-[16px] px-8 py-4 shadow-lg"
               >
-                Get Started <ArrowRight size={16} />
+                Discuss Your Market Challenge <ArrowRight size={16} />
               </OpenContactPill>
               <Link
-                href="/about"
+                href="/case-studies"
                 className="inline-flex items-center gap-1.5 font-body font-medium text-body-md text-white/65 hover:text-white transition-colors group"
               >
-                Our Story
+                View Case Studies
                 <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
 
             {/* Stats row */}
-            <div className="flex items-center border-t border-white/15 pt-5">
+            <div className="flex flex-wrap items-center border-t border-white/15 pt-5 gap-y-3">
               {heroStats.map((s, i) => (
                 <div key={s.label} className={`${i > 0 ? 'border-l border-white/15 pl-4 ml-4 sm:pl-7 sm:ml-7' : ''}`}>
                   <div className="font-heading font-bold text-[1.25rem] sm:text-[1.75rem] text-white leading-none mb-0.5">{s.num}</div>
@@ -188,7 +188,7 @@ export default function HomePageContent() {
                 </div>
               ))}
               <div className="border-l border-white/15 pl-4 ml-4 sm:pl-7 sm:ml-7 hidden sm:block">
-                <div className="font-body text-[11px] text-white/35 leading-snug">Spun out from<br />Kantar · Est. 2020</div>
+                <div className="font-body text-[11px] text-white/35 leading-snug">Spun Out From Excellence<br />Kantar MENA · Est. 2020</div>
               </div>
             </div>
           </AnimatedSection>
@@ -228,10 +228,10 @@ export default function HomePageContent() {
             <AnimatedSection className="lg:sticky lg:top-28">
               <span className="section-tag">The 4BC Approach</span>
               <h2 className="font-heading text-h2-lg text-text mb-5 max-w-[400px]">
-                <GradientText hoverOnly animationSpeed={2}>Research designed around your challenge</GradientText>
+                <GradientText hoverOnly animationSpeed={2}>Your business question dictates our methodology.</GradientText>
               </h2>
               <p className="font-body text-body-sm text-text-muted mb-10 max-w-[46ch] leading-relaxed">
-                We are method-neutral by design. We start with your business question, then build the right research approach around it — blending quantitative, qualitative, and secondary techniques as the challenge demands.
+                We are method-neutral by design. Because secondary data in the MEA region is often unreliable, we build every engagement from the ground up — blending deep primary research with AI-integrated analytics to find the truth that databases miss.
               </p>
               <Link
                 href="/about"
@@ -278,20 +278,20 @@ export default function HomePageContent() {
         <div className="container-content">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
             <AnimatedSection>
-              <span className="section-tag">Sectors</span>
+              <span className="section-tag">Sector Fluency</span>
               <h2 className="font-heading text-h2-lg text-text mb-4 max-w-[400px]">
-                <GradientText hoverOnly animationSpeed={2}>A research firm that understands your sector</GradientText>
+                <GradientText hoverOnly animationSpeed={2}>Intelligence that de-risks regional investment.</GradientText>
               </h2>
               <p className="font-body text-body-sm text-text-muted max-w-[46ch]">
-                We pride ourselves on the depth of our sector knowledge across MEA markets.
+                Operating in MEA requires more than data; it requires an understanding of the human and regulatory context.
               </p>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
               <p className="font-body text-body-sm text-text-muted mb-5 max-w-[52ch]">
-                Our experience is based on 450+ engagements across these sectors. The research findings have directed millions of dollars in investments and helped the region's largest enterprises accelerate growth.
+                Our experience across 450+ engagements has helped the region's largest enterprises and global brands accelerate growth and protect their investments.
               </p>
               <p className="font-body text-body-sm text-text-muted max-w-[52ch]">
-                Trusted by VISA, ENOC, Unilever, Toyota, DP World, Aramco, and 100+ others across MEA.
+                Trusted by VISA, ENOC, Unilever, Toyota, DP World, and 100+ others across MEA.
               </p>
             </AnimatedSection>
           </div>
@@ -362,15 +362,15 @@ export default function HomePageContent() {
         <div className="container-content relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
-              <span className="font-heading font-semibold text-label tracking-[0.1em] uppercase text-primary mb-4 inline-block">Proprietary Tools</span>
+              <span className="font-heading font-semibold text-label tracking-[0.1em] uppercase text-primary mb-4 inline-block">Proprietary Platforms</span>
               <h2 className="font-heading text-h2-lg text-text mb-6 max-w-[400px]">
-                <GradientText hoverOnly animationSpeed={2}>Intelligence platforms built for MEA</GradientText>
+                <GradientText hoverOnly animationSpeed={2}>Accelerating insight in data-scarce markets.</GradientText>
               </h2>
               <p className="font-body text-body-sm text-text-muted mb-3 max-w-[50ch]">
-                Our ultimate aim is for our insights to drive meaningful decisions for your organization.
+                We embed proprietary AI tools and geo-spatial mapping into our workflows to turn raw regional data into strategic assets.
               </p>
               <p className="font-body text-body-sm text-text-muted mb-10 max-w-[50ch]">
-                Three proprietary platforms — InFuse, Landscape, and ImpactIQ — give clients a faster path to answers.
+                Three platforms — InFuse, Landscape, and ImpactIQ — give clients a faster, sharper path to decisions.
               </p>
               <Link
                 href="/tools"
@@ -458,10 +458,10 @@ export default function HomePageContent() {
               Get in Touch
             </p>
             <h2 className="font-heading text-[32px] md:text-[44px] lg:text-[52px] font-bold text-white mb-4 tracking-[-0.02em] leading-tight">
-              Ready to Get Started?
+              Ready to Define Your Next Move?
             </h2>
             <p className="font-body text-white/55 text-[15px] md:text-[16px] max-w-md mx-auto mb-10 leading-relaxed">
-              From market entry to customer intelligence — we deliver research that drives real decisions across MEA.
+              Whether you're entering a new market, evaluating a strategic opportunity, or seeking to understand the competitive dynamics shaping your category — we're ready to help you move forward with confidence.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
               <OpenContactButton className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-accent text-dark font-body font-semibold text-[15px] rounded-full px-7 py-3.5 hover:brightness-110 transition-all">

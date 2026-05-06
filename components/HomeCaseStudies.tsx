@@ -65,13 +65,13 @@ export default function HomeCaseStudies() {
               <div>
                 <span className="section-tag">Featured Case Study</span>
                 <h2 className="font-heading text-h2 md:text-h2-lg text-text mb-6 max-w-[440px]">
-                  <GradientText hoverOnly animationSpeed={2}>Why the Best Decisions Come from In-Market Data</GradientText>
+                  <GradientText hoverOnly animationSpeed={2}>Unlocking the Informal Economy: Minibus Taxi Digitalization.</GradientText>
                 </h2>
                 <p className="font-body text-body-sm text-text-muted mb-4 max-w-[48ch]">
-                  For a leading card payment company, 4BC Global conducted 500+ in-market interviews across commuters, taxi owners, and associations in South Africa.
+                  While most firms write off informal sectors as "unreachable," 4BC Global conducted on-the-ground interviews with commuters and taxi owners in South Africa.
                 </p>
                 <p className="font-body text-body-sm text-text-muted mb-10 max-w-[48ch]">
-                  The result: a clear go-to-market strategy for payment digitalization in the informal transport sector — a market most firms had written off.
+                  The Result: A definitive go-to-market strategy for a global card payment leader, transforming a "hidden" market into a scalable digital opportunity.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <button
