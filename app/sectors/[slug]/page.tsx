@@ -135,8 +135,7 @@ export default function SectorPage({ params }: Props) {
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 font-heading font-semibold text-[15px] rounded-full px-7 py-3.5 text-white transition-all hover:opacity-90"
-                style={{ backgroundColor: sector.accentHex }}
+                className="inline-flex items-center gap-2 font-heading font-semibold text-[15px] rounded-full px-7 py-3.5 text-dark bg-accent hover:bg-accent-warm transition-all shadow-md"
               >
                 Discuss Your Project <ArrowRight size={15} />
               </Link>
@@ -322,8 +321,7 @@ export default function SectorPage({ params }: Props) {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 font-heading font-semibold text-[15px] rounded-full px-7 py-3.5 text-white transition-all hover:opacity-90"
-                style={{ backgroundColor: sector.accentHex }}
+                className="inline-flex items-center gap-2 font-heading font-semibold text-[15px] rounded-full px-7 py-3.5 text-dark bg-accent hover:bg-accent-warm transition-all shadow-md"
               >
                 Discuss Your Project <ArrowRight size={15} />
               </Link>

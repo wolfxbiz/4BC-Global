@@ -304,7 +304,7 @@ export const sectors: Sector[] = [
     gradientFrom: '#0F766E',
     accentHex: '#0F766E',
     icon: Truck,
-    image: '/sectors/logistics.jpg',
+    image: '/sectors/transport-logistics.jpg',
   },
   {
     slug: 'automotive',
@@ -440,7 +440,7 @@ export const sectors: Sector[] = [
     gradientFrom: '#0E7490',
     accentHex: '#0E7490',
     icon: Activity,
-    image: '/sectors/government.jpg',
+    image: '/sectors/healthcare-pharma.jpg',
   },
   {
     slug: 'energy-utilities',

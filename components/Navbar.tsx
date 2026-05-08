@@ -22,7 +22,21 @@ export default function Navbar() {
   const hamburgerRef = useRef<HTMLButtonElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => { setMobileOpen(false) }, [pathname])
+  const closeMobile = () => {
+    setMobileOpen(false)
+    const hamburger = hamburgerRef.current
+    const menu = mobileMenuRef.current
+    if (hamburger) {
+      const lines = hamburger.querySelectorAll('.ham-line')
+      gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.25, ease: 'power3.out' })
+      gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.25, ease: 'power3.out' })
+    }
+    if (menu) {
+      gsap.to(menu, { opacity: 0, y: 8, duration: 0.18, ease: 'power3.out', onComplete: () => { gsap.set(menu, { visibility: 'hidden' }) } })
+    }
+  }
+
+  useEffect(() => { closeMobile() }, [pathname])
 
   const toggleMobile = () => {
     const next = !mobileOpen
@@ -124,6 +138,7 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={closeMobile}
               className={`font-body text-[15px] px-4 py-3 rounded-xl transition-colors ${
                 pathname === item.href ? 'bg-primary/8 text-primary font-semibold' : 'text-text hover:bg-slate-50'
               }`}
@@ -134,6 +149,7 @@ export default function Navbar() {
           <div className="pt-2 pb-1">
             <Link
               href="/contact"
+              onClick={closeMobile}
               className="block text-center font-body font-semibold text-[14px] bg-primary text-white rounded-full px-5 py-3 hover:bg-primary/90 transition-colors"
             >
               Contact Us

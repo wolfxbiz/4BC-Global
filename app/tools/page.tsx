@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const tools = [
   {
     id: 'infuse',
-    logoH: 'h-20', logoW: 'w-[320px]',
+    logoH: 'h-10 sm:h-20', logoW: 'w-full max-w-[320px]',
     logo: '/brand/infuse-logo.png',
     image: '/capabilities/business-research.jpg',
     name: '4BC InFuse',
@@ -37,7 +37,7 @@ const tools = [
   },
   {
     id: 'landscape',
-    logoH: 'h-28', logoW: 'w-[400px]',
+    logoH: 'h-12 sm:h-28', logoW: 'w-full max-w-[400px]',
     logo: '/brand/landscape-logo.png',
     image: '/capabilities/geolocation.png',
     name: '4BC Landscape',
@@ -61,7 +61,7 @@ const tools = [
   },
   {
     id: 'impactiq',
-    logoH: 'h-28', logoW: 'w-[400px]',
+    logoH: 'h-12 sm:h-28', logoW: 'w-full max-w-[400px]',
     logo: '/brand/impactiq-logo.png',
     image: '/capabilities/impact-assessment.png',
     name: '4BC ImpactIQ',
@@ -89,10 +89,11 @@ export default function ToolsPage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative min-h-[440px] md:min-h-[520px] flex items-end overflow-hidden bg-[#0F1320]">
+      <section className="relative min-h-[440px] md:min-h-[520px] flex items-end overflow-hidden bg-[#0A1628]">
         <div className="absolute inset-0 pointer-events-none select-none">
-          <img src="/brand/skyline.png" alt="" aria-hidden className="absolute bottom-0 left-0 w-full object-contain object-bottom opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0F1320] via-[#0F1320]/70 to-transparent" />
+          <img src="/images/tools-hero.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A1628]/80 via-[#0A1628]/55 to-[#0A1628]/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A1628]/60 via-transparent to-transparent" />
         </div>
         <div className="container-content relative z-10 pb-16 pt-32 md:pt-40">
           <AnimatedSection>

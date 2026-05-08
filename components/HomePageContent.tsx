@@ -150,13 +150,13 @@ export default function HomePageContent() {
         />
       </div>
 
-      <div className="container-content relative z-10 pt-24 pb-56 sm:pt-28 sm:pb-72 lg:pt-36 lg:pb-80">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="container-content relative z-10 pt-20 pb-40 sm:pt-28 sm:pb-72 lg:pt-36 lg:pb-80">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
 
           {/* Left — eyebrow + headline */}
-          <AnimatedSection className="text-left -ml-4 sm:-ml-6 lg:-ml-10">
+          <AnimatedSection className="text-left sm:-ml-6 lg:-ml-10">
             {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-7">
+            <div className="flex items-center gap-3 mb-5 sm:mb-7">
               <div className="h-px w-8 bg-white/40 flex-shrink-0" />
               <span className="font-body text-[11px] font-semibold tracking-[0.22em] uppercase text-white/55">
                 Middle East &amp; Africa Market Advisory
@@ -175,15 +175,15 @@ export default function HomePageContent() {
           <AnimatedSection delay={0.1} className="text-left lg:text-right">
             <div className="lg:ml-auto max-w-[420px] lg:max-w-none">
               {/* Thin rule */}
-              <div className="h-px w-full bg-white/15 mb-6" />
+              <div className="h-px w-full bg-white/15 mb-5 sm:mb-6" />
 
               {/* Body */}
-              <p className="font-body text-[14px] text-white/55 leading-relaxed mb-8">
+              <p className="font-body text-[14px] text-white/55 leading-relaxed mb-6 sm:mb-8">
                 We bridge the gap between regional complexity and commercial certainty — a specialist research firm built to navigate MEA through ground-level primary research and AI-accelerated synthesis.
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-wrap items-center justify-start lg:justify-end gap-4 sm:gap-5 mb-10">
+              <div className="flex flex-wrap items-center justify-start lg:justify-end gap-4 sm:gap-5 mb-7 sm:mb-10">
                 <OpenContactPill
                   bgColor="#E8A020"
                   textColor="#1A1A2E"
@@ -203,10 +203,10 @@ export default function HomePageContent() {
               </div>
 
               {/* Stats row */}
-              <div className="flex flex-wrap items-end justify-start lg:justify-end gap-y-4">
+              <div className="grid grid-cols-3 lg:flex lg:flex-wrap items-end lg:justify-end gap-y-3">
                 {heroStats.map((s, i) => (
-                  <div key={s.label} className={`${i > 0 ? 'border-l border-white/15 pl-5 ml-5 sm:pl-7 sm:ml-7' : ''} text-left`}>
-                    <div className="font-heading font-black text-[28px] lg:text-[36px] text-white leading-none tracking-[-0.02em]">{s.num}</div>
+                  <div key={s.label} className={`${i > 0 ? 'border-l border-white/15 pl-4 lg:pl-7 lg:ml-7' : ''} text-left`}>
+                    <div className="font-heading font-black text-[24px] sm:text-[28px] lg:text-[36px] text-white leading-none tracking-[-0.02em]">{s.num}</div>
                     <div className="font-body text-[9px] text-white/35 tracking-[0.14em] uppercase mt-1">{s.label}</div>
                   </div>
                 ))}
