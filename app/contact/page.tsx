@@ -146,7 +146,7 @@ export default function ContactPage() {
                   <Mail size={13} /> info@4bcglobal.com
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/4bcglobal/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm text-white font-body text-[13px] font-medium rounded-full px-5 py-2.5 hover:bg-white/20 transition-all"
@@ -409,7 +409,7 @@ export default function ContactPage() {
                         <p className="font-body text-[13px] text-primary font-medium">info@4bcglobal.com</p>
                       </div>
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
+                    <a href="https://www.linkedin.com/company/4bcglobal/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
                       <div className="w-9 h-9 rounded-xl bg-primary/8 border border-primary/12 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:border-primary transition-all">
                         <Linkedin size={15} className="text-primary group-hover:text-white transition-colors" />
                       </div>

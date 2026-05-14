@@ -10,96 +10,33 @@ import GradientText from '@/components/GradientText'
 import { CaseStudyModal } from '@/components/CaseStudyModal'
 import { caseStudies, CaseStudy } from '@/lib/case-studies-data'
 
-// The 3 case studies shown on the home page grid
-const homeCaseStudies = [
+const featuredStudy = caseStudies.find((cs) => cs.id === 'cs-02')!
+const gridStudies = [
   caseStudies.find((cs) => cs.id === 'cs-01')!,
-  caseStudies.find((cs) => cs.id === 'cs-02')!,
   caseStudies.find((cs) => cs.id === 'cs-07')!,
 ]
-
-// Featured case study (section 8)
-const featuredStudy = caseStudies.find((cs) => cs.id === 'cs-02')!
 
 export default function HomeCaseStudies() {
   const [activeStudy, setActiveStudy] = useState<CaseStudy | null>(null)
 
   return (
     <>
-      {/* ── Modal ── */}
       <AnimatePresence mode="wait">
         {activeStudy && (
           <CaseStudyModal study={activeStudy} onClose={() => setActiveStudy(null)} />
         )}
       </AnimatePresence>
 
-      {/* ─── FEATURED CASE STUDY ─── */}
-      <section className="bg-bg-soft border-t border-border py-20 px-4">
+      <section className="bg-bg-soft section-padding">
         <div className="container-content">
-          <AnimatedSection>
-            <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-14 items-center">
-              {/* Left — image */}
-              <div className="flex justify-center lg:justify-start">
-                <div className="relative w-80 h-80 md:w-96 md:h-96">
-                  <div className="absolute inset-0 rounded-full border-2 border-primary/15 scale-110" />
-                  <div className="absolute inset-0 rounded-full border border-primary/8 scale-125" />
-                  <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl relative">
-                    <Image
-                      src="/images/case-minibus.jpg"
-                      alt="Minibus taxi digitalization research, South Africa"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="absolute bottom-6 -right-2 bg-primary text-white rounded-2xl px-4 py-3 shadow-xl">
-                    <div className="font-heading font-medium text-[13px]">Transport</div>
-                    <div className="font-body text-[11px] text-white/60">+ Fintech</div>
-                  </div>
-                  <div className="absolute top-4 -left-4 bg-white rounded-2xl px-4 py-3 shadow-xl border border-border">
-                    <div className="font-heading font-medium text-[22px] text-primary">500+</div>
-                    <div className="font-body text-[11px] text-text-muted">Interviews conducted</div>
-                  </div>
-                </div>
-              </div>
 
-              {/* Right — text */}
-              <div>
-                <span className="section-tag">Featured Case Study</span>
-                <h2 className="font-heading text-h2 md:text-h2-lg text-text mb-6 max-w-[440px]">
-                  <GradientText hoverOnly animationSpeed={2}>Unlocking the Informal Economy: Minibus Taxi Digitalization.</GradientText>
-                </h2>
-                <p className="font-body text-body-sm text-text-muted mb-4 max-w-[48ch]">
-                  While most firms write off informal sectors as "unreachable," 4BC Global conducted on-the-ground interviews with commuters and taxi owners in South Africa.
-                </p>
-                <p className="font-body text-body-sm text-text-muted mb-10 max-w-[48ch]">
-                  The Result: A definitive go-to-market strategy for a global card payment leader, transforming a "hidden" market into a scalable digital opportunity.
-                </p>
-                <div className="flex flex-wrap items-center gap-4">
-                  <button
-                    onClick={() => setActiveStudy(featuredStudy)}
-                    className="inline-flex items-center gap-2 bg-accent text-dark font-body font-semibold text-[15px] rounded-full px-7 py-3.5 hover:bg-accent-warm hover:shadow-lg shadow-md hover:scale-[1.02] transition-all duration-200"
-                  >
-                    Read Case Study <ArrowRight size={15} />
-                  </button>
-                  <Link
-                    href="/case-studies"
-                    className="inline-flex items-center gap-1.5 font-body text-[14px] font-medium text-text-muted hover:text-primary transition-colors"
-                  >
-                    View All <ArrowRight size={13} />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ─── FEATURED CASE STUDIES GRID ─── */}
-      <section className="bg-white section-padding">
-        <div className="container-content">
+          {/* Header */}
           <div className="flex items-end justify-between mb-8">
             <AnimatedSection>
               <span className="section-tag">Featured Case Studies</span>
-              <h2 className="font-heading text-h2 text-text max-w-[380px]"><GradientText hoverOnly animationSpeed={2}>Our MEA market intelligence experience</GradientText></h2>
+              <h2 className="font-heading text-h2 text-text max-w-[400px]">
+                <GradientText hoverOnly animationSpeed={2}>Our MEA market intelligence experience</GradientText>
+              </h2>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
               <Link
@@ -111,39 +48,88 @@ export default function HomeCaseStudies() {
             </AnimatedSection>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-            {homeCaseStudies.map((cs, i) => (
-              <AnimatedSection key={cs.id} delay={i * 0.1} className="h-full">
+          {/* Bento grid */}
+          <AnimatedSection delay={0.1}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[280px]">
+
+              {/* Featured — spans 2 cols × 2 rows */}
+              <button
+                onClick={() => setActiveStudy(featuredStudy)}
+                className="group md:col-span-2 md:row-span-2 relative rounded-2xl overflow-hidden text-left w-full h-full"
+              >
+                <Image
+                  src={featuredStudy.image}
+                  alt={featuredStudy.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  style={{ objectPosition: '40% 55%' }}
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
+
+                {/* Top badges */}
+                <div className="absolute top-5 left-5 flex items-center gap-2">
+                  <span className="font-body text-[10px] font-semibold text-white bg-accent/90 rounded-full px-3 py-1 uppercase tracking-widest">
+                    Featured
+                  </span>
+                  <span className="font-body text-[10px] font-medium text-white bg-black/35 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1 uppercase tracking-wider">
+                    {featuredStudy.sector}
+                  </span>
+                </div>
+
+                {/* Stat bubble */}
+                <div className="absolute top-5 right-5 bg-white rounded-xl px-3 py-2 shadow-lg text-right">
+                  <div className="font-heading font-bold text-[20px] text-primary leading-none">500+</div>
+                  <div className="font-body text-[10px] text-text-muted mt-0.5">Interviews</div>
+                </div>
+
+                {/* Bottom content */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <h3 className="font-heading font-bold text-[20px] md:text-[26px] text-white leading-snug tracking-[-0.02em] mb-3 max-w-[480px]">
+                    Unlocking the Informal Economy: Minibus Taxi Digitalization.
+                  </h3>
+                  <p className="font-body text-[13px] text-white/65 leading-relaxed mb-5 max-w-[44ch] hidden md:block">
+                    While most firms write off informal sectors as "unreachable," 4BC conducted on-the-ground interviews with commuters and taxi owners in South Africa — delivering a definitive go-to-market strategy.
+                  </p>
+                  <span className="inline-flex items-center gap-2 bg-accent text-dark font-body font-semibold text-[13px] rounded-full px-5 py-2.5 group-hover:brightness-110 transition-all shadow-md">
+                    Read Case Study <ArrowRight size={13} />
+                  </span>
+                </div>
+              </button>
+
+              {/* Small cards */}
+              {gridStudies.map((cs) => (
                 <button
+                  key={cs.id}
                   onClick={() => setActiveStudy(cs)}
-                  className="group flex flex-col h-full w-full text-left border border-border rounded-2xl overflow-hidden hover:border-primary/25 hover:shadow-xl transition-all duration-300 bg-white"
+                  className="group relative rounded-2xl overflow-hidden text-left w-full h-full"
                 >
-                  <div className="h-52 relative overflow-hidden flex-shrink-0">
-                    <Image
-                      src={cs.image}
-                      alt={cs.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark/30 to-transparent" />
-                    <span className="absolute top-4 left-4 font-body text-[11px] font-medium text-white bg-black/35 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1 uppercase tracking-wider">
-                      {cs.sector}
+                  <Image
+                    src={cs.image}
+                    alt={cs.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/5" />
+
+                  <span className="absolute top-4 left-4 font-body text-[10px] font-medium text-white bg-black/35 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1 uppercase tracking-wider">
+                    {cs.sector}
+                  </span>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <h3 className="font-heading font-bold text-[14px] text-white leading-snug mb-2 tracking-[-0.01em]">
+                      {cs.title}
+                    </h3>
+                    <span className="inline-flex items-center gap-1.5 font-body text-[12px] font-medium text-white/60 group-hover:text-white group-hover:gap-2.5 transition-all duration-200">
+                      Read Case Study <ArrowRight size={11} />
                     </span>
                   </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className="font-heading font-bold text-[17px] text-text leading-snug group-hover:text-primary transition-colors mb-3 tracking-[-0.015em]">{cs.title}</h3>
-                    <p className="font-body text-body-md text-text-muted flex-1">{cs.challenge}</p>
-                    <div className="mt-5 pt-4 border-t border-border">
-                      <span className="inline-flex items-center gap-1.5 font-body text-[14px] font-medium text-primary group-hover:gap-3 transition-all duration-200">
-                        Read Case Study <ArrowRight size={13} />
-                      </span>
-                    </div>
-                  </div>
                 </button>
-              </AnimatedSection>
-            ))}
-          </div>
+              ))}
+            </div>
+          </AnimatedSection>
 
+          {/* Mobile view all */}
           <div className="sm:hidden text-center mt-8">
             <Link href="/case-studies" className="inline-flex items-center gap-2 border border-dark text-dark font-body text-[15px] font-medium rounded-full px-6 py-3 hover:bg-dark hover:text-white transition-all">
               View All Case Studies <ArrowRight size={13} />

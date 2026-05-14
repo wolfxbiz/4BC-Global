@@ -76,7 +76,7 @@ export default function Navbar() {
             alt="4BC Global"
             width={150}
             height={44}
-            className="h-8 w-auto object-contain"
+            className="h-10 w-auto object-contain"
             priority
           />
         </Link>

@@ -8,6 +8,7 @@ import LogoStrip from '@/components/LogoStrip'
 import { sectors } from '@/lib/sectors-data'
 import PillButton from '@/components/PillButton'
 import Grainient from '@/components/Grainient'
+import SectorGrid from '@/components/SectorGrid'
 
 export const metadata: Metadata = {
   title: 'Sectors We Serve — 4BC Global',
@@ -114,54 +115,7 @@ export default function SectorsPage() {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {sectors.map((sector, i) => {
-              const Icon = sector.icon
-              return (
-                <AnimatedSection key={sector.slug} delay={i * 0.04}>
-                  <Link
-                    href={`/sectors/${sector.slug}`}
-                    className="group block relative overflow-hidden rounded-2xl border border-transparent hover:border-white/20 transition-all"
-                    style={{ aspectRatio: '4/3' }}
-                  >
-                    {/* Background */}
-                    {sector.image ? (
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                        style={{ backgroundImage: `url(${sector.image})` }}
-                      />
-                    ) : (
-                      <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105" style={{ background: sector.gradient }} />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/5" />
-
-                    {/* Content */}
-                    <div className="absolute inset-0 p-6 flex flex-col justify-between">
-                      <div className="flex items-start justify-between">
-                        <div className="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20">
-                          <Icon size={20} className="text-white" />
-                        </div>
-                        {sector.engagements && (
-                          <span className="font-body text-[11px] font-medium text-white/70 bg-black/30 backdrop-blur-sm rounded-full px-3 py-1 border border-white/15">
-                            {sector.engagements} engagements
-                          </span>
-                        )}
-                      </div>
-                      <div>
-                        <h3 className="font-heading font-bold text-[18px] text-white mb-1.5 leading-snug">{sector.name}</h3>
-                        <p className="font-body text-[12px] text-white/55 leading-snug mb-3 line-clamp-2">{sector.tagline}</p>
-                        <div className="flex items-center gap-1.5 font-body text-[13px] font-medium text-white/60 group-hover:text-white transition-colors">
-                          Explore sector <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="absolute inset-0 rounded-2xl ring-2 ring-white/0 group-hover:ring-white/20 transition-all pointer-events-none" />
-                  </Link>
-                </AnimatedSection>
-              )
-            })}
-          </div>
+          <SectorGrid />
         </div>
       </section>
 

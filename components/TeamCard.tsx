@@ -34,9 +34,14 @@ export default function TeamCard({ member }: { member: TeamMember }) {
           <p className="font-body text-sm text-primary font-medium mt-0.5">{member.title}</p>
         </div>
 
-        <p className="font-body text-sm text-text-muted leading-relaxed mb-4">
-          {expanded ? member.fullBio : member.shortBio}
-        </p>
+        <div className="font-body text-sm text-text-muted leading-relaxed mb-4">
+          {expanded
+            ? member.fullBio.split('\n\n').map((para, i) => (
+                <p key={i} className={i > 0 ? 'mt-3' : ''}>{para}</p>
+              ))
+            : <p>{member.shortBio}</p>
+          }
+        </div>
 
         {/* Expertise tags */}
         <div className="flex flex-wrap gap-1.5 mb-4 mt-auto">

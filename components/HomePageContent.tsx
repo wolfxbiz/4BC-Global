@@ -11,7 +11,7 @@ import Grainient from '@/components/Grainient'
 import CapabilitiesBento from '@/components/CapabilitiesBento'
 import HomeCaseStudies from '@/components/HomeCaseStudies'
 import { OpenContactPill, OpenContactButton } from '@/components/OpenContactButton'
-import { sectors } from '@/lib/sectors-data'
+import SectorGrid from '@/components/SectorGrid'
 
 const approachPrinciples = [
   {
@@ -82,7 +82,7 @@ export default function HomePageContent() {
   const heroStats = [
     { num: '450+', label: 'Bespoke Engagements' },
     { num: '40+', label: 'Markets Navigated' },
-    { num: '100+', label: 'Yrs Combined Expertise' },
+    { num: '100+', label: 'Years Combined Expertise' },
   ]
 
   const heroContent = (
@@ -179,7 +179,7 @@ export default function HomePageContent() {
 
               {/* Body */}
               <p className="font-body text-[14px] text-white/55 leading-relaxed mb-6 sm:mb-8">
-                We bridge the gap between regional complexity and commercial certainty — a specialist research firm built to navigate MEA through ground-level primary research and AI-accelerated synthesis.
+                We bridge the gap between regional complexity and commercial certainty — a specialist research firm built to navigate MEA regions through ground-level primary research and AI-accelerated synthesis.
               </p>
 
               {/* CTAs */}
@@ -212,7 +212,7 @@ export default function HomePageContent() {
                 ))}
                 <div className="border-l border-white/15 pl-5 ml-5 sm:pl-7 sm:ml-7 hidden sm:block pb-0.5">
                   <div className="font-body text-[9px] text-white/30 tracking-[0.12em] uppercase leading-[1.7]">
-                    Spun Out From Excellence<br />Kantar MENA · Est. 2020
+                    Spun Out From Excellence
                   </div>
                 </div>
               </div>
@@ -240,61 +240,29 @@ export default function HomePageContent() {
         <LogoStrip />
       </section>
 
-      {/* ─── 3. APPROACH ─── */}
-      <section className="bg-white section-padding">
+      {/* ─── 3. CAPABILITIES ─── */}
+      <section className="section-padding bg-bg-soft">
         <div className="container-content">
-          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16 items-start">
-
-            {/* Left */}
-            <AnimatedSection className="lg:sticky lg:top-28">
-              <span className="section-tag">The 4BC Approach</span>
-              <h2 className="font-heading text-h2-lg text-text mb-5 max-w-[400px]">
-                <GradientText hoverOnly animationSpeed={2}>Your business question dictates our methodology.</GradientText>
-              </h2>
-              <p className="font-body text-body-sm text-text-muted mb-10 max-w-[46ch] leading-relaxed">
-                We are method-neutral by design. Because secondary data in the MEA region is often unreliable, we build every engagement from the ground up — blending deep primary research with AI-integrated analytics to find the truth that databases miss.
-              </p>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[15px] rounded-full px-7 py-3.5 hover:bg-accent-warm hover:brightness-105 transition-all"
-              >
-                How We Work <ArrowRight size={15} />
-              </Link>
-            </AnimatedSection>
-
-            {/* Right — 4 numbered principle cards */}
-            <AnimatedSection delay={0.15}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {approachPrinciples.map((p) => (
-                  <div key={p.num} className={`group ${p.bg} border ${p.border} ${p.hoverBorder} rounded-2xl p-6 transition-all duration-200`}>
-                    <span className={`font-heading font-black text-[64px] leading-none ${p.numColor} block mb-4`}>{p.num}</span>
-                    <h3 className={`font-heading font-semibold text-[16px] ${p.titleColor} mb-2 leading-snug`}>{p.title}</h3>
-                    <p className="font-body text-[13px] text-text-muted leading-relaxed">{p.desc}</p>
-                  </div>
-                ))}
+          <AnimatedSection className="mb-8">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div>
+                <span className="section-tag">Core Service Areas</span>
+                <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+                  Comprehensive Research Capabilities
+                </h2>
               </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 4. CAPABILITIES ─── */}
-      <section className="section-padding" style={{ background: '#0F1320' }}>
-        <div className="container-content">
-          <AnimatedSection className="mb-10">
-            <span className="font-body text-xs font-medium tracking-widest uppercase text-accent inline-block mb-1">Capabilities</span>
-            <div className="h-[3px] w-10 bg-accent rounded-full mb-4" />
-            <h2 className="font-heading font-medium text-4xl md:text-5xl text-white">
-              Our market research services
-            </h2>
+              <p className="font-body text-[14px] text-text-muted max-w-xs md:text-right leading-relaxed">
+                Five specialist practice areas covering the full breadth of MEA intelligence needs.
+              </p>
+            </div>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <CapabilitiesBento glowColor="132, 0, 255" spotlightRadius={600} />
+            <CapabilitiesBento />
           </AnimatedSection>
         </div>
       </section>
 
-      {/* ─── 6. SECTORS / INDUSTRIES ─── */}
+      {/* ─── 4. SECTORS / INDUSTRIES ─── */}
       <section className="bg-white section-padding">
         <div className="container-content">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
@@ -316,59 +284,43 @@ export default function HomePageContent() {
               </p>
             </AnimatedSection>
           </div>
-
           <AnimatedSection delay={0.15}>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
-              {sectors.slice(0, 2).map((sector) => (
-                <Link key={sector.slug} href={`/sectors/${sector.slug}`}
-                  className="col-span-2 group relative flex items-end justify-between rounded-xl sm:rounded-2xl p-4 sm:p-6 min-h-[130px] sm:min-h-[160px] overflow-hidden transition-all duration-300 hover:shadow-2xl">
-                  {/* Photo background */}
-                  {sector.image && <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${sector.image})` }} />}
-                  {/* Always-on dark overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/20" />
-                  {/* Hover — gradient tint */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-400" style={{ background: sector.gradient }} />
-                  <div className="relative z-10">
-                    <span className="font-heading font-semibold text-white text-[15px] sm:text-[20px] block leading-snug drop-shadow">{sector.name}</span>
-                    <span className="font-body text-[12px] sm:text-[13px] text-white/70 mt-1 block max-h-0 group-hover:max-h-10 overflow-hidden transition-all duration-400">{sector.tagline}</span>
-                  </div>
-                  <div className="relative z-10 w-9 h-9 rounded-full bg-white/20 border border-white/30 flex items-center justify-center flex-shrink-0 transition-all duration-300 ml-4 group-hover:bg-white/35">
-                    <ArrowRight size={15} className="text-white" strokeWidth={2} />
-                  </div>
-                </Link>
-              ))}
-              {sectors.slice(2, 6).map((sector) => (
-                <Link key={sector.slug} href={`/sectors/${sector.slug}`}
-                  className="col-span-1 sm:col-span-2 lg:col-span-1 group relative flex flex-col justify-between rounded-xl sm:rounded-2xl p-3 sm:p-5 min-h-[110px] sm:min-h-[140px] overflow-hidden transition-all duration-300 hover:shadow-2xl">
-                  {sector.image && <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${sector.image})` }} />}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/10" />
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-45 transition-opacity duration-400" style={{ background: sector.gradient }} />
-                  <div className="relative z-10 flex justify-end">
-                    <div className="w-7 h-7 rounded-full bg-white/20 border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:bg-white/35">
-                      <ArrowRight size={12} className="text-white" strokeWidth={2} />
-                    </div>
-                  </div>
-                  <div className="relative z-10">
-                    <span className="font-heading font-semibold text-white text-[15px] leading-snug block drop-shadow">{sector.name}</span>
-                  </div>
-                </Link>
-              ))}
-              {sectors.slice(6, 10).map((sector) => (
-                <Link key={sector.slug} href={`/sectors/${sector.slug}`}
-                  className="col-span-1 group relative flex flex-col justify-between rounded-xl sm:rounded-2xl p-3 sm:p-4 min-h-[100px] sm:min-h-[120px] overflow-hidden transition-all duration-300 hover:shadow-2xl">
-                  {sector.image && <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${sector.image})` }} />}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/10" />
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-45 transition-opacity duration-400" style={{ background: sector.gradient }} />
-                  <div className="relative z-10 flex justify-end">
-                    <div className="w-6 h-6 rounded-full bg-white/20 border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:bg-white/35">
-                      <ArrowRight size={10} className="text-white" strokeWidth={2} />
-                    </div>
-                  </div>
-                  <span className="font-heading font-semibold text-white text-[13px] leading-snug relative z-10 drop-shadow">{sector.name}</span>
-                </Link>
-              ))}
-            </div>
+            <SectorGrid />
           </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ─── 5. APPROACH ─── */}
+      <section className="bg-bg-soft section-padding">
+        <div className="container-content">
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16 items-start">
+            <AnimatedSection className="lg:sticky lg:top-28">
+              <span className="section-tag">The 4BC Approach</span>
+              <h2 className="font-heading text-h2-lg text-text mb-5 max-w-[400px]">
+                <GradientText hoverOnly animationSpeed={2}>Your business question dictates our methodology.</GradientText>
+              </h2>
+              <p className="font-body text-body-sm text-text-muted mb-10 max-w-[46ch] leading-relaxed">
+                We are method-neutral by design. Because secondary data in the MEA region is often unreliable, we build every engagement from the ground up — blending deep primary research with AI-integrated analytics to find the truth that databases miss.
+              </p>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 bg-accent text-dark font-body font-medium text-[15px] rounded-full px-7 py-3.5 hover:bg-accent-warm hover:brightness-105 transition-all"
+              >
+                How We Work <ArrowRight size={15} />
+              </Link>
+            </AnimatedSection>
+            <AnimatedSection delay={0.15}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {approachPrinciples.map((p) => (
+                  <div key={p.num} className={`group ${p.bg} border ${p.border} ${p.hoverBorder} rounded-2xl p-6 transition-all duration-200`}>
+                    <span className={`font-heading font-black text-[64px] leading-none ${p.numColor} block mb-4`}>{p.num}</span>
+                    <h3 className={`font-heading font-semibold text-[16px] ${p.titleColor} mb-2 leading-snug`}>{p.title}</h3>
+                    <p className="font-body text-[13px] text-text-muted leading-relaxed">{p.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
@@ -484,16 +436,10 @@ export default function HomePageContent() {
             <p className="font-body text-white/55 text-[15px] md:text-[16px] max-w-md mx-auto mb-10 leading-relaxed">
               Whether you're entering a new market, evaluating a strategic opportunity, or seeking to understand the competitive dynamics shaping your category — we're ready to help you move forward with confidence.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-              <OpenContactButton className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-accent text-dark font-body font-semibold text-[15px] rounded-full px-7 py-3.5 hover:brightness-110 transition-all">
-                Book a Consultation <ArrowRight size={16} />
+            <div className="flex justify-center">
+              <OpenContactButton className="inline-flex items-center justify-center gap-2 bg-accent text-dark font-body font-semibold text-[15px] rounded-full px-7 py-3.5 hover:brightness-110 transition-all">
+                Book a No Obligation Consultation <ArrowRight size={16} />
               </OpenContactButton>
-              <Link
-                href="/case-studies"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white font-body font-medium text-[15px] rounded-full px-7 py-3.5 hover:bg-white/18 transition-all"
-              >
-                View Case Studies
-              </Link>
             </div>
           </AnimatedSection>
         </div>

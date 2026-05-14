@@ -26,7 +26,7 @@ export const caseStudies = [
   {
     id: 'cs-02',
     sector: 'Transport',
-    image: '/images/case-minibus.jpg',
+    image: '/images/case-minibus-new.png',
     title: 'Opportunity Assessment of Digitalization of Minibus Taxis in South Africa',
     geography: 'South Africa',
     segment: 'Commuters, Taxi Owners, Taxi Associations, Taxi Financiers',

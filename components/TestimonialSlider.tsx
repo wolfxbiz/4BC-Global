@@ -11,6 +11,7 @@ const testimonials = [
     company: "DP World",
     sector: "Real Estate & Logistics",
     logo: '/logos/03_Real_Estate_and_Construction/dp-world.jpeg',
+    logoMaxW: '75%',
   },
   {
     quote: "The report looks very good. Sharp and concise analysis.",
@@ -18,6 +19,7 @@ const testimonials = [
     company: "ENOC",
     sector: "Energy & Fuels",
     logo: '/logos/05_Oil_and_Gas/enoc.png',
+    logoMaxW: '65%',
   },
   {
     quote: "This is a wonderful piece of work, a giant leap forward for the organization.",
@@ -25,6 +27,7 @@ const testimonials = [
     company: "Al-Futtaim Group",
     sector: "Regional Conglomerates",
     logo: '/logos/al-futtaim.png',
+    logoMaxW: '75%',
   },
   {
     quote: "The insights and the market strategy is very useful for our roll out. The insights have greater details for developing our strategy.",
@@ -32,6 +35,7 @@ const testimonials = [
     company: "Visa",
     sector: "Banking & Finance",
     logo: '/logos/02_Banking_and_Finance/visa.png',
+    logoMaxW: '45%',
   },
 ]
 
@@ -114,7 +118,8 @@ export default function TestimonialSlider() {
                 alt={t.company}
                 width={140}
                 height={60}
-                className="object-contain w-full h-full"
+                className="object-contain h-full"
+                style={{ maxWidth: t.logoMaxW ?? '100%' }}
               />
             </div>
           ) : (

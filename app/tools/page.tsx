@@ -40,6 +40,7 @@ const tools = [
     logoH: 'h-12 sm:h-28', logoW: 'w-full max-w-[400px]',
     logo: '/brand/landscape-logo.png',
     image: '/capabilities/geolocation.png',
+    video: '/videos/landscape-demo.mp4',
     name: '4BC Landscape',
     subtitle: 'Spatial Intelligence & Network Expansion',
     tagline: 'A sophisticated geo-mapping and retail network planning tool that dictates optimal location strategies and safeguards capital expenditure.',
@@ -215,16 +216,28 @@ export default function ToolsPage() {
                 <AnimatedSection delay={0.15} className={isEven ? '' : 'lg:order-first'}>
                   <div className="relative">
 
-                    {/* Image */}
-                    <div className="rounded-2xl overflow-hidden aspect-[4/3] relative shadow-xl">
-                      <Image
-                        src={tool.image}
-                        alt={tool.name}
-                        fill
-                        className="object-cover"
-                      />
-                      {/* Subtle bottom gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                    {/* Image or Video */}
+                    <div className={`rounded-2xl overflow-hidden relative shadow-xl ${'video' in tool && tool.video ? 'aspect-video bg-black' : 'aspect-[4/3]'}`}>
+                      {'video' in tool && tool.video ? (
+                        <video
+                          src={tool.video}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-contain"
+                        />
+                      ) : (
+                        <>
+                          <Image
+                            src={tool.image}
+                            alt={tool.name}
+                            fill
+                            className="object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                        </>
+                      )}
                     </div>
 
                     {/* Stats — overlapping bottom-left */}

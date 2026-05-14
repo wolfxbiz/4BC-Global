@@ -37,7 +37,7 @@ export default function SectorPage({ params }: Props) {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative min-h-[480px] sm:min-h-[560px] flex items-end overflow-hidden">
+      <section className="relative min-h-[480px] sm:min-h-[560px] flex items-center overflow-hidden">
         {sector.image ? (
           <>
             <div
@@ -56,7 +56,7 @@ export default function SectorPage({ params }: Props) {
           style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '32px 32px' }}
         />
 
-        <div className="relative z-10 container-content pb-16 pt-32 sm:pt-40 w-full">
+        <div className="relative z-10 container-content py-12 pt-28 sm:pt-32 w-full">
           <AnimatedSection>
             {/* Back link */}
             <Link
@@ -119,54 +119,72 @@ export default function SectorPage({ params }: Props) {
       {/* ── OVERVIEW ── */}
       <section className="bg-white section-padding">
         <div className="container-content">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
 
-            {/* Left — intro */}
-            <AnimatedSection>
-              <span className="section-tag">Overview</span>
-              <h2 className="font-heading font-bold text-3xl md:text-4xl text-text mb-5">
-                <GradientText hoverOnly animationSpeed={2}>Our {sector.name} Practice</GradientText>
-              </h2>
-              <p className="font-body text-[15px] text-text-muted leading-relaxed mb-5">
-                {sector.intro ?? sector.description}
-              </p>
-              <p className="font-body text-[14px] text-text-muted leading-relaxed mb-8">
-                Every engagement is led by a research director with deep regional expertise. We design bespoke research solutions tailored to the specific dynamics of {sector.name.toLowerCase()} markets across MEA.
-              </p>
+          {/* Full-width header */}
+          <AnimatedSection className="mb-10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div>
+                <span className="section-tag">Overview</span>
+                <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
+                  <GradientText hoverOnly animationSpeed={2}>Our {sector.name} Practice</GradientText>
+                </h2>
+              </div>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 font-heading font-semibold text-[15px] rounded-full px-7 py-3.5 text-dark bg-accent hover:bg-accent-warm transition-all shadow-md"
+                className="inline-flex items-center gap-2 font-heading font-semibold text-[13px] rounded-full px-5 py-2.5 text-dark bg-accent hover:bg-accent-warm transition-all shadow-sm self-start md:self-auto flex-shrink-0"
               >
-                Discuss Your Project <ArrowRight size={15} />
+                Discuss Your Project <ArrowRight size={13} />
               </Link>
+            </div>
+          </AnimatedSection>
+
+          {/* Two columns — same vertical start */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+
+            {/* Left — description + research pills */}
+            <AnimatedSection>
+              <div className="space-y-4 font-body text-[15px] text-text-muted leading-relaxed mb-8">
+                <p>{sector.intro ?? sector.description}</p>
+                <p>Every engagement is led by a research director with deep regional expertise. We design bespoke research solutions tailored to the specific dynamics of {sector.name.toLowerCase()} markets across MEA.</p>
+              </div>
+              {sector.researchList.length > 0 && (
+                <div>
+                  <p className="font-body text-[10px] font-semibold text-text-muted uppercase tracking-[0.14em] mb-3">What we research</p>
+                  <div className="flex flex-wrap gap-2">
+                    {sector.researchList.map((item) => (
+                      <span key={item} className="font-body text-[12px] text-text-muted bg-bg-soft border border-border rounded-full px-3 py-1.5">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </AnimatedSection>
 
-            {/* Right — what we uncover */}
+            {/* Right — key questions checklist */}
             <AnimatedSection delay={0.15}>
-              <span className="section-tag">What We Uncover</span>
-              <h2 className="font-heading font-bold text-3xl text-text mb-6">
-                <GradientText hoverOnly animationSpeed={2}>
-                  {sector.whatWeUncover ? 'Key Questions We Answer' : 'Research Capabilities'}
-                </GradientText>
-              </h2>
+              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.14em] mb-1" style={{ color: sector.accentHex }}>What We Uncover</p>
+              <h3 className="font-heading font-bold text-[22px] text-text leading-snug mb-6">
+                {sector.whatWeUncover ? 'Key Questions We Answer' : 'Research Capabilities'}
+              </h3>
               {sector.whatWeUncover ? (
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                   {sector.whatWeUncover.map((item) => (
                     <div key={item.name} className="flex items-start gap-3 p-4 rounded-xl border border-border bg-bg-soft hover:border-primary/20 transition-colors">
-                      <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5" style={{ color: sector.accentHex }} />
+                      <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: sector.accentHex }} />
                       <div>
-                        <span className="font-body font-semibold text-[13.5px] text-text">{item.name}</span>
+                        <span className="font-body font-semibold text-[13px] text-text">{item.name}</span>
                         <span className="font-body text-[13px] text-text-muted"> — {item.desc}</span>
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                   {sector.researchList.map((item) => (
                     <div key={item} className="flex items-start gap-3 p-4 rounded-xl border border-border bg-bg-soft hover:border-primary/20 transition-colors">
-                      <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5" style={{ color: sector.accentHex }} />
-                      <span className="font-body text-[14px] text-text">{item}</span>
+                      <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: sector.accentHex }} />
+                      <span className="font-body text-[13px] text-text">{item}</span>
                     </div>
                   ))}
                 </div>

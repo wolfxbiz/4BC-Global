@@ -10,16 +10,16 @@ const team = [
   {
     name: 'Sukhdev Singh',
     title: 'Partner, Insights & Strategy',
-    shortBio: 'Head of Business Research and Consulting practice in MEA. 25+ years of experience across Africa, Middle East, Asia and Far-East Asian markets.',
-    fullBio: 'Sukhdev is the head of Business Research and Consulting practice in the MEA region. Till recently he headed the same practice at Kantar MEA since 2007. He possesses over 25 years of experience in Africa & Middle East, Asia and Far-East Asian markets. During his long career Sukhdev has helped many clients with their market entry strategies across industries as diverse as biscuits to boilers. He is also a Stakeholder Satisfaction Expert and along with Business-to-Business and Government Sector expert.',
-    expertise: ['Market Entry Strategy', 'B2B Research', 'Government Sector', 'Stakeholder Satisfaction'],
+    shortBio: 'With over 25 years of experience across the Middle East, Africa, Asia, and Far-East Asian markets, Sukhdev is one of the region\'s most seasoned business researchers.',
+    fullBio: 'With over 25 years of experience across the Middle East, Africa, Asia, and Far-East Asian markets, Sukhdev is one of the region\'s most seasoned business researchers — known for getting beneath the surface of a client\'s challenge and surfacing insights that genuinely move strategy forward.\n\nHis expertise spans the full breadth of what rigorous research demands: understanding how an industry works end-to-end, mapping go-to-market dynamics, and designing the customer experience (CX) research that tells organisations what their customers and stakeholders truly think — not just what they say. He has applied this across market entry strategy, B2B research, and government sector advisory, working with organisations ranging from multinationals to public sector institutions across MEA.\n\nThe practice grew because clients kept coming back — and sending others. Each engagement built on the last, deepening relationships and expanding the range of questions 4BC was trusted to answer.\n\nA researcher at heart, Sukhdev is as comfortable conducting an in-depth interview with a shopfloor worker as he is in a boardroom with a CEO. That breadth of human curiosity — and the discipline to listen without agenda — is what drives the quality of insight that clients rely on.',
+    expertise: ['Market Entry Strategy', 'B2B Research', 'Government Sector', 'CX Research', 'Stakeholder Satisfaction'],
   },
   {
     name: 'Siva Sankar',
     title: 'Director, Insights',
-    shortBio: 'More than a decade of rich experience in Business and Industrial Research across Middle East, North Africa, India, China, Russia, and Turkey.',
-    fullBio: 'Siva has more than a decade of rich experience in Business and Industrial Research, and has worked across diverse geographies including the Middle East, North Africa, India, China, Russia, and Turkey. He has been helping clients with their market entry and business expansion strategies, and is responsible for comprehensive delivery of solutions related to opportunity assessment, market sizing, competitor analysis, new product & market entry strategy development, channel assessment, network development, geo-mapping, and understanding regulatory environments.',
-    expertise: ['Market Sizing', 'Competitor Analysis', 'Geo-mapping', 'Regulatory Environments'],
+    shortBio: 'Over 15 years of experience in business and industrial research with extensive exposure across the Middle East, North Africa, India, China, Russia, Turkey, and other international markets.',
+    fullBio: 'Siva brings over 15 years of experience in business and industrial research, with extensive exposure across the Middle East, North Africa, India, China, Russia, Turkey, and other international markets. Over the years, he has worked with clients across a wide range of sectors, supporting strategic decision-making through in-depth market intelligence and advisory-led research solutions.\n\nHis expertise spans market sizing and opportunity assessment, market entry and expansion strategy, competitive intelligence, customer satisfaction studies, mystery shopping, impact assessment, benchmarking, channel and distribution analysis, network development/geo-mapping, and regulatory landscape assessment. He has also led multiple large-scale business and industrial studies focused on identifying growth opportunities, evaluating market potential, understanding competitive dynamics, and supporting long-term strategic planning.\n\nSiva has worked closely with both public and private sector organizations. His experience includes managing multi-country research engagements, developing tailored research frameworks, and delivering insights to senior stakeholders across industries such as energy, automotive, retail, education, financial services, entertainment, manufacturing, and infrastructure.\n\nHe also brings along a strong understanding of regional business environments and consumer dynamics.',
+    expertise: ['Market Sizing', 'Competitive Intelligence', 'Impact Assessment', 'Geo-mapping & Network Development', 'Customer Experience', 'Mystery Shopping'],
   },
   {
     name: 'Sandeep Vaddey',
@@ -31,9 +31,9 @@ const team = [
   {
     name: 'Angad Kenghe',
     title: 'Senior Manager, Insights',
-    shortBio: '5+ years of diverse research experience across consumer insights, business research, videometrics, and retail panel-based methodology.',
-    fullBio: 'Angad comes with over 5+ years of diverse research experience across consumer insights, business research, videometrics, and retail panel-based methodology. He has worked with small & medium businesses as well as large players, spanning MEA, US & Europe, and India regions. He has helped clients with projects across market overview, industry analysis, competitor landscape, new product development, feasibility, mystery shopping, and customer experience.',
-    expertise: ['Consumer Insights', 'Mystery Shopping', 'Competitor Landscape', 'New Product Development'],
+    shortBio: '5+ years of diverse research experience across consumer research, business research, videometrics, and retail panel-based methodology across MEA, US, Europe, and India.',
+    fullBio: 'Angad has over 5+ years of diverse research experience across consumer research, business research, videometrics, and retail panel-based methodology. He has worked with small & medium businesses, as well as large players, spanning MEA, US, Europe, and India regions, and has helped clients with projects across market overview, industry analysis, competitor landscape, new product development, mystery shopping and customer experience.',
+    expertise: ['Consumer Research', 'Videometrics', 'Retail Panel Research', 'Mystery Shopping', 'Competitor Landscape', 'New Product Development'],
   },
   {
     name: 'Tarun Sinhal',
@@ -72,9 +72,14 @@ function TeamCard({ member }: { member: typeof team[0] }) {
           <h3 className="font-heading font-medium text-lg text-text">{member.name}</h3>
           <p className="font-body text-sm text-accent font-medium mt-1">{member.title}</p>
         </div>
-        <p className="font-body text-sm text-text-muted leading-relaxed mb-4 text-center">
-          {expanded ? member.fullBio : member.shortBio}
-        </p>
+        <div className="font-body text-sm text-text-muted leading-relaxed mb-4 text-center">
+          {expanded
+            ? member.fullBio.split('\n\n').map((para, i) => (
+                <p key={i} className={i > 0 ? 'mt-3' : ''}>{para}</p>
+              ))
+            : <p>{member.shortBio}</p>
+          }
+        </div>
         {/* Expertise tags */}
         <div className="flex flex-wrap gap-1.5 justify-center mb-4">
           {member.expertise.map((e) => (

@@ -22,7 +22,7 @@ export default function Footer() {
               Specialist B2B &amp; B2C market research for the MEA region — from market entry to competitive intelligence.
             </p>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/4bcglobal/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-8 h-8 rounded border border-white/20 flex items-center justify-center hover:border-accent hover:text-accent transition-colors mt-1 self-start"
@@ -38,8 +38,8 @@ export default function Footer() {
             <p className="font-body text-sm text-gray-400 leading-relaxed">
               Got a question or need a proposal? We'll get back to you today.
             </p>
-            <a href="tel:+" className="font-body text-sm text-white hover:text-accent transition-colors">
-              +971 (phone to be added) ↗
+            <a href="tel:+97143595123" className="font-body text-sm text-white hover:text-accent transition-colors">
+              +971 4 3595123 ↗
             </a>
             <a href="mailto:info@4bcglobal.com" className="font-body text-sm text-white hover:text-accent transition-colors">
               info@4bcglobal.com ↗

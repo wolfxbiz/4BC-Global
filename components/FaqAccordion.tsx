@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: 'Which geographies do you cover?',
-    a: 'We have registered offices in Dubai (UAE) and partner offices in India, Kenya, Algeria, and South Africa. We conduct research across 40+ countries, with a primary focus on the GCC, Levant, and Africa regions.',
+    a: 'We operate where it matters most. With active research conducted across 40+ geographies, we bring ground-level intelligence and regional expertise to every engagement. Our teams travel directly to meet stakeholders and decision-makers wherever they are — driven by research requirements, business-critical needs, and situational awareness. We maintain strategic presence in Dubai (UAE), London (UK), with associate offices in Riyadh (KSA) and India, ensuring proximity to the markets we serve and the agility to deploy as demands evolve.',
   },
   {
     q: 'Can you handle large-scale research projects?',
@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: 'What research methodologies do you use?',
-    a: 'We blend quantitative surveys (CATI, online, face-to-face), qualitative in-depth interviews (IDIs), focus groups, mystery shopping, observation research, secondary desk research, and geo-mapping — choosing the right mix for each unique challenge.',
+    a: 'We take pride in our method-neutral research approach — where methodology is entirely driven by research requirements. Our researchers are experts in both qualitative and quantitative methods, ensuring no silos: the same team delivers 360° market insight through a seamless blend. We blend quantitative surveys (CATI, online, face-to-face), qualitative in-depth interviews (IDIs), focus groups, mystery shopping, observation research, secondary desk research, and geo-mapping — choosing the right mix for each unique challenge.',
   },
   {
     q: 'Do you have proprietary research tools?',
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: 'How do I get a proposal?',
-    a: 'Fill in the contact form on our Contact page with a brief description of your research challenge. Our team will respond within 1–2 business days with an initial approach and proposal.',
+    a: 'We offer a no-obligation 20-minute consultation with a senior researcher to understand your requirements. Many research and marketing challenges don\'t start with a written brief — and that\'s perfectly fine. This session allows us to conceptualize and clarify your needs before moving to proposal. Alternatively, if you have a written brief ready, use our Contact page to share your requirements, and we\'ll respond within 1–2 business days with an initial approach and proposal.',
   },
 ]
 

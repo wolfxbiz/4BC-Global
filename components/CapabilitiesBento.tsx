@@ -1,224 +1,200 @@
 'use client'
-import { useRef, useEffect, useState } from 'react'
-import { gsap } from 'gsap'
-import { BarChart2, Users, Zap, MapPin } from 'lucide-react'
-import './MagicBento.css'
+import { useState } from 'react'
+import Link from 'next/link'
+import { Search, Users, BarChart2, MapPin, Lightbulb, ArrowRight } from 'lucide-react'
 
-const DEFAULT_GLOW_COLOR = '132, 0, 255'
-const DEFAULT_SPOTLIGHT_RADIUS = 600
-
-const capabilities = [
+const serviceAreas = [
   {
-    label: '01 / 04',
+    id: 'business-research',
+    icon: Search,
     title: 'Business Research',
-    description: 'Marketing strategy, segmentation, market entry, competition mapping, and regulatory evaluation — backed by primary and secondary research across MEA.',
-    icon: BarChart2,
-    href: '/services#business-research',
+    color: '#4F7BE8',
     image: '/capabilities/business-research.jpg',
+    href: '/services#business-research',
+    desc: 'End-to-end market intelligence — from landscape mapping to strategic entry decisions.',
+    services: [
+      'Marketing Strategy & Concept Evaluation',
+      'Segmentation Studies',
+      'Regulatory Environment Evaluation',
+      'Market Entry',
+      'Competition Mapping',
+      'Partner Identification & Evaluation',
+      'Market Sizing, Demand Estimation & Brand Share',
+      'Supply & Demand Analysis',
+      'Industrial Consumer Usage & Satisfaction',
+      'Channel Analysis',
+      'Online Customer Management',
+    ],
   },
   {
-    label: '02 / 04',
-    title: 'Customer Experience',
-    description: 'Customer journey mapping, NPS, mystery shopping, loyalty programs, and CX measure and management — designed to surface what your customers truly think.',
+    id: 'customer-experience',
     icon: Users,
-    href: '/services#customer-experience',
+    title: 'Customer Satisfaction & Experience',
+    color: '#C45FA0',
     image: '/capabilities/customer-satisfaction.png',
+    href: '/services#customer-experience',
+    desc: 'Understanding what customers truly think — not just what they say.',
+    services: [
+      'Customer Journey Mapping',
+      'Customer Loyalty / Satisfaction',
+      'Loyalty & Engagement Programs',
+      'Net Promoter Score (NPS)',
+      'Mystery Shopping',
+      'CX Measure and Management',
+      'Channel Analysis',
+    ],
   },
   {
-    label: '03 / 04',
+    id: 'impact-assessment',
+    icon: BarChart2,
     title: 'Impact Assessment',
-    description: 'Corporate reputation, economic and social impact measurement — giving governments and corporates the evidence they need to act.',
-    icon: Zap,
-    href: '/services#impact-assessment',
+    color: '#E8A020',
     image: '/capabilities/impact-assessment.png',
+    href: '/services#impact-assessment',
+    desc: 'Evidence-backed measurement of economic, social, and reputational value.',
+    services: [
+      'Corporate Reputation Assessment',
+      'Economic Impact Assessment (EIA)',
+      'Event Performance — Footfall & Economic Impact',
+      'Social Impact Assessment (SIA)',
+    ],
   },
   {
-    label: '04 / 04',
-    title: 'Geolocation Services',
-    description: 'Catchment area assessment, network planning, branch optimisation, and promotion/event performance measurement powered by our geo-analytics platform.',
+    id: 'geolocation-services',
     icon: MapPin,
-    href: '/services#geolocation-services',
+    title: 'Geolocation-Based Services',
+    color: '#3BBFA3',
     image: '/capabilities/geolocation.png',
+    href: '/services#geolocation-services',
+    desc: 'Spatial intelligence that turns location data into network strategy.',
+    services: [
+      'Catchment Area Assessment',
+      'Network Planning — New Location Evaluation',
+      'Branch Optimization',
+      'Promotion / Event Performance Measurement',
+    ],
+  },
+  {
+    id: 'specialist-areas',
+    icon: Lightbulb,
+    title: 'Other Specialist Areas',
+    color: '#C45FA0',
+    image: '/capabilities/specialist-areas.png',
+    href: '/services#specialist-areas',
+    desc: 'Proprietary platforms and specialist methodologies for complex research needs.',
+    services: [
+      'InFuse — Secondary research-based intelligence solution',
+      'Counterfeit Assessment',
+      'Co-creation Workshops for Business Strategy',
+    ],
   },
 ]
 
-function GlobalSpotlight({
-  gridRef,
-  spotlightRadius,
-  glowColor,
-  disabled,
-}: {
-  gridRef: React.RefObject<HTMLDivElement | null>
-  spotlightRadius: number
-  glowColor: string
-  disabled: boolean
-}) {
-  useEffect(() => {
-    if (disabled || !gridRef.current) return
-
-    const size = spotlightRadius * 2.5
-    const spotlight = document.createElement('div')
-    spotlight.className = 'bento-spotlight'
-    spotlight.style.cssText = `
-      width: ${size}px; height: ${size}px; opacity: 0;
-      background: radial-gradient(circle,
-        rgba(${glowColor}, 0.12) 0%, rgba(${glowColor}, 0.06) 20%,
-        rgba(${glowColor}, 0.02) 45%, transparent 70%);
-    `
-    document.body.appendChild(spotlight)
-
-    const proximity = spotlightRadius * 0.5
-    const fadeDistance = spotlightRadius * 0.85
-
-    const onMove = (e: MouseEvent) => {
-      if (!gridRef.current) return
-      const wrapper = gridRef.current.closest('.bento-section-wrapper')
-      const rect = wrapper?.getBoundingClientRect()
-      const inside = rect && e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom
-
-      const cards = gridRef.current.querySelectorAll<HTMLElement>('.bento-card')
-      if (!inside) {
-        gsap.to(spotlight, { opacity: 0, duration: 0.3 })
-        cards.forEach(c => c.style.setProperty('--glow-intensity', '0'))
-        return
-      }
-
-      let minDist = Infinity
-      cards.forEach(card => {
-        const cr = card.getBoundingClientRect()
-        const cx = cr.left + cr.width / 2
-        const cy = cr.top + cr.height / 2
-        const dist = Math.max(0, Math.hypot(e.clientX - cx, e.clientY - cy) - Math.max(cr.width, cr.height) / 2)
-        minDist = Math.min(minDist, dist)
-        const intensity = dist <= proximity ? 1 : dist <= fadeDistance ? (fadeDistance - dist) / (fadeDistance - proximity) : 0
-        const rx = ((e.clientX - cr.left) / cr.width) * 100
-        const ry = ((e.clientY - cr.top) / cr.height) * 100
-        card.style.setProperty('--glow-x', `${rx}%`)
-        card.style.setProperty('--glow-y', `${ry}%`)
-        card.style.setProperty('--glow-intensity', intensity.toString())
-        card.style.setProperty('--glow-radius', `${spotlightRadius}px`)
-        card.style.setProperty('--glow-color-rgb', glowColor)
-      })
-
-      gsap.to(spotlight, { left: e.clientX, top: e.clientY, duration: 0.1 })
-      const targetOpacity = minDist <= proximity ? 0.9 : minDist <= fadeDistance ? ((fadeDistance - minDist) / (fadeDistance - proximity)) * 0.9 : 0
-      gsap.to(spotlight, { opacity: targetOpacity, duration: targetOpacity > 0 ? 0.15 : 0.4 })
-    }
-
-    const onLeave = () => {
-      gsap.to(spotlight, { opacity: 0, duration: 0.3 })
-      gridRef.current?.querySelectorAll<HTMLElement>('.bento-card').forEach(c => c.style.setProperty('--glow-intensity', '0'))
-    }
-
-    document.addEventListener('mousemove', onMove)
-    document.addEventListener('mouseleave', onLeave)
-    return () => {
-      document.removeEventListener('mousemove', onMove)
-      document.removeEventListener('mouseleave', onLeave)
-      spotlight.parentNode?.removeChild(spotlight)
-    }
-  }, [gridRef, spotlightRadius, glowColor, disabled])
-
-  return null
-}
-
-export default function CapabilitiesBento({
-  glowColor = DEFAULT_GLOW_COLOR,
-  spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
-}: {
-  glowColor?: string
-  spotlightRadius?: number
-}) {
-  const gridRef = useRef<HTMLDivElement>(null)
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (isMobile) return
-    const el = e.currentTarget
-    const rect = el.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    const maxDist = Math.max(Math.hypot(x, y), Math.hypot(x - rect.width, y), Math.hypot(x, y - rect.height), Math.hypot(x - rect.width, y - rect.height))
-    const ripple = document.createElement('div')
-    ripple.style.cssText = `
-      position:absolute; border-radius:50%; pointer-events:none; z-index:50;
-      width:${maxDist * 2}px; height:${maxDist * 2}px;
-      left:${x - maxDist}px; top:${y - maxDist}px;
-      background: radial-gradient(circle, rgba(${glowColor},0.35) 0%, rgba(${glowColor},0.15) 35%, transparent 70%);
-    `
-    el.appendChild(ripple)
-    gsap.fromTo(ripple, { scale: 0, opacity: 1 }, { scale: 1, opacity: 0, duration: 0.75, ease: 'power2.out', onComplete: () => ripple.remove() })
-  }
+export default function CapabilitiesBento() {
+  const [active, setActive] = useState(0)
+  const area = serviceAreas[active]
+  const Icon = area.icon
 
   return (
-    <div className="bento-section-wrapper">
-      <GlobalSpotlight gridRef={gridRef} spotlightRadius={spotlightRadius} glowColor={glowColor} disabled={isMobile} />
-
-      <div className="capabilities-grid" ref={gridRef}>
-        {capabilities.map((cap, i) => {
-          const Icon = cap.icon
+    <div className="rounded-3xl overflow-hidden border border-border shadow-sm bg-white">
+      {/* ── Tab bar ── */}
+      <div className="flex flex-wrap gap-0 border-b border-border bg-bg-soft">
+        {serviceAreas.map((s, i) => {
+          const TabIcon = s.icon
+          const isActive = i === active
           return (
-            <a
-              key={cap.title}
-              href={cap.href}
-              className="bento-card bento-card--glow"
-              style={{ '--glow-color-rgb': glowColor } as React.CSSProperties}
-              onClick={handleClick}
-              onMouseMove={e => {
-                if (isMobile) return
-                const el = e.currentTarget
-                const rect = el.getBoundingClientRect()
-                const x = e.clientX - rect.left
-                const y = e.clientY - rect.top
-                const rotateX = ((y - rect.height / 2) / rect.height) * -12
-                const rotateY = ((x - rect.width / 2) / rect.width) * 12
-                gsap.to(el, { rotateX, rotateY, duration: 0.15, ease: 'power2.out', transformPerspective: 800 })
-              }}
-              onMouseLeave={e => {
-                if (isMobile) return
-                gsap.to(e.currentTarget, { rotateX: 0, rotateY: 0, duration: 0.4, ease: 'power3.out' })
+            <button
+              key={s.id}
+              onClick={() => setActive(i)}
+              className="relative flex items-center gap-2 px-5 py-4 font-body text-[12.5px] font-medium transition-all duration-200 flex-1 justify-center md:justify-start whitespace-nowrap"
+              style={{
+                color: isActive ? s.color : '#94a3b8',
+                borderBottom: isActive ? `2px solid ${s.color}` : '2px solid transparent',
+                background: isActive ? '#ffffff' : 'transparent',
               }}
             >
-              {/* Photo background */}
-              {cap.image && (
-                <>
-                  <div
-                    style={{
-                      position: 'absolute', inset: 0,
-                      backgroundImage: `url(${cap.image})`,
-                      backgroundSize: 'cover', backgroundPosition: 'center',
-                      opacity: 0.22,
-                      transition: 'opacity 0.4s ease',
-                      pointerEvents: 'none',
-                    }}
-                  />
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(22,29,48,0.95) 40%, rgba(22,29,48,0.6) 100%)', pointerEvents: 'none' }} />
-                </>
-              )}
+              <TabIcon size={14} style={{ flexShrink: 0 }} />
+              <span className="hidden sm:block">{s.title}</span>
+            </button>
+          )
+        })}
+      </div>
 
-              {/* Header */}
-              <div className="magic-bento-card__header" style={{ justifyContent: 'space-between', display: 'flex', position: 'relative', zIndex: 2 }}>
-                <div className="magic-bento-card__label" style={{ fontSize: 12, opacity: 0.45, color: 'white' }}>{cap.label}</div>
-                <Icon size={18} style={{ color: 'rgba(255,255,255,0.25)', flexShrink: 0 }} />
+      {/* ── Active panel ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px]" key={active}>
+        {/* Left — content */}
+        <div className="p-8 md:p-12 flex flex-col justify-between gap-8">
+          <div>
+            {/* Header */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${area.color}15`, border: `1px solid ${area.color}30` }}>
+                <Icon size={18} style={{ color: area.color }} />
               </div>
-
-              {/* Content */}
-              <div className="magic-bento-card__content" style={{ display: 'flex', flexDirection: 'column', gap: 6, position: 'relative', zIndex: 2 }}>
-                <h3 className="magic-bento-card__title" style={{ fontSize: 'clamp(15px, 2vw, 18px)', fontWeight: 500, color: 'white', margin: 0 }}>
-                  {cap.title}
-                </h3>
-                <p className="magic-bento-card__description" style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>
-                  {cap.description}
+              <div>
+                <p className="font-body text-[10px] font-semibold uppercase tracking-[0.14em] mb-0.5" style={{ color: area.color }}>
+                  Core Service Area {String(active + 1).padStart(2, '0')}
                 </p>
+                <h3 className="font-heading font-bold text-[22px] text-text leading-tight">{area.title}</h3>
               </div>
-            </a>
+            </div>
+
+            <p className="font-body text-[14px] text-text-muted leading-relaxed mb-8 max-w-[44ch]">{area.desc}</p>
+
+            {/* Services grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5">
+              {area.services.map((s) => (
+                <div key={s} className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: area.color }} />
+                  <span className="font-body text-[12.5px] text-text-muted leading-snug">{s}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <Link
+            href={area.href}
+            className="inline-flex items-center gap-2 font-body text-[13px] font-medium rounded-full px-6 py-2.5 self-start transition-all duration-200 hover:brightness-95"
+            style={{ backgroundColor: `${area.color}12`, color: area.color, border: `1px solid ${area.color}30` }}
+          >
+            Explore {area.title} <ArrowRight size={13} />
+          </Link>
+        </div>
+
+        {/* Right — image */}
+        <div className="relative hidden lg:block min-h-[380px]">
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-all duration-700"
+            style={{ backgroundImage: `url(${area.image})` }}
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 35%)' }} />
+          <div className="absolute inset-0 bg-black/10" />
+          {/* Service count badge */}
+          <div className="absolute bottom-8 right-8 text-right">
+            <div className="font-heading font-black text-[52px] leading-none" style={{ color: area.color }}>
+              {area.services.length}
+            </div>
+            <div className="font-body text-[11px] text-white/60 uppercase tracking-wider drop-shadow">Services</div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Bottom strip ── */}
+      <div className="border-t border-border grid grid-cols-2 sm:grid-cols-5 divide-x divide-border bg-bg-soft">
+        {serviceAreas.map((s, i) => {
+          const SmallIcon = s.icon
+          const isActive = i === active
+          return (
+            <button
+              key={s.id}
+              onClick={() => setActive(i)}
+              className="flex flex-col items-center gap-1.5 py-4 px-3 transition-all duration-200"
+              style={{ background: isActive ? `${s.color}10` : 'transparent' }}
+            >
+              <SmallIcon size={16} style={{ color: isActive ? s.color : '#94a3b8' }} />
+              <span className="font-body text-[10px] text-center leading-tight" style={{ color: isActive ? s.color : '#94a3b8' }}>
+                {s.title.split(' ').slice(0, 2).join(' ')}
+              </span>
+            </button>
           )
         })}
       </div>
