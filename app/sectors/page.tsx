@@ -59,7 +59,7 @@ export default function SectorsPage() {
             <AnimatedSection>
               <span className="section-tag">Sectors We Serve</span>
               <h2 className="font-heading font-bold text-3xl md:text-4xl text-text mt-2">
-                <GradientText hoverOnly animationSpeed={2}>Decades of In-Region Experience. Biscuits to Boilers — and Everything in Between.</GradientText>
+                <GradientText hoverOnly animationSpeed={2}>Decades of In-Region Experience. Biscuits to Boilers, and Everything in Between.</GradientText>
               </h2>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
