@@ -9,28 +9,28 @@ import Grainient from '@/components/Grainient'
 const team = [
   {
     name: 'Sukhdev Singh',
-    title: 'Partner, Insights & Strategy',
+    title: 'Partner',
     shortBio: 'With over 25 years of experience across the Middle East, Africa, Asia, and Far-East Asian markets, Sukhdev is one of the region\'s most seasoned business researchers.',
     fullBio: 'With over 25 years of experience across the Middle East, Africa, Asia, and Far-East Asian markets, Sukhdev is one of the region\'s most seasoned business researchers — known for getting beneath the surface of a client\'s challenge and surfacing insights that genuinely move strategy forward.\n\nHis expertise spans the full breadth of what rigorous research demands: understanding how an industry works end-to-end, mapping go-to-market dynamics, and designing the customer experience (CX) research that tells organisations what their customers and stakeholders truly think — not just what they say. He has applied this across market entry strategy, B2B research, and government sector advisory, working with organisations ranging from multinationals to public sector institutions across MEA.\n\nThe practice grew because clients kept coming back — and sending others. Each engagement built on the last, deepening relationships and expanding the range of questions 4BC was trusted to answer.\n\nA researcher at heart, Sukhdev is as comfortable conducting an in-depth interview with a shopfloor worker as he is in a boardroom with a CEO. That breadth of human curiosity — and the discipline to listen without agenda — is what drives the quality of insight that clients rely on.',
     expertise: ['Market Entry Strategy', 'B2B Research', 'Government Sector', 'CX Research', 'Stakeholder Satisfaction'],
   },
   {
     name: 'Siva Sankar',
-    title: 'Director, Insights',
+    title: 'Director, Insights & Strategy',
     shortBio: 'Over 15 years of experience in business and industrial research with extensive exposure across the Middle East, North Africa, India, China, Russia, Turkey, and other international markets.',
     fullBio: 'Siva brings over 15 years of experience in business and industrial research, with extensive exposure across the Middle East, North Africa, India, China, Russia, Turkey, and other international markets. Over the years, he has worked with clients across a wide range of sectors, supporting strategic decision-making through in-depth market intelligence and advisory-led research solutions.\n\nHis expertise spans market sizing and opportunity assessment, market entry and expansion strategy, competitive intelligence, customer satisfaction studies, mystery shopping, impact assessment, benchmarking, channel and distribution analysis, network development/geo-mapping, and regulatory landscape assessment. He has also led multiple large-scale business and industrial studies focused on identifying growth opportunities, evaluating market potential, understanding competitive dynamics, and supporting long-term strategic planning.\n\nSiva has worked closely with both public and private sector organizations. His experience includes managing multi-country research engagements, developing tailored research frameworks, and delivering insights to senior stakeholders across industries such as energy, automotive, retail, education, financial services, entertainment, manufacturing, and infrastructure.\n\nHe also brings along a strong understanding of regional business environments and consumer dynamics.',
     expertise: ['Market Sizing', 'Competitive Intelligence', 'Impact Assessment', 'Geo-mapping & Network Development', 'Customer Experience', 'Mystery Shopping'],
   },
   {
     name: 'Sandeep Vaddey',
-    title: 'Director, Insights',
+    title: 'Director, Insights & Strategy',
     shortBio: '19+ years of Business Research and Consulting experience across Middle East, Africa, Turkey and Russia. Expert in Oil & Gas, Energy, Construction, ICT sectors.',
     fullBio: 'Sandeep has more than 19 years of Business Research and Consulting experience across Middle East, Africa, Turkey and Russia. He has advised clients across a wide range of sectors including Oil & Gas, Energy, Construction, Petrochemicals, General Engineering, and ICT. Sandeep\'s core competence is in conducting Market and Competitive Assessment, Market entry strategies, Market expansion, New product development, Geo-mapping and Feasibility studies.',
     expertise: ['Oil & Gas', 'Energy', 'Market Assessment', 'Feasibility Studies'],
   },
   {
     name: 'Angad Kenghe',
-    title: 'Senior Manager, Insights',
+    title: 'Senior Manager, Insights & Strategy',
     shortBio: '5+ years of diverse research experience across consumer research, business research, videometrics, and retail panel-based methodology across MEA, US, Europe, and India.',
     fullBio: 'Angad has over 5+ years of diverse research experience across consumer research, business research, videometrics, and retail panel-based methodology. He has worked with small & medium businesses, as well as large players, spanning MEA, US, Europe, and India regions, and has helped clients with projects across market overview, industry analysis, competitor landscape, new product development, mystery shopping and customer experience.',
     expertise: ['Consumer Research', 'Videometrics', 'Retail Panel Research', 'Mystery Shopping', 'Competitor Landscape', 'New Product Development'],

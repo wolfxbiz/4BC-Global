@@ -12,7 +12,7 @@ import SectorGrid from '@/components/SectorGrid'
 
 export const metadata: Metadata = {
   title: 'Sectors We Serve — 4BC Global',
-  description: '450+ engagements across 12 sectors in MEA. Retail, banking, oil & gas, automotive, healthcare, telecom and more.',
+  description: '450+ engagements across 10+ sectors in MEA. Retail, banking, oil & gas, automotive, healthcare, telecom and more.',
 }
 
 const researchTypes = [
@@ -68,7 +68,7 @@ export default function SectorsPage() {
                   The Middle East and Africa are not just diverse — they are layered. What works in Dubai rarely applies directly to Riyadh. The challenges of South Africa's informal economy are worlds apart from the structured retail markets of the GCC. And the regulatory landscape in Egypt bears little resemblance to Kenya's.
                 </p>
                 <p>
-                  That's why we don't offer generic sector expertise. We bring decades of in-region experience across 12 industries — each with its own nuances, competitive dynamics, and growth levers.
+                  That's why we don't offer generic sector expertise. We bring decades of in-region experience across 10+ industries — each with its own nuances, competitive dynamics, and growth levers.
                 </p>
                 <p className="font-semibold text-text">
                   450+ engagements. 40+ countries. 100+ years of combined experience. This is what it means to understand MEA sectors at scale.
@@ -85,7 +85,7 @@ export default function SectorsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { num: '450+', label: 'Engagements Completed', accent: '#2B4A8C' },
-              { num: '12', label: 'Sectors Covered', accent: '#7D2B5E' },
+              { num: '10+', label: 'Sectors Covered', accent: '#7D2B5E' },
               { num: '40+', label: 'Countries Reached', accent: '#E8A020' },
               { num: '100+', label: 'Years Combined Experience', accent: '#047857' },
             ].map((s) => (
@@ -241,7 +241,7 @@ export default function SectorsPage() {
               { num: '01', title: 'We Don\'t Rely on Generic Models', desc: 'MEA markets defy global templates. What works in Europe or Asia often fails here. We bring localized insight — not imported assumptions.', accent: '#E8A020' },
               { num: '02', title: 'We Combine Macro Trends with Ground-Level Reality', desc: 'It\'s not enough to know the market size. You need to understand how decisions are actually made — by consumers, businesses, and regulators.', accent: '#2B4A8C' },
               { num: '03', title: 'We Speak the Language of Each Sector', desc: 'Our teams don\'t just collect data. They interpret it through the lens of industry experience — whether that\'s retail, oil and gas, or public sector strategy.', accent: '#7D2B5E' },
-              { num: '04', title: 'We\'ve Seen What Works — and What Doesn\'t', desc: 'With 450+ engagements across 12 sectors, we don\'t just advise. We anticipate risks and opportunities before they become obvious.', accent: '#047857' },
+              { num: '04', title: 'We\'ve Seen What Works — and What Doesn\'t', desc: 'With 450+ engagements across 10+ sectors, we don\'t just advise. We anticipate risks and opportunities before they become obvious.', accent: '#047857' },
             ].map((item, i) => (
               <AnimatedSection key={item.num} delay={i * 0.07}>
                 <div className="group bg-white rounded-2xl border border-border hover:shadow-sm transition-all p-5 flex items-start gap-5">

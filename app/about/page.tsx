@@ -18,9 +18,9 @@ export const metadata: Metadata = {
 const regions = [
   { region: 'GCC', countries: 'UAE, Saudi Arabia, Qatar, Kuwait, Oman, Bahrain' },
   { region: 'Levant & Wider Region', countries: 'Lebanon, Jordan, Iraq, Iran' },
-  { region: 'Africa', countries: 'Egypt, Algeria, Morocco, Kenya, Ghana, South Africa, DRC and others' },
-  { region: 'Asia', countries: 'India, Pakistan, Sri Lanka, Bangladesh, Thailand' },
-  { region: 'Europe', countries: 'UK' },
+  { region: 'Africa', countries: 'Egypt, Algeria, Morocco, Kenya, Ghana, South Africa, Nigeria and others' },
+  { region: 'Asia', countries: 'India, Pakistan, China, Korea, Thailand' },
+  { region: 'Other', countries: 'UK, Russia, Turkey' },
 ]
 
 const values = [
@@ -86,7 +86,7 @@ const howWeWork = [
 const team: TeamMember[] = [
   {
     name: 'Sukhdev Singh',
-    title: 'Partner, Insights & Strategy',
+    title: 'Partner',
     photo: '/team/sukhdev-singh.png',
     shortBio: 'With over 25 years of experience across the Middle East, Africa, Asia, and Far-East Asian markets, Sukhdev is one of the region\'s most seasoned business researchers.',
     fullBio: 'With over 25 years of experience across the Middle East, Africa, Asia, and Far-East Asian markets, Sukhdev is one of the region\'s most seasoned business researchers — known for getting beneath the surface of a client\'s challenge and surfacing insights that genuinely move strategy forward.\n\nHis expertise spans the full breadth of what rigorous research demands: understanding how an industry works end-to-end, mapping go-to-market dynamics, and designing the customer experience (CX) research that tells organisations what their customers and stakeholders truly think — not just what they say. He has applied this across market entry strategy, B2B research, and government sector advisory, working with organisations ranging from multinationals to public sector institutions across MEA.\n\nThe practice grew because clients kept coming back — and sending others. Each engagement built on the last, deepening relationships and expanding the range of questions 4BC was trusted to answer.\n\nA researcher at heart, Sukhdev is as comfortable conducting an in-depth interview with a shopfloor worker as he is in a boardroom with a CEO. That breadth of human curiosity — and the discipline to listen without agenda — is what drives the quality of insight that clients rely on.',
@@ -94,7 +94,7 @@ const team: TeamMember[] = [
   },
   {
     name: 'Siva Sankar',
-    title: 'Director, Insights',
+    title: 'Director, Insights & Strategy',
     photo: '/team/siva-sankar.png',
     shortBio: 'Over 15 years of experience in business and industrial research with extensive exposure across the Middle East, North Africa, India, China, Russia, Turkey, and other international markets.',
     fullBio: 'Siva brings over 15 years of experience in business and industrial research, with extensive exposure across the Middle East, North Africa, India, China, Russia, Turkey, and other international markets. Over the years, he has worked with clients across a wide range of sectors, supporting strategic decision-making through in-depth market intelligence and advisory-led research solutions.\n\nHis expertise spans market sizing and opportunity assessment, market entry and expansion strategy, competitive intelligence, customer satisfaction studies, mystery shopping, impact assessment, benchmarking, channel and distribution analysis, network development/geo-mapping, and regulatory landscape assessment. He has also led multiple large-scale business and industrial studies focused on identifying growth opportunities, evaluating market potential, understanding competitive dynamics, and supporting long-term strategic planning.\n\nSiva has worked closely with both public and private sector organizations. His experience includes managing multi-country research engagements, developing tailored research frameworks, and delivering insights to senior stakeholders across industries such as energy, automotive, retail, education, financial services, entertainment, manufacturing, and infrastructure.\n\nHe also brings along a strong understanding of regional business environments and consumer dynamics.',
@@ -102,7 +102,7 @@ const team: TeamMember[] = [
   },
   {
     name: 'Sandeep Vaddey',
-    title: 'Director, Insights',
+    title: 'Director, Insights & Strategy',
     photo: '/team/sandeep-vaddey.png',
     shortBio: '19+ years of research and consulting experience across the Middle East, Africa, Turkey, and Russia. Specialist in oil and gas, energy, construction, and ICT sectors.',
     fullBio: 'Sandeep has more than 19 years of Business Research and Consulting experience across Middle East, Africa, Turkey and Russia, with proven expertise in complex feasibility and market assessment studies. He has advised clients across Oil & Gas, Energy, Construction, Petrochemicals, General Engineering, and ICT — specialising in Market Assessment, Market Entry, Market Expansion, New Product Development, and Geo-mapping.',
@@ -110,7 +110,7 @@ const team: TeamMember[] = [
   },
   {
     name: 'Angad Kenghe',
-    title: 'Senior Manager, Insights',
+    title: 'Senior Manager, Insights & Strategy',
     photo: '/team/angad-kenghe.png',
     shortBio: '5+ years of diverse research experience across consumer research, business research, videometrics, and retail panel-based methodology across MEA, US, Europe, and India.',
     fullBio: 'Angad has over 5+ years of diverse research experience across consumer research, business research, videometrics, and retail panel-based methodology. He has worked with small & medium businesses, as well as large players, spanning MEA, US, Europe, and India regions, and has helped clients with projects across market overview, industry analysis, competitor landscape, new product development, mystery shopping and customer experience.',
@@ -273,7 +273,7 @@ export default function AboutPage() {
               <div>
                 <span className="section-tag">What We Stand For</span>
                 <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
-                  <GradientText hoverOnly animationSpeed={2}>These aren't values on a wall.<br />They shape how we work.</GradientText>
+                  <GradientText hoverOnly animationSpeed={2}>These aren't just values on a wall.<br />They shape how we work.</GradientText>
                 </h2>
               </div>
               <p className="font-body text-[14px] text-text-muted max-w-xs md:text-right leading-relaxed">
@@ -282,18 +282,13 @@ export default function AboutPage() {
             </div>
           </AnimatedSection>
 
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {values.map((v, i) => (
               <AnimatedSection key={v.title} delay={i * 0.07}>
-                <div className="group bg-white rounded-2xl border border-border hover:border-border hover:shadow-sm transition-all p-5 flex items-start gap-5">
-                  <span className="font-heading font-black text-[52px] leading-none flex-shrink-0 w-16" style={{ color: v.accent }}>{v.num}</span>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1.5">
-                      <h3 className="font-heading font-bold text-[16px] text-text">{v.title}</h3>
-                      <div className="h-px flex-1 mx-4 bg-border hidden sm:block" />
-                    </div>
-                    <p className="font-body text-[13px] text-text-muted leading-relaxed">{v.desc}</p>
-                  </div>
+                <div className="bg-white rounded-2xl border border-border hover:shadow-sm transition-all p-6 h-full flex flex-col">
+                  <span className="font-heading font-black text-[40px] leading-none mb-4 block" style={{ color: v.accent }}>{v.num}</span>
+                  <h3 className="font-heading font-bold text-[15px] text-text mb-2">{v.title}</h3>
+                  <p className="font-body text-[13px] text-text-muted leading-relaxed flex-1">{v.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -359,7 +354,7 @@ export default function AboutPage() {
               <div>
                 <span className="section-tag">Our Reach</span>
                 <h2 className="font-heading font-bold text-3xl md:text-4xl text-text">
-                  <GradientText hoverOnly animationSpeed={2}>40+ Countries. 3 Offices. 4 Partner Hubs.</GradientText>
+                  <GradientText hoverOnly animationSpeed={2}>40+ Countries. 2 Offices. 3 Partner Hubs.</GradientText>
                 </h2>
               </div>
               <p className="font-body text-[14px] text-text-muted max-w-xs md:text-right leading-relaxed">
@@ -374,9 +369,9 @@ export default function AboutPage() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
                   { num: '40+', label: 'Countries', accent: '#2B4A8C' },
-                  { num: '3', label: 'Offices', accent: '#7D2B5E' },
-                  { num: '4', label: 'Partner Hubs', accent: '#E8A020' },
-                  { num: '12', label: 'Sectors', accent: '#1A7A5E' },
+                  { num: '2', label: 'Offices', accent: '#7D2B5E' },
+                  { num: '3', label: 'Partner Hubs', accent: '#E8A020' },
+                  { num: '10+', label: 'Sectors', accent: '#1A7A5E' },
                 ].map((item) => (
                   <div key={item.label} className="rounded-2xl border border-border bg-bg-soft p-5">
                     <div className="font-heading font-black text-[2.2rem] leading-none mb-1" style={{ color: item.accent }}>{item.num}</div>
@@ -437,12 +432,13 @@ export default function AboutPage() {
               </div>
             </AnimatedSection>
 
-            {/* Right — regions list */}
+            {/* Right — markets covered */}
             <AnimatedSection delay={0.2}>
+              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.14em] text-text-muted mb-4">Markets Covered</p>
               <div className="space-y-2">
                 {regions.map((r) => (
                   <div key={r.region} className="flex gap-4 p-4 rounded-xl border border-border hover:bg-bg-soft transition-colors">
-                    <div className="w-40 flex-shrink-0">
+                    <div className="w-44 flex-shrink-0">
                       <span className="font-heading font-semibold text-[13px] text-primary">{r.region}</span>
                     </div>
                     <p className="font-body text-[13px] text-text-muted">{r.countries}</p>
@@ -466,7 +462,7 @@ export default function AboutPage() {
                 </h2>
               </div>
               <p className="font-body text-[14px] text-text-muted max-w-xs md:text-right leading-relaxed">
-                We have advised and supported organisations at every level — across 11 sectors, 450+ engagements.
+                We have advised and supported organisations at every level — across 10+ sectors, 450+ engagements.
               </p>
             </div>
           </AnimatedSection>
@@ -503,7 +499,7 @@ export default function AboutPage() {
             <div className="rounded-2xl border border-border overflow-hidden bg-white">
               <div className="grid grid-cols-3 divide-x divide-border border-b border-border">
                 {[
-                  { num: '11', label: 'Sectors', accent: '#2B4A8C' },
+                  { num: '10+', label: 'Sectors', accent: '#2B4A8C' },
                   { num: '450+', label: 'Engagements', accent: '#7D2B5E' },
                   { num: '6', label: 'Research Categories', accent: '#E8A020' },
                 ].map((s) => (

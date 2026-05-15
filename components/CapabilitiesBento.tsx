@@ -166,7 +166,6 @@ export default function CapabilitiesBento() {
             className="absolute inset-0 bg-cover bg-center transition-all duration-700"
             style={{ backgroundImage: `url(${area.image})` }}
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 35%)' }} />
           <div className="absolute inset-0 bg-black/10" />
           {/* Service count badge */}
           <div className="absolute bottom-8 right-8 text-right">
