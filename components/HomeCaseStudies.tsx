@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AnimatePresence } from 'framer-motion'
@@ -10,14 +10,46 @@ import GradientText from '@/components/GradientText'
 import { CaseStudyModal } from '@/components/CaseStudyModal'
 import { caseStudies, CaseStudy } from '@/lib/case-studies-data'
 
-const featuredStudy = caseStudies.find((cs) => cs.id === 'cs-02')!
-const gridStudies = [
-  caseStudies.find((cs) => cs.id === 'cs-01')!,
-  caseStudies.find((cs) => cs.id === 'cs-07')!,
+const get = (id: string) => caseStudies.find((cs) => cs.id === id)!
+
+const slides = [
+  { featured: get('cs-02'), side: [get('cs-01'), get('cs-07')] },
+  { featured: get('cs-24'), side: [get('cs-14'), get('cs-29')] },
+  { featured: get('cs-08'), side: [get('cs-03'), get('cs-27')] },
+  { featured: get('cs-06'), side: [get('cs-25'), get('cs-31')] },
 ]
+
+const INTERVAL = 5000
 
 export default function HomeCaseStudies() {
   const [activeStudy, setActiveStudy] = useState<CaseStudy | null>(null)
+  const [slide, setSlide] = useState(0)
+  const [fading, setFading] = useState(false)
+  const [paused, setPaused] = useState(false)
+
+  useEffect(() => {
+    if (paused) return
+    const t = setTimeout(() => {
+      setFading(true)
+      setTimeout(() => {
+        setSlide((s) => (s + 1) % slides.length)
+        setFading(false)
+      }, 300)
+    }, INTERVAL)
+    return () => clearTimeout(t)
+  }, [paused, slide])
+
+  const goTo = (i: number) => {
+    if (i === slide) return
+    setFading(true)
+    setTimeout(() => {
+      setSlide(i)
+      setFading(false)
+    }, 300)
+    setPaused(true)
+  }
+
+  const { featured, side } = slides[slide]
 
   return (
     <>
@@ -27,7 +59,11 @@ export default function HomeCaseStudies() {
         )}
       </AnimatePresence>
 
-      <section className="bg-bg-soft section-padding">
+      <section
+        className="bg-bg-soft section-padding"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
         <div className="container-content">
 
           {/* Header */}
@@ -50,21 +86,25 @@ export default function HomeCaseStudies() {
 
           {/* Bento grid */}
           <AnimatedSection delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[280px]">
-
-              {/* Featured — spans 2 cols × 2 rows */}
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[280px]"
+              style={{
+                opacity: fading ? 0 : 1,
+                transform: fading ? 'translateY(6px)' : 'translateY(0)',
+                transition: 'opacity 0.3s ease, transform 0.3s ease',
+              }}
+            >
+              {/* Featured — 2 cols × 2 rows */}
               <button
-                onClick={() => setActiveStudy(featuredStudy)}
+                onClick={() => setActiveStudy(featured)}
                 className="group md:col-span-2 md:row-span-2 relative rounded-2xl overflow-hidden text-left w-full h-full"
               >
                 <Image
-                  src={featuredStudy.image}
-                  alt={featuredStudy.title}
+                  src={featured.image}
+                  alt={featured.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  style={{ objectPosition: '40% 55%' }}
                 />
-                {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
 
                 {/* Top badges */}
@@ -73,23 +113,23 @@ export default function HomeCaseStudies() {
                     Featured
                   </span>
                   <span className="font-body text-[10px] font-medium text-white bg-black/35 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1 uppercase tracking-wider">
-                    {featuredStudy.sector}
+                    {featured.sector}
                   </span>
                 </div>
 
                 {/* Stat bubble */}
                 <div className="absolute top-5 right-5 bg-white rounded-xl px-3 py-2 shadow-lg text-right">
-                  <div className="font-heading font-bold text-[20px] text-primary leading-none">500+</div>
-                  <div className="font-body text-[10px] text-text-muted mt-0.5">Interviews</div>
+                  <div className="font-heading font-bold text-[20px] text-primary leading-none">{featured.stats[0].value}</div>
+                  <div className="font-body text-[10px] text-text-muted mt-0.5">{featured.stats[0].label}</div>
                 </div>
 
                 {/* Bottom content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                  <h3 className="font-heading font-bold text-[20px] md:text-[26px] text-white leading-snug tracking-[-0.02em] mb-3 max-w-[480px]">
-                    Unlocking the Informal Economy: Minibus Taxi Digitalization.
+                  <h3 className="font-heading font-bold text-[20px] md:text-[24px] text-white leading-snug tracking-[-0.02em] mb-3 max-w-[480px]">
+                    {featured.title}
                   </h3>
-                  <p className="font-body text-[13px] text-white/65 leading-relaxed mb-5 max-w-[44ch] hidden md:block">
-                    While most firms write off informal sectors as "unreachable," 4BC conducted on-the-ground interviews with commuters and taxi owners in South Africa — delivering a definitive go-to-market strategy.
+                  <p className="font-body text-[13px] text-white/65 leading-relaxed mb-5 max-w-[44ch] hidden md:block line-clamp-2">
+                    {featured.challenge}
                   </p>
                   <span className="inline-flex items-center gap-2 bg-accent text-dark font-body font-semibold text-[13px] rounded-full px-5 py-2.5 group-hover:brightness-110 transition-all shadow-md">
                     Read Case Study <ArrowRight size={13} />
@@ -97,8 +137,8 @@ export default function HomeCaseStudies() {
                 </div>
               </button>
 
-              {/* Small cards */}
-              {gridStudies.map((cs) => (
+              {/* Side cards */}
+              {side.map((cs) => (
                 <button
                   key={cs.id}
                   onClick={() => setActiveStudy(cs)}
@@ -124,6 +164,26 @@ export default function HomeCaseStudies() {
                       Read Case Study <ArrowRight size={11} />
                     </span>
                   </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Dot indicators + progress */}
+            <div className="flex items-center justify-center gap-3 mt-6">
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  className="relative h-1.5 rounded-full overflow-hidden transition-all duration-300"
+                  style={{ width: i === slide ? 32 : 8, backgroundColor: i === slide ? '#2B4A8C' : '#CBD5E1' }}
+                >
+                  {i === slide && !paused && (
+                    <span
+                      key={`dot-${slide}`}
+                      className="absolute inset-y-0 left-0 rounded-full bg-accent"
+                      style={{ animation: `tabProgress ${INTERVAL}ms linear forwards` }}
+                    />
+                  )}
                 </button>
               ))}
             </div>
