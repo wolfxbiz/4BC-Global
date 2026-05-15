@@ -147,6 +147,10 @@ export default function SectorsPage() {
                     </div>
                   )
                 })}
+                <div className="sm:col-span-2 flex items-center justify-center bg-primary/5 border border-primary/15 rounded-xl p-4">
+                  <span className="font-heading font-semibold text-[14px] text-primary">And many more —</span>
+                  <a href="/services" className="font-body text-[13px] text-primary/70 hover:text-primary transition-colors ml-1.5 underline underline-offset-2">view all services →</a>
+                </div>
               </div>
             </AnimatedSection>
           </div>
