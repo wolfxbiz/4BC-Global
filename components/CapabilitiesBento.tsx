@@ -66,7 +66,7 @@ const serviceAreas = [
     color: '#3BBFA3',
     image: '/capabilities/geolocation.png',
     href: '/services#geolocation-services',
-    desc: 'Spatial intelligence that turns location data into network strategy.',
+    desc: 'Spatial intelligence that turns location data into network strategy, powered by our proprietary 4BC Landscape platform.',
     services: [
       'Catchment Area Assessment',
       'Network Planning — New Location Evaluation',
@@ -83,6 +83,7 @@ const serviceAreas = [
     href: '/services#specialist-areas',
     desc: 'Proprietary platforms and specialist methodologies for complex research needs.',
     services: [
+      'Concept Evaluation',
       'InFuse — Secondary research-based intelligence solution',
       'Counterfeit Assessment',
       'Co-creation Workshops for Business Strategy',
