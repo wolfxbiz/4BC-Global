@@ -59,7 +59,7 @@ export default function SectorsPage() {
             <AnimatedSection>
               <span className="section-tag">Sectors We Serve</span>
               <h2 className="font-heading font-bold text-3xl md:text-4xl text-text mt-2">
-                <GradientText hoverOnly animationSpeed={2}>Decades of In-Region Experience. 12 Industries Deep.</GradientText>
+                <GradientText hoverOnly animationSpeed={2}>Decades of In-Region Experience. Biscuits to Boilers — and Everything in Between.</GradientText>
               </h2>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
@@ -68,7 +68,7 @@ export default function SectorsPage() {
                   The Middle East and Africa are not just diverse — they are layered. What works in Dubai rarely applies directly to Riyadh. The challenges of South Africa's informal economy are worlds apart from the structured retail markets of the GCC. And the regulatory landscape in Egypt bears little resemblance to Kenya's.
                 </p>
                 <p>
-                  That's why we don't offer generic sector expertise. We bring decades of in-region experience across 10+ industries — each with its own nuances, competitive dynamics, and growth levers.
+                  That's why we work across a vast, diverse range of sectors — from consumer goods to industrial equipment, from financial services to oil & gas. Each sector has its own nuances, competitive dynamics, and growth levers. We've mastered them all, and we're fast to understand and appreciate the unique operating logic of yours.
                 </p>
                 <p className="font-semibold text-text">
                   450+ engagements. 40+ countries. 100+ years of combined experience. This is what it means to understand MEA sectors at scale.
