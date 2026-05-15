@@ -43,7 +43,7 @@ const trustSignals = [
   {
     icon: Users,
     title: 'Senior-led research',
-    desc: 'Every project is led by practitioners with 15+ years of MEA market research experience.',
+    desc: 'Every project is led by consultants with 15+ years of MEA market research experience.',
     color: '#2B7A6F',
   },
   {
@@ -56,7 +56,7 @@ const trustSignals = [
 
 const steps = [
   { num: '01', label: 'Submit your brief', desc: 'Tell us what you need — no lengthy forms, just the essentials.' },
-  { num: '02', label: 'Discovery call', desc: 'A 30-minute call with a senior researcher to scope your project.' },
+  { num: '02', label: 'Discovery call', desc: 'A 20-minute call with a senior researcher to scope your project.' },
   { num: '03', label: 'Tailored proposal', desc: 'A methodology and timeline built around your specific challenge.' },
   { num: '04', label: 'Research & delivery', desc: 'We execute and deliver findings your team can act on.' },
 ]

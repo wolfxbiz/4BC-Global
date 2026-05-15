@@ -120,7 +120,7 @@ export default function CaseStudiesPage() {
           <AnimatedSection>
             <span className="inline-flex items-center gap-2 border border-white/20 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-              <span className="font-body text-[12px] text-white/75 tracking-widest uppercase">8 Case Studies · 6 Sectors</span>
+              <span className="font-body text-[12px] text-white/75 tracking-widest uppercase">Case Studies</span>
             </span>
             <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl text-white mb-5 tracking-[-0.04em]">
               Intelligence in Action

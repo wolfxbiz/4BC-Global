@@ -28,7 +28,7 @@ const tools = [
     stats: [
       { value: 'MEA', label: 'Coverage' },
       { value: '10+', label: 'Sectors' },
-      { value: '48h', label: 'Turnaround' },
+      { value: '5 Days', label: 'Turnaround' },
     ],
     type: 'Secondary Research Platform',
     accent: '#2B4A8C',
@@ -51,9 +51,9 @@ const tools = [
       { name: 'Strategic Rollout Prioritization', desc: 'Provides a phased, data-backed roadmap dictating where to launch first and how to sequence subsequent expansions for maximum market capture.' },
     ],
     stats: [
-      { value: '1,500+', label: 'GPS Points' },
-      { value: '40+', label: 'Clusters' },
-      { value: 'Live', label: 'Map Output' },
+      { value: '1000s', label: 'GPS Points' },
+      { value: 'Multiple', label: 'Clusters' },
+      { value: 'Dynamic', label: 'Map Output' },
     ],
     type: 'Geo-Intelligence Tool',
     accent: '#7D2B5E',
@@ -72,12 +72,12 @@ const tools = [
     useCases: [
       { name: 'Econometric Modeling (Economic Impact)', desc: 'Measures hard financial contributions, including Gross Value Added (GVA), fiscal multipliers, direct/indirect job creation, and investment stimulation via rigorous input-output analysis.' },
       { name: 'Qualitative Synthesis (Social Impact)', desc: 'Captures the critical intangibles — community well-being, cultural heritage preservation, brand equity, sentiment shifts, and international soft power.' },
-      { name: 'The 5-Step Activation Methodology', desc: 'Scoping → Data Mapping → Measurement & Modeling → Synthesis → Activation. A comprehensive end-to-end process aligned with overarching organizational vision.' },
+      { name: 'The 5-Step Activation Methodology', desc: 'Scoping → Data Mapping → Measurement & Modeling → Synthesis → Activation. A comprehensive end-to-end process aligned with overarching organizational vision and aligned with SDG (Sustainable Development Goals).' },
     ],
     stats: [
-      { value: '2', label: 'Pillars' },
-      { value: '5', label: 'Steps' },
-      { value: 'SDG', label: 'Aligned' },
+      { value: 'Eco.', label: 'Impact' },
+      { value: 'Social', label: 'Impact' },
+      { value: 'Env.', label: 'Impact' },
     ],
     type: 'Impact Assessment Framework',
     accent: '#E8A020',
