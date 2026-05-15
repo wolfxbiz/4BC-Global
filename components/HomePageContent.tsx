@@ -300,7 +300,7 @@ export default function HomePageContent() {
                 <GradientText hoverOnly animationSpeed={2}>Your business question dictates our methodology.</GradientText>
               </h2>
               <p className="font-body text-body-sm text-text-muted mb-10 max-w-[46ch] leading-relaxed">
-                We are method-neutral by design. Because secondary data in the MEA region is often unreliable, we build every engagement from the ground up — blending deep primary research with AI-integrated analytics to find the truth that databases miss.
+                We are method-neutral by design. Because secondary data in the MEA region is often unreliable, we build every engagement from the ground up — blending deep primary research with AI-integrated analytics to find the truth that partially available secondary data miss.
               </p>
               <Link
                 href="/about"

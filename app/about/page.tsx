@@ -187,7 +187,7 @@ export default function AboutPage() {
                   In 2007, a small focused team within Kantar MENA started doing something different. Not just conducting research — but establishing a new standard for what market intelligence could look like across the Middle East and Africa.
                 </p>
                 <p>
-                  Over the next thirteen years, that team became Kantar MENA's fastest-growing and most profitable research unit. They advised global multinationals, regional conglomerates, and national governments across 40+ markets. They built a reputation for rigour, for listening deeply, and for delivering insight that actually changed decisions.
+                  Over the next thirteen years, that team became one of the most sought after teams at Kantar MENA. They advised global multinationals, regional conglomerates, and national governments across 40+ markets. They built a reputation for rigour, for listening deeply, and for delivering insight that actually changed decisions.
                 </p>
                 <p>
                   Then, in 2020, the entire team made a deliberate choice.
